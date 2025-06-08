@@ -211,83 +211,129 @@ const MethodicalGuideSection = () => {
 
       {activeTab === "methodology" && (
         <div className="space-y-8">
-          {methodologyContent.map((section, index) => {
-            // Проверяем, является ли это главой
-            const isChapter = section.title.startsWith("Глава");
-
-            return (
-              <div key={index}>
-                {isChapter ? (
-                  // Специальное оформление для глав
-                  <div className="border-l-4 border-indigo-500 bg-gradient-to-r from-indigo-50 to-white p-6 rounded-r-lg shadow-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
-                        <Icon
-                          name="BookOpen"
-                          className="text-white"
-                          size={16}
-                        />
-                      </div>
-                      <h3 className="text-xl font-bold text-indigo-900">
-                        {section.title}
-                      </h3>
-                    </div>
-                    {section.subtitle && (
-                      <div className="pl-11 mb-3">
-                        <h4 className="text-lg font-semibold text-indigo-800">
-                          {section.subtitle}
-                        </h4>
-                      </div>
-                    )}
-                    <div className="space-y-3 pl-11">
-                      {section.content.map((item, itemIndex) => (
-                        <p
-                          key={itemIndex}
-                          className="text-gray-700 leading-relaxed"
-                        >
-                          {item}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  // Обычное оформление для других разделов
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Icon
-                          name="Lightbulb"
-                          className="text-yellow-600"
-                          size={20}
-                        />
-                        {section.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {section.content.map((item, itemIndex) => (
-                          <li key={itemIndex} className="text-gray-700">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Разделитель между главами */}
-                {isChapter && index < methodologyContent.length - 1 && (
-                  <div className="flex items-center justify-center my-8">
-                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-                    <div className="px-4">
-                      <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
-                    </div>
-                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-                  </div>
-                )}
+          {/* Глава 1 */}
+          <div className="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-500 rounded-r-lg shadow-sm overflow-hidden">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center">
+                  <Icon name="BookOpen" className="text-white" size={20} />
+                </div>
+                <h2 className="text-2xl font-bold text-indigo-900">
+                  Глава 1. Теоретические основы формирования логического
+                  мышления
+                </h2>
               </div>
-            );
-          })}
+              <div className="space-y-3 pl-13">
+                <a
+                  href="/methodology/chapter1/logical-thinking"
+                  className="block group"
+                >
+                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
+                    <span className="text-indigo-600 font-medium">1.1.</span>
+                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
+                      Что такое логическое мышление?
+                    </span>
+                    <Icon
+                      name="ChevronRight"
+                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={16}
+                    />
+                  </div>
+                </a>
+                <a
+                  href="/methodology/chapter1/age-features"
+                  className="block group"
+                >
+                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
+                    <span className="text-indigo-600 font-medium">1.2.</span>
+                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
+                      Возрастные особенности развития логического мышления у
+                      шестиклассников
+                    </span>
+                    <Icon
+                      name="ChevronRight"
+                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={16}
+                    />
+                  </div>
+                </a>
+                <a
+                  href="/methodology/chapter1/principles"
+                  className="block group"
+                >
+                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
+                    <span className="text-indigo-600 font-medium">1.3.</span>
+                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
+                      Методические принципы формирования логического мышления
+                    </span>
+                    <Icon
+                      name="ChevronRight"
+                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={16}
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Разделитель */}
+          <div className="flex items-center justify-center">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="px-4">
+              <div className="w-3 h-3 bg-indigo-400 rounded-full"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+          </div>
+
+          {/* Глава 2 */}
+          <div className="bg-gradient-to-r from-emerald-50 to-white border-l-4 border-emerald-500 rounded-r-lg shadow-sm overflow-hidden">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <Icon name="Lightbulb" className="text-white" size={20} />
+                </div>
+                <h2 className="text-2xl font-bold text-emerald-900">
+                  Глава 2. Практические методы и приёмы развития логического
+                  мышления на уроках математики
+                </h2>
+              </div>
+              <div className="space-y-3 pl-13">
+                <a
+                  href="/methodology/chapter2/problem-situations"
+                  className="block group"
+                >
+                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors">
+                    <span className="text-emerald-600 font-medium">2.1.</span>
+                    <span className="text-gray-800 group-hover:text-emerald-700 transition-colors">
+                      Использование проблемных ситуаций
+                    </span>
+                    <Icon
+                      name="ChevronRight"
+                      className="text-emerald-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={16}
+                    />
+                  </div>
+                </a>
+                <a
+                  href="/methodology/chapter2/logical-tasks"
+                  className="block group"
+                >
+                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors">
+                    <span className="text-emerald-600 font-medium">2.2.</span>
+                    <span className="text-gray-800 group-hover:text-emerald-700 transition-colors">
+                      Решение логических задач различных типов
+                    </span>
+                    <Icon
+                      name="ChevronRight"
+                      className="text-emerald-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      size={16}
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
