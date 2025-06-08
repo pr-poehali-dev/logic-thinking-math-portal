@@ -210,30 +210,77 @@ const MethodicalGuideSection = () => {
       </div>
 
       {activeTab === "methodology" && (
-        <div className="space-y-6">
-          {methodologyContent.map((section, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Icon
-                    name="Lightbulb"
-                    className="text-yellow-600"
-                    size={20}
-                  />
-                  {section.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {section.content.map((item, itemIndex) => (
-                    <li key={itemIndex} className="text-gray-700">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="space-y-8">
+          {methodologyContent.map((section, index) => {
+            // Проверяем, является ли это главой
+            const isChapter = section.title.startsWith("Глава");
+
+            return (
+              <div key={index}>
+                {isChapter ? (
+                  // Специальное оформление для глав
+                  <div className="border-l-4 border-indigo-500 bg-gradient-to-r from-indigo-50 to-white p-6 rounded-r-lg shadow-sm">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+                        <Icon
+                          name="BookOpen"
+                          className="text-white"
+                          size={16}
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-indigo-900">
+                        {section.title}
+                      </h3>
+                    </div>
+                    <div className="space-y-3 pl-11">
+                      {section.content.map((item, itemIndex) => (
+                        <p
+                          key={itemIndex}
+                          className="text-gray-700 leading-relaxed"
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  // Обычное оформление для других разделов
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Icon
+                          name="Lightbulb"
+                          className="text-yellow-600"
+                          size={20}
+                        />
+                        {section.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {section.content.map((item, itemIndex) => (
+                          <li key={itemIndex} className="text-gray-700">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Разделитель между главами */}
+                {isChapter && index < methodologyContent.length - 1 && (
+                  <div className="flex items-center justify-center my-8">
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+                    <div className="px-4">
+                      <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                    </div>
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
 
