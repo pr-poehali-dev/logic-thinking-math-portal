@@ -99,44 +99,46 @@ const MethodicalGuideSection = () => {
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-blue-600">✓</span>
-                <span>Нужен ли действительно новый телефон?</span>
+                <span>Технические характеристики</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-600">✓</span>
-                <span>Какие функции необходимы?</span>
+                <span>Цену и соотношение цена/качество</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-600">✓</span>
-                <span>Какие модели соответствуют требованиям и бюджету?</span>
+                <span>Отзывы пользователей</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-600">✓</span>
-                <span>Читает отзывы и сравнивает характеристики</span>
+                <span>Долгосрочную перспективу использования</span>
               </li>
             </ul>
           </div>
 
           <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
             <h5 className="font-bold text-orange-800 mb-3 flex items-center gap-2">
-              🧮 Урок математики
+              🎯 Выбор профессии
             </h5>
             <p className="text-gray-700 mb-3">
-              Учитель объясняет не просто алгоритм решения уравнений, а логику:
+              Выпускник анализирует свои интересы, способности и возможности:
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-orange-600">→</span>
-                <span>Почему переносим слагаемые в другую часть?</span>
+                <span className="text-orange-600">✓</span>
+                <span>Личные склонности и таланты</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-orange-600">→</span>
-                <span>Почему меняется знак?</span>
+                <span className="text-orange-600">✓</span>
+                <span>Востребованность профессии на рынке</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-orange-600">→</span>
-                <span>
-                  Почему выполняем одинаковые действия с обеими частями?
-                </span>
+                <span className="text-orange-600">✓</span>
+                <span>Возможности для карьерного роста</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-600">✓</span>
+                <span>Требования к образованию и подготовке</span>
               </li>
             </ul>
           </div>
