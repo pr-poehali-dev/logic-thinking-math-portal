@@ -438,32 +438,7 @@ const EntertainingProblemsSection = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button
-                className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedTopic(topic.id);
-                }}
-              >
-                Изучить тему
-                <Icon name="ArrowRight" size={16} />
-              </Button>
-              <div className="mt-3 space-y-1">
-                {topic.subtopics.map((subtopic) => (
-                  <Button
-                    key={subtopic.id}
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-left justify-start text-xs"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedSubtopic(subtopic.id);
-                    }}
-                  >
-                    {subtopic.title}
-                  </Button>
-                ))}
-              </div>
+              {/* Убираем кнопку "Изучить тему" и список подтем */}
             </CardContent>
           </Card>
         ))}
