@@ -29,6 +29,14 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
       color: "bg-blue-100 text-blue-600",
       action: () => onNavigate("puzzles"),
     },
+    {
+      title: "Методическое пособие",
+      description:
+        "Полное руководство для учителей по развитию логического мышления",
+      icon: "BookOpen",
+      color: "bg-green-100 text-green-600",
+      action: () => onNavigate("guide"),
+    },
   ];
 
   return (
@@ -42,7 +50,7 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {features.map((feature, index) => (
           <Card
             key={index}

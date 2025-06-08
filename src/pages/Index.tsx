@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import HomeSection from "@/components/HomeSection";
 import TestSection from "@/components/TestSection";
 import PuzzleSection from "@/components/PuzzleSection";
+import MethodicalGuideSection from "@/components/MethodicalGuideSection";
 import { useState } from "react";
 
 const Index = () => {
@@ -13,6 +14,8 @@ const Index = () => {
         return <TestSection />;
       case "puzzles":
         return <PuzzleSection />;
+      case "guide":
+        return <MethodicalGuideSection />;
       default:
         return <HomeSection onNavigate={setActiveSection} />;
     }

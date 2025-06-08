@@ -11,6 +11,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
     { id: "home", label: "Главная", icon: "Home" },
     { id: "tests", label: "Тесты", icon: "Brain" },
     { id: "puzzles", label: "Задачи", icon: "Puzzle" },
+    { id: "guide", label: "Методичка", icon: "BookOpen" },
   ];
 
   return (
