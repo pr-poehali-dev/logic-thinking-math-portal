@@ -232,6 +232,13 @@ const MethodicalGuideSection = () => {
                         {section.title}
                       </h3>
                     </div>
+                    {section.subtitle && (
+                      <div className="pl-11 mb-3">
+                        <h4 className="text-lg font-semibold text-indigo-800">
+                          {section.subtitle}
+                        </h4>
+                      </div>
+                    )}
                     <div className="space-y-3 pl-11">
                       {section.content.map((item, itemIndex) => (
                         <p
