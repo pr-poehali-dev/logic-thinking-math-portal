@@ -93,7 +93,7 @@ const MethodicalGuideSection = () => {
 
   const tabs = [
     { id: "methodology", label: "Методология", icon: "BookOpen" },
-    { id: "lessons", label: "Курс", icon: "Calendar" },
+    { id: "lessons", label: "Планы уроков", icon: "Calendar" },
     { id: "resources", label: "Ресурсы", icon: "FolderOpen" },
   ];
 
