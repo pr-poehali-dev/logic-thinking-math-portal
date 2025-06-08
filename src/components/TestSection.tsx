@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
+import ClassAnalysis from "@/components/ClassAnalysis";
 
 const TestSection = () => {
   const [selectedTest, setSelectedTest] = useState<string | null>(null);
@@ -146,8 +147,8 @@ const TestSection = () => {
     }
   };
 
-  if (selectedTest) {
-    const questions = getQuestions(selectedTest);
+  const renderTest = () => {
+    const questions = getQuestions(selectedTest!);
     const question = questions[currentQuestion];
     const test = tests.find((t) => t.id === selectedTest)!;
 
@@ -234,75 +235,72 @@ const TestSection = () => {
         </Card>
       </div>
     );
-  }
+  };
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-3">
-        <h1 className="text-4xl font-bold text-gray-800">
-          Психологические тесты
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Выберите тест для оценки познавательных способностей учеников
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          🧠 Тесты на развитие логического мышления
+        </h2>
+        <p className="text-gray-600">
+          Выберите тест для проверки различных аспектов мышления
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {tests.map((test) => (
-          <Card
-            key={test.id}
-            className="hover:shadow-xl transition-all duration-300 border-2 hover:border-gray-300"
-          >
-            <CardHeader className="text-center pb-4">
-              <div
-                className={`w-16 h-16 bg-${test.color}-100 text-${test.color}-600 rounded-full flex items-center justify-center mx-auto mb-4`}
-              >
-                <Icon name={test.icon as any} size={32} />
-              </div>
-              <CardTitle className="text-xl font-bold">{test.title}</CardTitle>
-              <CardDescription className="text-gray-600 leading-relaxed">
-                {test.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex justify-between text-sm text-gray-500 bg-gray-50 p-3 rounded-lg">
-                <span className="flex items-center gap-1">
-                  <Icon name="FileText" size={16} />
-                  {test.questions} заданий
-                </span>
-                <span className="flex items-center gap-1">
-                  <Icon name="Clock" size={16} />
-                  {test.time}
-                </span>
-              </div>
-              <Button
-                onClick={() => startTest(test.id)}
-                className={`w-full bg-${test.color}-600 hover:bg-${test.color}-700 text-white py-3 text-lg font-semibold`}
-              >
-                Пройти тест
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <Tabs defaultValue="tests" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="tests" className="flex items-center gap-2">
+            <Icon name="Brain" size={18} />
+            Тесты для учеников
+          </TabsTrigger>
+          <TabsTrigger value="analysis" className="flex items-center gap-2">
+            <Icon name="BarChart3" size={18} />
+            Анализ результатов класса
+          </TabsTrigger>
+        </TabsList>
 
-      <div className="mt-8 text-center">
-        <Button
-          onClick={() => window.open("/metodiki", "_self")}
-          variant="outline"
-          className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 hover:from-purple-100 hover:to-blue-100"
-        >
-          <Icon name="BookOpen" size={18} className="mr-2" />
-          Больше методик оценки
-        </Button>
-      </div>
+        <TabsContent value="tests" className="space-y-6">
+          {!selectedTest ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {tests.map((test) => (
+                <Card
+                  key={test.id}
+                  className="cursor-pointer transition-all hover:shadow-lg hover:scale-105"
+                  onClick={() => setSelectedTest(test.id)}
+                >
+                  <CardHeader className="text-center">
+                    <div
+                      className={`mx-auto w-16 h-16 rounded-full bg-${test.color}-100 flex items-center justify-center mb-4`}
+                    >
+                      <Icon
+                        name={test.icon as any}
+                        size={32}
+                        className={`text-${test.color}-600`}
+                      />
+                    </div>
+                    <CardTitle className="text-xl">{test.title}</CardTitle>
+                    <CardDescription>{test.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center space-y-2">
+                    <div className="flex justify-between text-sm text-gray-600">
+                      <span>📝 {test.questions} вопросов</span>
+                      <span>⏱️ {test.time}</span>
+                    </div>
+                    <Button className="w-full mt-4">Начать тест</Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            renderTest()
+          )}
+        </TabsContent>
 
-      <div className="text-center text-gray-500 text-sm">
-        <p>
-          💡 Тесты разработаны для оценки различных аспектов познавательной
-          деятельности
-        </p>
-      </div>
+        <TabsContent value="analysis">
+          <ClassAnalysis />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
