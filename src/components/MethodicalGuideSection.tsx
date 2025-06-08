@@ -17,6 +17,72 @@ const MethodicalGuideSection = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
+  const renderContent = () => {
+    switch (activeTab) {
+      case "methodology":
+        return renderMethodologyContent();
+      case "examples":
+        return renderExamplesContent();
+      case "assessment":
+        return renderAssessmentContent();
+      default:
+        return renderMethodologyContent();
+    }
+  };
+
+  const renderMethodologyContent = () => (
+    <div className="space-y-8">
+      <div className="grid gap-6">
+        <Card
+          className="cursor-pointer hover:shadow-lg transition-shadow"
+          onClick={() => handleSectionClick("problem-situations")}
+        >
+          <CardHeader>
+            <CardTitle className="flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <Icon name="Target" className="text-purple-600" />
+                2.1. Использование проблемных ситуаций
+              </span>
+              <Icon
+                name={
+                  expandedSection === "problem-situations"
+                    ? "ChevronUp"
+                    : "ChevronDown"
+                }
+                size={20}
+              />
+            </CardTitle>
+            <CardDescription>
+              Эффективные способы развития логического мышления через проблемные
+              задачи
+            </CardDescription>
+          </CardHeader>
+          {expandedSection === "problem-situations" && (
+            <CardContent>{renderProblemSituationsContent()}</CardContent>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+
+  const renderExamplesContent = () => (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-center">Практические примеры</h2>
+      <p className="text-gray-600 text-center">
+        Готовые примеры задач и упражнений для развития логического мышления
+      </p>
+    </div>
+  );
+
+  const renderAssessmentContent = () => (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-center">Система оценивания</h2>
+      <p className="text-gray-600 text-center">
+        Критерии и методы оценки развития логического мышления учащихся
+      </p>
+    </div>
+  );
+
   const renderProblemSituationsContent = () => (
     <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
       {/* Заголовок */}
@@ -2023,16 +2089,45 @@ const MethodicalGuideSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Методическое пособие для учителей
+        <h1 className="text-4xl font-bold text-gray-800">
+          Методическое пособие
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Комплексное руководство по развитию логического мышления у учащихся 6
-          класса
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Полное руководство для учителей по развитию логического мышления у учащихся
         </p>
       </div>
+
+      <div className="flex justify-center space-x-4 mb-8">
+        <Button
+          variant={activeTab === "methodology" ? "default" : "outline"}
+          onClick={() => setActiveTab("methodology")}
+          className="flex items-center gap-2"
+        >
+          <Icon name="BookOpen" size={16} />
+          Методология
+        </Button>
+        <Button
+          variant={activeTab === "examples" ? "default" : "outline"}
+          onClick={() => setActiveTab("examples")}
+          className="flex items-center gap-2"
+        >
+          <Icon name="Lightbulb" size={16} />
+          Примеры
+        </Button>
+        <Button
+          variant={activeTab === "assessment" ? "default" : "outline"}
+          onClick={() => setActiveTab("assessment")}
+          className="flex items-center gap-2"
+        >
+          <Icon name="CheckCircle" size={16} />
+          Оценивание
+        </Button>
+      </div>
+
+      {renderContent()}
+    </div>
 
       <div className="flex justify-center space-x-4 border-b border-gray-200">
         {tabs.map((tab) => (
