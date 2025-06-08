@@ -1664,73 +1664,117 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
-                <div
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+                {/* Раздел 1.1 - Что такое логическое мышление */}
+                <Card
+                  key="logical-thinking"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-indigo-500"
                   onClick={() => handleSectionClick("logical-thinking")}
                 >
-                  <span className="text-indigo-600 font-medium">1.1.</span>
-                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
-                    Что такое логическое мышление?
-                  </span>
-                  <Icon
-                    name={
-                      expandedSection === "logical-thinking"
-                        ? "ChevronDown"
-                        : "ChevronRight"
-                    }
-                    className="text-indigo-400 ml-auto"
-                    size={16}
-                  />
-                </div>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-indigo-100 p-2 rounded-full">
+                        <Icon
+                          name="Brain"
+                          size={20}
+                          className="text-indigo-600"
+                        />
+                      </div>
+                      1.1. Что такое логическое мышление?
+                      <Icon
+                        name={
+                          expandedSection === "logical-thinking"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Основы логического мышления в психологии и педагогике
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
                 {expandedSection === "logical-thinking" && (
-                  <div className="ml-6 mt-4">
+                  <div className="mt-4 animate-fade-in">
                     {renderLogicalThinkingContent()}
                   </div>
                 )}
-                <div
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+
+                {/* Раздел 1.2 - Возрастные особенности */}
+                <Card
+                  key="age-characteristics"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-indigo-500"
                   onClick={() => handleSectionClick("age-characteristics")}
                 >
-                  <span className="text-indigo-600 font-medium">1.2.</span>
-                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
-                    Возрастные особенности развития логического мышления у
-                    шестиклассников
-                  </span>
-                  <Icon
-                    name={
-                      expandedSection === "age-characteristics"
-                        ? "ChevronDown"
-                        : "ChevronRight"
-                    }
-                    className="text-indigo-400 ml-auto"
-                    size={16}
-                  />
-                </div>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-indigo-100 p-2 rounded-full">
+                        <Icon
+                          name="Users"
+                          size={20}
+                          className="text-indigo-600"
+                        />
+                      </div>
+                      1.2. Возрастные особенности развития логического мышления
+                      у шестиклассников
+                      <Icon
+                        name={
+                          expandedSection === "age-characteristics"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Особенности мышления детей 11-12 лет и их влияние на
+                      обучение
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
                 {expandedSection === "age-characteristics" && (
-                  <div className="ml-6 mt-4">
+                  <div className="mt-4 animate-fade-in">
                     {renderAgeCharacteristicsContent()}
                   </div>
                 )}
-                <div
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+
+                {/* Раздел 1.3 - Методические принципы */}
+                <Card
+                  key="methodical-principles"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-indigo-500"
                   onClick={() => handleSectionClick("methodical-principles")}
                 >
-                  <span className="text-indigo-600 font-medium">1.3.</span>
-                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
-                    Методические принципы формирования логического мышления
-                  </span>
-                  <Icon
-                    name={
-                      expandedSection === "methodical-principles"
-                        ? "ChevronDown"
-                        : "ChevronRight"
-                    }
-                    className="text-indigo-400 ml-auto"
-                    size={16}
-                  />
-                </div>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-indigo-100 p-2 rounded-full">
+                        <Icon
+                          name="Target"
+                          size={20}
+                          className="text-indigo-600"
+                        />
+                      </div>
+                      1.3. Методические принципы формирования логического
+                      мышления
+                      <Icon
+                        name={
+                          expandedSection === "methodical-principles"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Основные принципы эффективного развития логического
+                      мышления
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
                 {expandedSection === "methodical-principles" && (
-                  <div className="ml-6 mt-4">
+                  <div className="mt-4 animate-fade-in">
                     {renderMethodicalPrinciplesContent()}
                   </div>
                 )}
@@ -1760,18 +1804,19 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
+                {/* Раздел 2.1 - Проблемные ситуации */}
                 <Card
                   key="problem-situations"
-                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-purple-500"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
                   onClick={() => handleSectionClick("problem-situations")}
                 >
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
-                      <div className="bg-purple-100 p-2 rounded-full">
+                      <div className="bg-emerald-100 p-2 rounded-full">
                         <Icon
                           name="Target"
                           size={20}
-                          className="text-purple-600"
+                          className="text-emerald-600"
                         />
                       </div>
                       2.1. Использование проблемных ситуаций
@@ -1796,42 +1841,41 @@ const MethodicalGuideSection = () => {
                     {renderProblemSituationsContent()}
                   </div>
                 )}
+
                 {/* Раздел 2.2 - Решение логических задач */}
-                <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-                  <button
-                    onClick={() => handleSectionClick("logical-tasks")}
-                    className="w-full flex items-center justify-between text-left hover:bg-gray-50 p-4 rounded-lg transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <Card
+                  key="logical-tasks"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
+                  onClick={() => handleSectionClick("logical-tasks")}
+                >
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-emerald-100 p-2 rounded-full">
                         <Icon
                           name="Puzzle"
                           size={20}
-                          className="text-green-600"
+                          className="text-emerald-600"
                         />
                       </div>
-                      <div>
-                        <h4 className="text-lg font-bold text-gray-800">
-                          2.2. Решение логических задач различных типов
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          Классификация, примеры и методы решения
-                        </p>
-                      </div>
-                    </div>
-                    <Icon
-                      name={
-                        expandedSection === "logical-tasks"
-                          ? "ChevronUp"
-                          : "ChevronDown"
-                      }
-                      size={20}
-                      className="text-gray-400"
-                    />
-                  </button>
-
-                  {expandedSection === "logical-tasks" && (
-                    <div className="mt-6 space-y-8 animate-fade-in">
+                      2.2. Решение логических задач различных типов
+                      <Icon
+                        name={
+                          expandedSection === "logical-tasks"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Классификация, примеры и методы решения логических задач
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+                {expandedSection === "logical-tasks" && (
+                  <div className="mt-4 animate-fade-in">
+                    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
                       {/* Классификация логических задач */}
                       <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-lg border-l-4 border-green-500">
                         <h5 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
@@ -2138,8 +2182,8 @@ const MethodicalGuideSection = () => {
                         </div>
                       </div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
