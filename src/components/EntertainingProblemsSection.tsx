@@ -399,19 +399,6 @@ const EntertainingProblemsSection = () => {
                   />
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Логика изучения подтемы
-                  }}
-                >
-                  Изучение темы
-                </Button>
-              </CardContent>
             </Card>
           ))}
         </div>
@@ -424,7 +411,7 @@ const EntertainingProblemsSection = () => {
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-gray-800">
-          Занимательные задачи
+          Занимательные задачи по темам
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           Выберите тему для изучения увлекательных логических задач с пошаговыми
@@ -451,29 +438,16 @@ const EntertainingProblemsSection = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  className="flex-1"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedTopic(topic.id);
-                  }}
-                >
-                  Виды задач
-                  <Icon name="List" size={16} className="ml-2" />
-                </Button>
-                <Button
-                  className={`flex-1 bg-${topic.color}-600 hover:bg-${topic.color}-700`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Логика изучения темы
-                  }}
-                >
-                  Изучение темы
-                  <Icon name="BookOpen" size={16} className="ml-2" />
-                </Button>
-              </div>
+              <Button
+                className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedTopic(topic.id);
+                }}
+              >
+                Изучить тему
+                <Icon name="ArrowRight" size={16} />
+              </Button>
             </CardContent>
           </Card>
         ))}
