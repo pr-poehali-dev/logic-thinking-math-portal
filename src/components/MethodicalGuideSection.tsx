@@ -1196,16 +1196,349 @@ const MethodicalGuideSection = () => {
                     size={16}
                   />
                 </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer">
-                  <span className="text-emerald-600 font-medium">2.2.</span>
-                  <span className="text-gray-800 hover:text-emerald-700 transition-colors">
-                    Решение логических задач различных типов
-                  </span>
-                  <Icon
-                    name="ChevronRight"
-                    className="text-emerald-400 ml-auto"
-                    size={16}
-                  />
+                {/* Раздел 2.2 - Решение логических задач */}
+                <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+                  <button
+                    onClick={() => handleSectionClick("logical-tasks")}
+                    className="w-full flex items-center justify-between text-left hover:bg-gray-50 p-4 rounded-lg transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <Icon
+                          name="Puzzle"
+                          size={20}
+                          className="text-green-600"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-800">
+                          2.2. Решение логических задач различных типов
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          Классификация, примеры и методы решения
+                        </p>
+                      </div>
+                    </div>
+                    <Icon
+                      name={
+                        expandedSection === "logical-tasks"
+                          ? "ChevronUp"
+                          : "ChevronDown"
+                      }
+                      size={20}
+                      className="text-gray-400"
+                    />
+                  </button>
+
+                  {expandedSection === "logical-tasks" && (
+                    <div className="mt-6 space-y-8 animate-fade-in">
+                      {/* Классификация логических задач */}
+                      <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h5 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                          📋 Классификация логических задач
+                        </h5>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Target"
+                                size={16}
+                                className="text-blue-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                1. Задачи на соответствие
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="ArrowRight"
+                                size={16}
+                                className="text-purple-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                2. Задачи на последовательность
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Calculator"
+                                size={16}
+                                className="text-orange-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                3. Математические головоломки
+                              </span>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Layers"
+                                size={16}
+                                className="text-red-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                4. Задачи на множества
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="GitBranch"
+                                size={16}
+                                className="text-indigo-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                5. Логические схемы
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Zap"
+                                size={16}
+                                className="text-yellow-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                6. Задачи на дедукцию
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Пример задачи на соответствие */}
+                      <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                        <h5 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                          🎯 Пример: Задача на соответствие
+                        </h5>
+                        <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                          <p className="text-gray-800 font-medium mb-3">
+                            <strong>Условие:</strong> Трое друзей — Петя, Вася и
+                            Коля — живут в разных городах: Москва,
+                            Санкт-Петербург и Киев. Определите, кто где живёт,
+                            если известно:
+                          </p>
+                          <ul className="space-y-2 text-gray-700 ml-4">
+                            <li>• Петя не живёт в Москве</li>
+                            <li>• Вася живёт в Москве</li>
+                            <li>
+                              • Коля не живёт в Москве и не в Санкт-Петербурге
+                            </li>
+                          </ul>
+                        </div>
+
+                        {/* Таблица решения */}
+                        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                          <h6 className="text-lg font-bold text-gray-800 p-4 bg-gray-50 border-b">
+                            📊 Таблица для решения:
+                          </h6>
+                          <div className="p-4">
+                            <img
+                              src="https://cdn.poehali.dev/files/b1cceb5b-89cd-492c-8608-919c92824bcd.png"
+                              alt="Таблица решения логической задачи"
+                              className="mx-auto max-w-full h-auto rounded-lg border"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Пошаговое решение */}
+                        <div className="mt-4 bg-white p-4 rounded-lg shadow-sm">
+                          <h6 className="text-lg font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <Icon name="List" size={20} />
+                            Пошаговое решение:
+                          </h6>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                              <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                1
+                              </div>
+                              <p className="text-gray-800">
+                                Вася живёт в Москве — ставим{" "}
+                                <strong className="text-green-600">+</strong> в
+                                соответствующую ячейку
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-3 p-3 bg-yellow-50 rounded-lg">
+                              <div className="w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                2
+                              </div>
+                              <p className="text-gray-800">
+                                Петя не живёт в Москве — ставим{" "}
+                                <strong className="text-red-600">-</strong> в
+                                ячейку "Петя-Москва"
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
+                              <div className="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                3
+                              </div>
+                              <p className="text-gray-800">
+                                Коля не живёт в Москве и СПб — ставим{" "}
+                                <strong className="text-red-600">-</strong> в
+                                соответствующие ячейки
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                              <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                4
+                              </div>
+                              <p className="text-gray-800">
+                                Логический вывод: Коля живёт в Киеве, Петя — в
+                                Санкт-Петербурге
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Методы решения */}
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                        <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                          ⚡ Основные методы решения
+                        </h5>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Icon
+                                  name="Table"
+                                  size={18}
+                                  className="text-blue-600"
+                                />
+                                <h6 className="font-bold text-gray-800">
+                                  Табличный метод
+                                </h6>
+                              </div>
+                              <p className="text-gray-600 text-sm">
+                                Составление таблиц соответствий для визуализации
+                                условий
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Icon
+                                  name="TreePine"
+                                  size={18}
+                                  className="text-green-600"
+                                />
+                                <h6 className="font-bold text-gray-800">
+                                  Метод дерева решений
+                                </h6>
+                              </div>
+                              <p className="text-gray-600 text-sm">
+                                Пошаговое построение логических цепочек
+                              </p>
+                            </div>
+                          </div>
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Icon
+                                  name="Minus"
+                                  size={18}
+                                  className="text-red-600"
+                                />
+                                <h6 className="font-bold text-gray-800">
+                                  Метод исключения
+                                </h6>
+                              </div>
+                              <p className="text-gray-600 text-sm">
+                                Последовательное исключение невозможных
+                                вариантов
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Icon
+                                  name="CheckCircle"
+                                  size={18}
+                                  className="text-purple-600"
+                                />
+                                <h6 className="font-bold text-gray-800">
+                                  Метод допущений
+                                </h6>
+                              </div>
+                              <p className="text-gray-600 text-sm">
+                                Проверка гипотез методом от противного
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Практические советы */}
+                      <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                        <h5 className="text-xl font-bold text-orange-800 mb-4 flex items-center gap-2">
+                          💡 Практические советы
+                        </h5>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="Eye"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Внимательно читайте условие несколько раз
+                              </span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="PenTool"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Выделяйте ключевые слова и условия
+                              </span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="Grid"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Составляйте схемы и таблицы
+                              </span>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="ArrowRight"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Действуйте пошагово, не спешите
+                              </span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="RotateCcw"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Проверяйте полученные результаты
+                              </span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                name="BookOpen"
+                                size={16}
+                                className="text-orange-600 mt-1"
+                              />
+                              <span className="text-gray-700">
+                                Практикуйтесь на разных типах задач
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
