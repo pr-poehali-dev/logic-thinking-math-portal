@@ -10,7 +10,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
   const navItems = [
     { id: "home", label: "Главная", icon: "Home" },
     { id: "tests", label: "Тесты", icon: "Brain" },
-    { id: "puzzles", label: "Задачи", icon: "Puzzle" },
+    { id: "puzzles", label: "Головоломки", icon: "Puzzle" },
     { id: "entertaining", label: "Занимательные", icon: "Sparkles" },
     { id: "guide", label: "Методичка", icon: "BookOpen" },
   ];
