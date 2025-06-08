@@ -11,6 +11,315 @@ import { useState } from "react";
 
 const MethodicalGuideSection = () => {
   const [activeTab, setActiveTab] = useState("methodology");
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  const handleSectionClick = (sectionId: string) => {
+    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
+
+  const renderLogicalThinkingContent = () => (
+    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+      {/* Заголовок */}
+      <div className="text-center space-y-4 border-b pb-6">
+        <h3 className="text-3xl font-bold text-indigo-800 flex items-center justify-center gap-3">
+          🧠 Что такое логическое мышление?
+        </h3>
+        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <strong className="text-indigo-700">Логическое мышление</strong> — это
+          фундамент рационального познания мира, основа принятия взвешенных
+          решений и эффективного решения проблем. Это не просто заучивание
+          правил, а умение думать последовательно, обоснованно и критически.
+        </p>
+      </div>
+
+      {/* Определения */}
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-lg border-l-4 border-purple-500">
+          <h4 className="text-xl font-bold text-purple-800 mb-3 flex items-center gap-2">
+            🔬 В психологии
+          </h4>
+          <p className="text-gray-700 leading-relaxed">
+            Это сложный мыслительный процесс, при котором человек активно
+            использует логические понятия и конструкции для обработки
+            информации. Ему свойственны{" "}
+            <strong className="text-purple-700">
+              доказательность и рассудительность
+            </strong>
+            , то есть каждый шаг мыслительного процесса опирается на
+            обоснованные аргументы.
+          </p>
+          <div className="mt-4 p-4 bg-white rounded-lg border border-purple-200">
+            <p className="text-sm text-purple-800 font-medium">
+              💡 Представьте детектива, расследующего преступление:
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Он собирает улики, анализирует показания свидетелей и, используя
+              логику, выстраивает цепочку событий для верного заключения.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border-l-4 border-green-500">
+          <h4 className="text-xl font-bold text-green-800 mb-3 flex items-center gap-2">
+            📚 В педагогике
+          </h4>
+          <p className="text-gray-700 leading-relaxed">
+            Это целенаправленный мыслительный процесс, который с помощью
+            логических операций позволяет установить причинно-следственные связи
+            между явлениями, раскрыть объективные закономерности мира и понять
+            их сущность.
+          </p>
+          <div className="mt-4 p-4 bg-white rounded-lg border border-green-200">
+            <p className="text-sm text-green-800 font-medium">
+              🎯 Задача педагога:
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Научить ученика самостоятельно добывать знания, анализировать
+              информацию и делать обоснованные выводы.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Примеры */}
+      <div className="space-y-6">
+        <h4 className="text-2xl font-bold text-gray-800 text-center">
+          📋 Практические примеры
+        </h4>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+            <h5 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
+              📱 Покупка телефона
+            </h5>
+            <p className="text-gray-700 mb-3">
+              Человек с развитым логическим мышлением не поддается эмоциям или
+              рекламе, а анализирует:
+            </p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600">✓</span>
+                <span>Нужен ли действительно новый телефон?</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600">✓</span>
+                <span>Какие функции необходимы?</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600">✓</span>
+                <span>Какие модели соответствуют требованиям и бюджету?</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600">✓</span>
+                <span>Читает отзывы и сравнивает характеристики</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+            <h5 className="font-bold text-orange-800 mb-3 flex items-center gap-2">
+              🧮 Урок математики
+            </h5>
+            <p className="text-gray-700 mb-3">
+              Учитель объясняет не просто алгоритм решения уравнений, а логику:
+            </p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="text-orange-600">→</span>
+                <span>Почему переносим слагаемые в другую часть?</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-600">→</span>
+                <span>Почему меняется знак?</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-600">→</span>
+                <span>
+                  Почему выполняем одинаковые действия с обеими частями?
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Компоненты логического мышления */}
+      <div className="space-y-6">
+        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+          🔧 Основные компоненты логического мышления
+        </h4>
+
+        <div className="grid gap-4">
+          {[
+            {
+              title: "Анализ",
+              icon: "🔍",
+              color: "red",
+              description:
+                "Разделение сложной информации на более простые, понятные и управляемые составные части для более глубокого понимания.",
+              example:
+                "При решении сложной математической задачи ученик анализирует условия, выделяет известные данные и то, что нужно найти. Он может разбить задачу на несколько подзадач.",
+            },
+            {
+              title: "Синтез",
+              icon: "🔗",
+              color: "blue",
+              description:
+                "Объединение отдельных элементов (фактов, идей, понятий) в единое целостное представление.",
+              example:
+                "После изучения различных видов геометрических фигур ученик понимает, что все они являются частными случаями более общего понятия — многоугольник.",
+            },
+            {
+              title: "Сравнение",
+              icon: "⚖️",
+              color: "green",
+              description:
+                "Оценка сходств и различий между объектами, явлениями, идеями или концепциями.",
+              example:
+                "Сравнивая дроби 1/2 и 1/3, ученик определяет, какая из них больше, анализируя их числители и знаменатели.",
+            },
+            {
+              title: "Обобщение",
+              icon: "📊",
+              color: "purple",
+              description:
+                "Формирование общих выводов и закономерностей на основе конкретных примеров и частных случаев.",
+              example:
+                "Решив несколько задач на нахождение площади прямоугольника, ученик формулирует правило: 'Площадь = длина × ширина'.",
+            },
+            {
+              title: "Классификация",
+              icon: "📂",
+              color: "yellow",
+              description:
+                "Группировка объектов или явлений по определенным признакам или критериям.",
+              example:
+                "Классификация треугольников по углам (остроугольный, прямоугольный, тупоугольный) или по сторонам (равносторонний, равнобедренный, разносторонний).",
+            },
+            {
+              title: "Абстрагирование",
+              icon: "💭",
+              color: "indigo",
+              description:
+                "Выделение существенных признаков объекта, игнорируя несущественные детали.",
+              example:
+                "При изучении понятия 'процент' ученик понимает, что процент — это просто доля от целого, независимо от конкретных товаров или услуг.",
+            },
+            {
+              title: "Причинно-следственные связи",
+              icon: "🔄",
+              color: "pink",
+              description:
+                "Определение взаимосвязей между событиями, явлениями и действиями.",
+              example:
+                "Ученик понимает, что если увеличить скорость автомобиля, то время, затраченное на преодоление определенного расстояния, сократится.",
+            },
+          ].map((component, index) => (
+            <div
+              key={index}
+              className={`bg-${component.color}-50 border-l-4 border-${component.color}-500 p-6 rounded-r-lg`}
+            >
+              <h5
+                className={`text-xl font-bold text-${component.color}-800 mb-3 flex items-center gap-3`}
+              >
+                <span className="text-2xl">{component.icon}</span>
+                {component.title}
+              </h5>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                {component.description}
+              </p>
+              <div
+                className={`bg-white p-4 rounded-lg border border-${component.color}-200`}
+              >
+                <p
+                  className={`text-sm font-medium text-${component.color}-800 mb-2`}
+                >
+                  💡 Пример:
+                </p>
+                <p className="text-sm text-gray-600">{component.example}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Значение для обучения */}
+      <div className="bg-gradient-to-r from-emerald-50 to-green-50 p-8 rounded-lg border border-emerald-200">
+        <h4 className="text-2xl font-bold text-emerald-800 mb-6 text-center flex items-center justify-center gap-3">
+          🎓 Значение для успешного обучения
+        </h4>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="text-center space-y-3">
+            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto">
+              <span className="text-2xl text-white">📐</span>
+            </div>
+            <h5 className="font-bold text-emerald-800">Понимание формул</h5>
+            <p className="text-sm text-gray-600">
+              Не просто заучивание, а понимание логики вывода и применения в
+              различных ситуациях
+            </p>
+          </div>
+          <div className="text-center space-y-3">
+            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto">
+              <span className="text-2xl text-white">🧩</span>
+            </div>
+            <h5 className="font-bold text-emerald-800">Решение задач</h5>
+            <p className="text-sm text-gray-600">
+              Анализ сложных условий, выделение ключевых данных и синтез для
+              правильного решения
+            </p>
+          </div>
+          <div className="text-center space-y-3">
+            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto">
+              <span className="text-2xl text-white">🤔</span>
+            </div>
+            <h5 className="font-bold text-emerald-800">Критическое мышление</h5>
+            <p className="text-sm text-gray-600">
+              Оценка достоверности информации, выявление ошибок и формирование
+              обоснованных выводов
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Роль в повседневной жизни */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
+        <h4 className="text-2xl font-bold text-blue-800 mb-6 text-center flex items-center justify-center gap-3">
+          🌟 Роль в повседневной жизни
+        </h4>
+        <p className="text-center text-gray-700 mb-6 text-lg">
+          Логическое мышление — важнейший инструмент для успешной адаптации в
+          современном мире
+        </p>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white p-6 rounded-lg border border-blue-200 text-center">
+            <div className="text-4xl mb-4">🎯</div>
+            <h5 className="font-bold text-blue-800 mb-3">Принятие решений</h5>
+            <p className="text-sm text-gray-600">
+              Анализ вариантов, оценка последствий, выбор оптимального решения —
+              от покупок до планирования бюджета
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-lg border border-blue-200 text-center">
+            <div className="text-4xl mb-4">🔧</div>
+            <h5 className="font-bold text-blue-800 mb-3">Решение проблем</h5>
+            <p className="text-sm text-gray-600">
+              Выявление причин проблемы, анализ возможных решений, оценка
+              эффективности
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-lg border border-blue-200 text-center">
+            <div className="text-4xl mb-4">🛡️</div>
+            <h5 className="font-bold text-blue-800 mb-3">Оценка информации</h5>
+            <p className="text-sm text-gray-600">
+              Отличение фактов от фейков, анализ аргументов, выявление
+              манипуляций в эпоху информационного перенасыщения
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   const methodologyContent = [
     {
@@ -224,17 +533,29 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
-                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
+                <div
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+                  onClick={() => handleSectionClick("logical-thinking")}
+                >
                   <span className="text-indigo-600 font-medium">1.1.</span>
                   <span className="text-gray-800 hover:text-indigo-700 transition-colors">
                     Что такое логическое мышление?
                   </span>
                   <Icon
-                    name="ChevronRight"
+                    name={
+                      expandedSection === "logical-thinking"
+                        ? "ChevronDown"
+                        : "ChevronRight"
+                    }
                     className="text-indigo-400 ml-auto"
                     size={16}
                   />
                 </div>
+                {expandedSection === "logical-thinking" && (
+                  <div className="ml-6 mt-4">
+                    {renderLogicalThinkingContent()}
+                  </div>
+                )}
                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
                   <span className="text-indigo-600 font-medium">1.2.</span>
                   <span className="text-gray-800 hover:text-indigo-700 transition-colors">
