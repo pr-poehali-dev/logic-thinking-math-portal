@@ -286,6 +286,17 @@ const TestSection = () => {
         ))}
       </div>
 
+      <div className="mt-8 text-center">
+        <Button
+          onClick={() => window.open("/metodiki", "_self")}
+          variant="outline"
+          className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 hover:from-purple-100 hover:to-blue-100"
+        >
+          <Icon name="BookOpen" size={18} className="mr-2" />
+          Больше методик оценки
+        </Button>
+      </div>
+
       <div className="text-center text-gray-500 text-sm">
         <p>
           💡 Тесты разработаны для оценки различных аспектов познавательной
