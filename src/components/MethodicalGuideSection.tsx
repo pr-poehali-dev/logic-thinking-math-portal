@@ -1554,6 +1554,23 @@ const MethodicalGuideSection = () => {
     },
   ];
 
+  const handleLessonDownload = (lessonIndex: number, lessonTitle: string) => {
+    // URL документа для первого урока
+    const documentUrl =
+      "https://cdn.poehali.dev/files/1735221632833-plan-konspekt-uroka.docx";
+
+    // Создаем временную ссылку для скачивания
+    const link = document.createElement("a");
+    link.href = documentUrl;
+    link.download = `План-конспект_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.docx`;
+    link.target = "_blank";
+
+    // Добавляем ссылку в DOM, кликаем и удаляем
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const lessonPlans = [
     {
       title: "Занятие 1: Введение в логическое мышление",
@@ -2538,14 +2555,38 @@ const MethodicalGuideSection = () => {
       {activeTab === "lessons" && (
         <div className="space-y-6">
           {lessonPlans.map((lesson, index) => (
-            <Card key={index}>
+            <Card
+              key={index}
+              className={
+                index === 0
+                  ? "cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
+                  : ""
+              }
+              onClick={
+                index === 0
+                  ? () => handleLessonDownload(index, lesson.title)
+                  : undefined
+              }
+            >
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="Clock" className="text-blue-600" size={20} />
                   {lesson.title}
+                  {index === 0 && (
+                    <Icon
+                      name="Download"
+                      className="text-green-600 ml-auto"
+                      size={18}
+                    />
+                  )}
                 </CardTitle>
                 <CardDescription>
                   Продолжительность: {lesson.duration}
+                  {index === 0 && (
+                    <span className="block text-green-600 font-medium mt-1">
+                      📄 Нажмите для скачивания плана-конспекта
+                    </span>
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
