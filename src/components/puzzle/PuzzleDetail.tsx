@@ -46,7 +46,7 @@ const PuzzleDetail = ({
               className="mb-4"
             >
               <Icon name={showSolution ? "EyeOff" : "Eye"} size={16} />
-              {showSolution ? "Скрыть решение" : "Показать решение"}
+              {showSolution ? "Скрыть решение" : "Решение"}
             </Button>
 
             {showSolution && (

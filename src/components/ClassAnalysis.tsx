@@ -19,7 +19,6 @@ const ClassAnalysis = () => {
     method1: { low: 0, medium: 0, high: 0 },
     method2: { low: 0, medium: 0, high: 0 },
     method3: { low: 0, medium: 0, high: 0 },
-    method4: { low: 0, medium: 0, high: 0 },
   });
   const [results, setResults] = useState<any>(null);
 
@@ -31,11 +30,6 @@ const ClassAnalysis = () => {
     },
     { id: "method2", name: "Методика 2", description: "Аналогии и сравнения" },
     { id: "method3", name: "Методика 3", description: "Классификация понятий" },
-    {
-      id: "method4",
-      name: "Методика 4",
-      description: "Причинно-следственные связи",
-    },
   ];
 
   const levels = [
