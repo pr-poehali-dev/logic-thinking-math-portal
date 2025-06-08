@@ -84,7 +84,7 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
       <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-8 shadow-sm border border-purple-200 max-w-6xl mx-auto">
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-bold text-purple-800 flex items-center justify-center gap-3">
-            🎓 Курс "Логика в математике"
+            🎓 Курс "Основы логического мышления"
           </h2>
           <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
             Курс предназначен для учителей математики, которые хотят эффективно
