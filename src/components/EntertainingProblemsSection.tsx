@@ -448,6 +448,23 @@ const EntertainingProblemsSection = () => {
                 Изучить тему
                 <Icon name="ArrowRight" size={16} />
               </Button>
+              <div className="mt-3 space-y-1">
+                {topic.subtopics.map((subtopic) => (
+                  <Button
+                    key={subtopic.id}
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-left justify-start text-xs"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedTopic(topic.id);
+                      setSelectedSubtopic(subtopic.id);
+                    }}
+                  >
+                    {subtopic.title}
+                  </Button>
+                ))}
+              </div>
             </CardContent>
           </Card>
         ))}
