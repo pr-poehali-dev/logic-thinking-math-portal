@@ -2089,45 +2089,47 @@ const MethodicalGuideSection = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-gray-800">
-          Методическое пособие
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Полное руководство для учителей по развитию логического мышления у учащихся
-        </p>
-      </div>
+    <>
+      <div className="space-y-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-bold text-gray-800">
+            Методическое пособие
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Полное руководство для учителей по развитию логического мышления у
+            учащихся
+          </p>
+        </div>
 
-      <div className="flex justify-center space-x-4 mb-8">
-        <Button
-          variant={activeTab === "methodology" ? "default" : "outline"}
-          onClick={() => setActiveTab("methodology")}
-          className="flex items-center gap-2"
-        >
-          <Icon name="BookOpen" size={16} />
-          Методология
-        </Button>
-        <Button
-          variant={activeTab === "examples" ? "default" : "outline"}
-          onClick={() => setActiveTab("examples")}
-          className="flex items-center gap-2"
-        >
-          <Icon name="Lightbulb" size={16} />
-          Примеры
-        </Button>
-        <Button
-          variant={activeTab === "assessment" ? "default" : "outline"}
-          onClick={() => setActiveTab("assessment")}
-          className="flex items-center gap-2"
-        >
-          <Icon name="CheckCircle" size={16} />
-          Оценивание
-        </Button>
-      </div>
+        <div className="flex justify-center space-x-4 mb-8">
+          <Button
+            variant={activeTab === "methodology" ? "default" : "outline"}
+            onClick={() => setActiveTab("methodology")}
+            className="flex items-center gap-2"
+          >
+            <Icon name="BookOpen" size={16} />
+            Методология
+          </Button>
+          <Button
+            variant={activeTab === "examples" ? "default" : "outline"}
+            onClick={() => setActiveTab("examples")}
+            className="flex items-center gap-2"
+          >
+            <Icon name="Lightbulb" size={16} />
+            Примеры
+          </Button>
+          <Button
+            variant={activeTab === "assessment" ? "default" : "outline"}
+            onClick={() => setActiveTab("assessment")}
+            className="flex items-center gap-2"
+          >
+            <Icon name="CheckCircle" size={16} />
+            Оценивание
+          </Button>
+        </div>
 
-      {renderContent()}
-    </div>
+        {renderContent()}
+      </div>
 
       <div className="flex justify-center space-x-4 border-b border-gray-200">
         {tabs.map((tab) => (
@@ -3046,7 +3048,7 @@ const MethodicalGuideSection = () => {
           </CardContent>
         </Card>
       )}
-    </div>
+    </>
   );
 };
 
