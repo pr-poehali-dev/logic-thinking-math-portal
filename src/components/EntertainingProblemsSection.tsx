@@ -399,6 +399,19 @@ const EntertainingProblemsSection = () => {
                   />
                 </CardTitle>
               </CardHeader>
+              <CardContent className="pt-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Логика изучения подтемы
+                  }}
+                >
+                  Изучение темы
+                </Button>
+              </CardContent>
             </Card>
           ))}
         </div>
