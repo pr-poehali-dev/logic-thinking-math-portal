@@ -1,12 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navigation from "@/components/Navigation";
+import HomeSection from "@/components/HomeSection";
+import TestSection from "@/components/TestSection";
+import PuzzleSection from "@/components/PuzzleSection";
+import { useState } from "react";
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState("home");
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case "tests":
+        return <TestSection />;
+      case "puzzles":
+        return <PuzzleSection />;
+      default:
+        return <HomeSection onNavigate={setActiveSection} />;
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+      <Navigation activeSection={activeSection} onNavigate={setActiveSection} />
+      <main className="container mx-auto px-4 py-8">{renderSection()}</main>
     </div>
   );
 };
