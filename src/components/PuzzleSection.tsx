@@ -1,469 +1,18 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import PuzzleGrid from "./puzzle/PuzzleGrid";
+import PuzzleDetail from "./puzzle/PuzzleDetail";
+import { usePuzzleState } from "@/hooks/usePuzzleState";
+import { puzzleCategories } from "@/data/puzzleData";
 
 const PuzzleSection = () => {
-  const [selectedPuzzle, setSelectedPuzzle] = useState<string | null>(null);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [showSolutions, setShowSolutions] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const puzzleCategories = [
-    {
-      id: "numbers",
-      title: "Числовые головоломки",
-      icon: "Hash",
-      puzzles: [
-        {
-          id: "magic-square-3x3",
-          title: "Магический квадрат 3×3",
-          description:
-            "Заполните квадрат числами 1-9 так, чтобы суммы в строках, столбцах и диагоналях были равны 15",
-          difficulty: "Средняя",
-          hint: "Начните с центра - поставьте 5",
-          solution: "Центр: 5. Затем: 2-7-6 / 9-5-1 / 4-3-8",
-        },
-        {
-          id: "number-pattern-fibonacci",
-          title: "Числовая закономерность Фибоначчи",
-          description: "Найдите следующие два числа: 1, 1, 2, 3, 5, 8, ?, ?",
-          difficulty: "Легкая",
-          hint: "Каждое число равно сумме двух предыдущих",
-          solution: "13, 21 (каждое число - сумма двух предыдущих)",
-        },
-        {
-          id: "digital-root",
-          title: "Цифровой корень",
-          description:
-            "Найдите число от 1 до 9, которое получится, если складывать цифры числа 9876543210 до тех пор, пока не останется одна цифра",
-          difficulty: "Средняя",
-          hint: "Складывайте цифры: 9+8+7+6+5+4+3+2+1+0 = 45, затем 4+5 = 9",
-          solution: "9",
-        },
-        {
-          id: "clock-arithmetic",
-          title: "Часовая арифметика",
-          description:
-            "На часах 3:00. Через сколько часов стрелки снова совпадут?",
-          difficulty: "Сложная",
-          hint: "Стрелки двигаются с разной скоростью",
-          solution: "Через 12/11 часа (примерно 1 час 5 минут)",
-        },
-        {
-          id: "divisibility-puzzle",
-          title: "Головоломка с делимостью",
-          description:
-            "Найдите наименьшее число, которое при делении на 2, 3, 4, 5, 6 дает остаток 1",
-          difficulty: "Средняя",
-          hint: "НОК(2,3,4,5,6) + 1",
-          solution: "61 (НОК = 60, плюс 1)",
-        },
-        {
-          id: "perfect-square",
-          title: "Полный квадрат",
-          description:
-            "Какое наименьшее число нужно прибавить к 2023, чтобы получить полный квадрат?",
-          difficulty: "Средняя",
-          hint: "Найдите ближайший квадрат больше 2023",
-          solution: "2 (2023 + 2 = 2025 = 45²)",
-        },
-        {
-          id: "sum-consecutive",
-          title: "Сумма последовательных чисел",
-          description:
-            "Представьте число 100 как сумму последовательных натуральных чисел максимально длинной последовательностью",
-          difficulty: "Сложная",
-          hint: "Попробуйте разные длины последовательностей",
-          solution: "9+10+11+12+13+14+15+16 = 100 (8 чисел)",
-        },
-        {
-          id: "base-conversion",
-          title: "Перевод между системами",
-          description: "В какой системе счисления 12 + 12 = 30?",
-          difficulty: "Сложная",
-          hint: "Попробуйте разные основания",
-          solution: "В 8-ричной системе: 12₈ + 12₈ = 30₈",
-        },
-        {
-          id: "arithmetic-progression",
-          title: "Арифметическая прогрессия",
-          description:
-            "Найдите сумму всех двузначных чисел, которые при делении на 7 дают остаток 3",
-          difficulty: "Сложная",
-          hint: "Найдите первый и последний элементы прогрессии",
-          solution: "10, 17, 24, ..., 94. Сумма = 689",
-        },
-        {
-          id: "palindrome-numbers",
-          title: "Числа-палиндромы",
-          description:
-            "Сколько четырехзначных чисел-палиндромов можно составить из цифр 1, 2, 3, 4?",
-          difficulty: "Средняя",
-          hint: "Палиндром ABBA - нужно выбрать только A и B",
-          solution: "16 (4 варианта для первой цифры × 4 для второй)",
-        },
-        {
-          id: "factorial-puzzle",
-          title: "Факториальная головоломка",
-          description: "Сколько нулей в конце числа 25!?",
-          difficulty: "Сложная",
-          hint: "Нули образуются из пар 2×5, а пятерок меньше",
-          solution: "6 нулей (6 пятерок в разложении 25!)",
-        },
-        {
-          id: "geometric-progression",
-          title: "Геометрическая прогрессия",
-          description:
-            "Найдите седьмой член геометрической прогрессии: 2, 6, 18, ...",
-          difficulty: "Легкая",
-          hint: "Знаменатель q = 3",
-          solution: "1458 (2 × 3⁶)",
-        },
-        {
-          id: "modular-arithmetic",
-          title: "Модульная арифметика",
-          description: "Найдите остаток от деления 2²⁰²³ на 7",
-          difficulty: "Сложная",
-          hint: "Найдите период степеней 2 по модулю 7",
-          solution: "2 (период равен 3, 2023 ≡ 1 (mod 3))",
-        },
-        {
-          id: "prime-puzzle",
-          title: "Простые числа",
-          description:
-            "Найдите наибольшее простое число меньше 100, которое остается простым при перестановке цифр",
-          difficulty: "Сложная",
-          hint: "Проверьте числа с одинаковыми цифрами",
-          solution: "97 (79 тоже простое)",
-        },
-        {
-          id: "diophantine",
-          title: "Диофантово уравнение",
-          description: "Найдите натуральные решения уравнения 3x + 5y = 100",
-          difficulty: "Сложная",
-          hint: "Начните с наибольших значений y",
-          solution: "15 решений: (30,2), (25,5), (20,8), ..., (0,20)",
-        },
-      ],
-    },
-    {
-      id: "logic",
-      title: "Логические задачи",
-      icon: "Brain",
-      puzzles: [
-        {
-          id: "river-crossing-classic",
-          title: "Переправа через реку",
-          description:
-            "Человек, волк, коза и капуста должны переправиться через реку. Лодка вмещает только человека и еще одного 'пассажира'",
-          difficulty: "Средняя",
-          hint: "Человек должен сначала перевезти козу",
-          solution:
-            "1) Человек и коза → 2) Человек ← 3) Человек и волк → 4) Человек и коза ← 5) Человек и капуста → 6) Человек ← 7) Человек и коза →",
-        },
-        {
-          id: "truth-lies-village",
-          title: "Деревня правдолюбцев и лжецов",
-          description:
-            "В деревне живут только правдолюбцы (всегда говорят правду) и лжецы (всегда лгут). Встретив жителя, вы спросили: 'Ты лжец?' Что он ответит?",
-          difficulty: "Легкая",
-          hint: "Подумайте, что ответит каждый тип жителя",
-          solution:
-            "Никто не ответит 'Да'. Правдолюбец скажет правду ('Нет'), лжец солжет ('Нет')",
-        },
-        {
-          id: "prisoners-hats",
-          title: "Заключенные и шляпы",
-          description:
-            "3 заключенных стоят в ряд. У каждого черная или белая шляпа. Каждый видит шляпы впереди стоящих. Как первый может определить цвет своей шляпы?",
-          difficulty: "Сложная",
-          hint: "Используйте молчание других как информацию",
-          solution:
-            "Если второй молчит, значит он видит одинаковые шляпы. Тогда у первого противоположный цвет",
-        },
-        {
-          id: "light-switches",
-          title: "Выключатели и лампочки",
-          description:
-            "3 выключателя на первом этаже управляют 3 лампочками на втором. Как за одно посещение второго этажа определить, какой выключатель какой лампочкой управляет?",
-          difficulty: "Средняя",
-          hint: "Используйте тепло лампочек",
-          solution:
-            "Включите первый на долго, второй на чуть-чуть и выключите, третий оставьте выключенным. Горящая - первый, теплая - второй, холодная - третий",
-        },
-        {
-          id: "weighing-balls",
-          title: "Взвешивание шаров",
-          description:
-            "Среди 12 одинаковых шаров один имеет другой вес. За 3 взвешивания на чашечных весах определите этот шар",
-          difficulty: "Сложная",
-          hint: "Разделите шары на 3 группы по 4",
-          solution:
-            "Сложная стратегия с деревом решений в зависимости от результатов взвешиваний",
-        },
-        {
-          id: "monty-hall",
-          title: "Парадокс Монти Холла",
-          description:
-            "3 двери: за одной приз, за двумя пусто. Вы выбрали дверь. Ведущий открыл одну из невыбранных пустых дверей. Стоит ли менять выбор?",
-          difficulty: "Средняя",
-          hint: "Подумайте о вероятностях",
-          solution: "Да, стоит. Вероятность выигрыша увеличится с 1/3 до 2/3",
-        },
-        {
-          id: "birthday-paradox",
-          title: "Парадокс дней рождения",
-          description:
-            "Сколько человек нужно собрать, чтобы вероятность совпадения дней рождения у двоих была больше 50%?",
-          difficulty: "Сложная",
-          hint: "Считайте вероятность того, что дни рождения НЕ совпадают",
-          solution: "23 человека (вероятность совпадения ≈ 50.7%)",
-        },
-        {
-          id: "pirates-gold",
-          title: "Пираты и золото",
-          description:
-            "5 пиратов делят 100 монет. Предложение принимается, если за него голосует больше половины. Как должен поделить старший пират?",
-          difficulty: "Сложная",
-          hint: "Думайте от конца: что если останется 2 пирата?",
-          solution: "98 себе, 0-1-0-1 остальным (анализ с конца)",
-        },
-        {
-          id: "blue-eyes-island",
-          title: "Остров голубоглазых",
-          description:
-            "На острове 100 людей: некоторые с голубыми, некоторые с карими глазами. Все знают, что голубоглазые должны покинуть остров, но никто не знает цвет своих глаз",
-          difficulty: "Сложная",
-          hint: "Что произойдет, если приедет логик и скажет: 'Я вижу голубые глаза'?",
-          solution:
-            "Если N голубоглазых, они уйдут на N-й день после объявления",
-        },
-        {
-          id: "horses-race",
-          title: "Гонки лошадей",
-          description:
-            "25 лошадей, 5 дорожек. Нужно найти 3 самых быстрых. Сколько минимум гонок потребуется?",
-          difficulty: "Сложная",
-          hint: "Сначала найдите быстрейшую в каждой группе",
-          solution: "7 гонок: 5 предварительных + 1 финал групп + 1 финальная",
-        },
-        {
-          id: "einstein-riddle",
-          title: "Загадка Эйнштейна (упрощенная)",
-          description:
-            "5 домов разного цвета. В каждом живет человек разной национальности, пьющий разные напитки. Немец пьет кофе. Кто пьет воду?",
-          difficulty: "Сложная",
-          hint: "Составьте таблицу и исключайте варианты",
-          solution: "Требует пошагового анализа всех условий",
-        },
-        {
-          id: "handshakes",
-          title: "Рукопожатия на вечеринке",
-          description:
-            "На вечеринке каждый пожал руку некоторым гостям. Докажите, что количество людей, пожавших нечетное число рук, четно",
-          difficulty: "Сложная",
-          hint: "Подумайте о сумме всех рукопожатий",
-          solution: "Сумма степеней вершин графа всегда четна",
-        },
-        {
-          id: "guards-doors",
-          title: "Стражи у дверей",
-          description:
-            "Два стража: один всегда лжет, другой всегда говорит правду. Две двери: одна ведет к сокровищу. Какой вопрос задать?",
-          difficulty: "Средняя",
-          hint: "Спросите одного про ответ другого",
-          solution:
-            "'Скажет ли другой страж, что левая дверь ведет к сокровищу?' Идите к двери, противоположной ответу",
-        },
-        {
-          id: "muddy-children",
-          title: "Грязные дети",
-          description:
-            "3 ребенка играли в грязи. У каждого может быть грязное лицо. Каждый видит других, но не себя. Как они узнают, грязные ли они?",
-          difficulty: "Сложная",
-          hint: "Если бы у меня было чистое лицо, что бы подумали другие?",
-          solution:
-            "Анализ по индукции: если все грязные, поймут это на 3-й итерации",
-        },
-        {
-          id: "three-gods",
-          title: "Три бога",
-          description:
-            "Три бога: Правды, Лжи и Случайности. Нужно определить, кто есть кто, задав 3 вопроса с ответами 'да'/'нет'",
-          difficulty: "Сложная",
-          hint: "Сначала найдите бога, который не Случайность",
-          solution: "Сложная стратегия с условными вопросами",
-        },
-      ],
-    },
-    {
-      id: "geometry",
-      title: "Геометрические задачи",
-      icon: "Shapes",
-      puzzles: [
-        {
-          id: "tangram-square",
-          title: "Танграм: квадрат",
-          description: "Составьте квадрат из 7 частей танграма",
-          difficulty: "Средняя",
-          hint: "Большие треугольники по углам",
-          solution: "Схема расположения 7 частей танграма",
-        },
-        {
-          id: "triangle-area",
-          title: "Площадь треугольника",
-          description: "Найдите площадь треугольника со сторонами 13, 14, 15",
-          difficulty: "Средняя",
-          hint: "Используйте формулу Герона",
-          solution: "84 (по формуле Герона: √(21×8×7×6) = 84)",
-        },
-        {
-          id: "paper-folding",
-          title: "Складывание бумаги",
-          description: "Сколько раз можно сложить лист бумаги пополам?",
-          difficulty: "Легкая",
-          hint: "Подумайте о толщине после каждого складывания",
-          solution:
-            "Практически не более 7-8 раз из-за экспоненциального роста толщины",
-        },
-        {
-          id: "circle-sectors",
-          title: "Секторы круга",
-          description:
-            "Круг разделен на 6 равных секторов. Закрашены 2 несмежных сектора. Какая часть круга закрашена?",
-          difficulty: "Легкая",
-          hint: "2 из 6 частей",
-          solution: "1/3 или 2/6",
-        },
-        {
-          id: "pythagorean-triple",
-          title: "Пифагоровы тройки",
-          description:
-            "Найдите все прямоугольные треугольники с целыми сторонами и периметром 60",
-          difficulty: "Сложная",
-          hint: "a² + b² = c², a + b + c = 60",
-          solution: "(15, 20, 25) и (12, 16, 20) после масштабирования",
-        },
-        {
-          id: "pentagon-diagonals",
-          title: "Диагонали пятиугольника",
-          description:
-            "Сколько диагоналей можно провести в правильном пятиугольнике?",
-          difficulty: "Легкая",
-          hint: "Из каждой вершины к несмежным",
-          solution: "5 диагоналей",
-        },
-        {
-          id: "cube-coloring",
-          title: "Раскраска куба",
-          description:
-            "Сколько способов раскрасить грани куба в 3 цвета так, чтобы каждый цвет использовался дважды?",
-          difficulty: "Сложная",
-          hint: "Учтите симметрии куба",
-          solution: "23 способа с учетом поворотов куба",
-        },
-        {
-          id: "rectangle-tiling",
-          title: "Замощение прямоугольника",
-          description:
-            "Можно ли замостить прямоугольник 6×6 прямоугольниками 1×4?",
-          difficulty: "Средняя",
-          hint: "Подумайте о четности и раскраске",
-          solution: "Нет, из-за несовпадения остатков при делении на 4",
-        },
-        {
-          id: "triangle-medians",
-          title: "Медианы треугольника",
-          description:
-            "В треугольнике со сторонами 5, 5, 8 найдите длину медианы к основанию",
-          difficulty: "Средняя",
-          hint: "Медиана к основанию равнобедренного треугольника",
-          solution: "3 (по формуле медианы или через высоту)",
-        },
-        {
-          id: "hexagon-triangles",
-          title: "Треугольники в шестиугольнике",
-          description:
-            "Правильный шестиугольник разделен на треугольники всеми диагоналями из одной вершины. Сколько треугольников?",
-          difficulty: "Легкая",
-          hint: "Из одной вершины к несмежным",
-          solution: "4 треугольника",
-        },
-        {
-          id: "coin-circle",
-          title: "Монеты по кругу",
-          description:
-            "Сколько одинаковых монет поместится вокруг одной центральной монеты?",
-          difficulty: "Средняя",
-          hint: "Угол между центрами соседних монет",
-          solution: "6 монет (360°/60° = 6)",
-        },
-        {
-          id: "square-grid",
-          title: "Квадратная сетка",
-          description:
-            "На доске 8×8 сколько различных квадратов можно нарисовать (включая повернутые)?",
-          difficulty: "Сложная",
-          hint: "Квадраты разных размеров и наклонные",
-          solution: "105 квадратов (прямые + наклонные)",
-        },
-        {
-          id: "polyhedron-euler",
-          title: "Формула Эйлера",
-          description: "У многогранника 12 вершин и 30 ребер. Сколько граней?",
-          difficulty: "Средняя",
-          hint: "V - E + F = 2",
-          solution: "20 граней (по формуле Эйлера)",
-        },
-        {
-          id: "inscribed-squares",
-          title: "Вписанные квадраты",
-          description:
-            "В квадрат со стороной 4 вписан другой квадрат так, что его вершины лежат на сторонах первого. Найдите минимальную площадь",
-          difficulty: "Сложная",
-          hint: "Квадрат повернут на 45°",
-          solution: "8 (когда внутренний квадрат повернут на 45°)",
-        },
-        {
-          id: "triangle-inequality",
-          title: "Неравенство треугольника",
-          description: "Можно ли построить треугольник со сторонами 7, 3, 11?",
-          difficulty: "Легкая",
-          hint: "Сумма любых двух сторон больше третьей",
-          solution: "Нет, так как 7 + 3 = 10 < 11",
-        },
-      ],
-    },
-  ];
-
-  const toggleSolution = (puzzleId: string) => {
-    setShowSolutions((prev) => ({
-      ...prev,
-      [puzzleId]: !prev[puzzleId],
-    }));
-  };
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Легкая":
-        return "bg-green-100 text-green-800";
-      case "Средняя":
-        return "bg-yellow-100 text-yellow-800";
-      case "Сложная":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
+  const {
+    selectedPuzzle,
+    setSelectedPuzzle,
+    showSolutions,
+    toggleSolution,
+    resetPuzzle,
+  } = usePuzzleState();
 
   if (selectedPuzzle) {
     const puzzle = puzzleCategories
@@ -473,47 +22,12 @@ const PuzzleSection = () => {
     if (!puzzle) return null;
 
     return (
-      <div className="max-w-3xl mx-auto">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>{puzzle.title}</CardTitle>
-              <Button variant="outline" onClick={() => setSelectedPuzzle(null)}>
-                <Icon name="ArrowLeft" size={16} />К списку
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">Задача:</h3>
-              <p className="text-base">{puzzle.description}</p>
-            </div>
-
-            <div className="bg-yellow-50 p-4 rounded-lg">
-              <div className="flex items-center text-sm text-yellow-800">
-                <Icon name="Lightbulb" size={16} className="mr-2" />
-                <span>Подсказка: {puzzle.hint}</span>
-              </div>
-            </div>
-
-            <Button
-              onClick={() => toggleSolution(puzzle.id)}
-              className="bg-purple-600 hover:bg-purple-700"
-            >
-              {showSolutions[puzzle.id] ? "Скрыть решение" : "Показать решение"}
-            </Button>
-
-            {showSolutions[puzzle.id] && (
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
-                <p className="text-green-800 text-sm font-medium mb-2">
-                  Решение:
-                </p>
-                <p className="text-green-700">{puzzle.solution}</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
+      <PuzzleDetail
+        puzzle={puzzle}
+        showSolution={showSolutions[puzzle.id]}
+        onToggleSolution={toggleSolution}
+        onBack={resetPuzzle}
+      />
     );
   }
 
@@ -527,6 +41,30 @@ const PuzzleSection = () => {
           Развивайте логическое мышление через интересные головоломки
         </p>
       </div>
+
+      <Tabs defaultValue={puzzleCategories[0].id} className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          {puzzleCategories.map((category) => (
+            <TabsTrigger
+              key={category.id}
+              value={category.id}
+              className="flex items-center gap-2"
+            >
+              <Icon name={category.icon} size={16} />
+              {category.title}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        {puzzleCategories.map((category) => (
+          <TabsContent key={category.id} value={category.id} className="mt-6">
+            <PuzzleGrid
+              puzzles={category.puzzles}
+              onSelectPuzzle={setSelectedPuzzle}
+            />
+          </TabsContent>
+        ))}
+      </Tabs>
     </div>
   );
 };
