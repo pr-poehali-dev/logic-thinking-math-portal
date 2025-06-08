@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
@@ -28,33 +29,33 @@ const PuzzleDetail = ({
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold mb-4">Задача:</h3>
-            <p className="text-base">{puzzle.description}</p>
+          <div>
+            <h3 className="font-semibold mb-2">Условие задачи:</h3>
+            <p className="text-gray-700">{puzzle.description}</p>
           </div>
 
-          <div className="bg-yellow-50 p-4 rounded-lg">
-            <div className="flex items-center text-sm text-yellow-800">
-              <Icon name="Lightbulb" size={16} className="mr-2" />
-              <span>Подсказка: {puzzle.hint}</span>
-            </div>
+          <div>
+            <h3 className="font-semibold mb-2">Подсказка:</h3>
+            <p className="text-blue-600 italic">{puzzle.hint}</p>
           </div>
 
-          <Button
-            onClick={() => onToggleSolution(puzzle.id)}
-            className="bg-purple-600 hover:bg-purple-700"
-          >
-            {showSolution ? "Скрыть решение" : "Показать решение"}
-          </Button>
+          <div>
+            <Button
+              onClick={() => onToggleSolution(puzzle.id)}
+              variant={showSolution ? "secondary" : "default"}
+              className="mb-4"
+            >
+              <Icon name={showSolution ? "EyeOff" : "Eye"} size={16} />
+              {showSolution ? "Скрыть решение" : "Показать решение"}
+            </Button>
 
-          {showSolution && (
-            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
-              <p className="text-green-800 text-sm font-medium mb-2">
-                Решение:
-              </p>
-              <p className="text-green-700">{puzzle.solution}</p>
-            </div>
-          )}
+            {showSolution && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h3 className="font-semibold mb-2 text-green-800">Решение:</h3>
+                <p className="text-green-700">{puzzle.solution}</p>
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     </div>
