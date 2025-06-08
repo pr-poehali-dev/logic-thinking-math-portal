@@ -1557,36 +1557,36 @@ const MethodicalGuideSection = () => {
   const handleLessonDownload = (lessonIndex: number, lessonTitle: string) => {
     // Прямые ссылки на файлы из Яндекс.Диска
     const fileUrls = [
-      "https://disk.yandex.ru/i/YOGtzCEWAuGxcw", // Занятие 1
-      "https://disk.yandex.ru/i/mYGWK_8nN2cjzw", // Занятие 2
-      "https://disk.yandex.ru/i/J8Kl0bOHUEy6KA", // Занятие 3
-      "https://disk.yandex.ru/i/K0Zr1TG9u6lS-g", // Занятие 4
-      "https://disk.yandex.ru/i/lmL7M_1f6yMPDw", // Занятие 5
-      "https://disk.yandex.ru/i/bXU4oqcSkjTm2A", // Занятие 6
-      "https://disk.yandex.ru/i/gvMQvnW0V8jbvQ", // Занятие 7
-      "https://disk.yandex.ru/i/vGS8xvTFdNZe3Q", // Занятие 8
-      "https://disk.yandex.ru/i/aOVXzeLxPd8xMA", // Занятие 9
-      "https://disk.yandex.ru/i/nYFBIrDCl7F7DA", // Занятие 10
-      "https://disk.yandex.ru/i/0t8n3Q-qNOWrSQ", // Занятие 11
-      "https://disk.yandex.ru/i/8QzpFILN_mFU1A", // Занятие 12
-      "https://disk.yandex.ru/i/qeJJSBB39SPJZA", // Занятие 13
-      "https://disk.yandex.ru/i/wNL9VklJj6dE3A", // Занятие 14
-      "https://disk.yandex.ru/i/hdrHl5kKTw2v1w", // Занятие 15
-      "https://disk.yandex.ru/i/6YXzQ3rNuBbqpw", // Занятие 16
-      "https://disk.yandex.ru/i/F0D8tGODNiF7_A", // Занятие 17
-      "https://disk.yandex.ru/i/ycGlUHkmDANbgA", // Занятие 18
-      "https://disk.yandex.ru/i/3pJtZd-PZhgFww", // Занятие 19
-      "https://disk.yandex.ru/i/0NsklP4VvB9GGQ", // Занятие 20
-      "https://disk.yandex.ru/i/dBhwqMH3sYl-cQ", // Занятие 21
-      "https://disk.yandex.ru/i/Q6mJm7mH6oF1hA", // Занятие 22
-      "https://disk.yandex.ru/i/vQ8KrTjTNnFywQ", // Занятие 23
-      "https://disk.yandex.ru/i/qH8jB7zCmPBuqA", // Занятие 24
-      "https://disk.yandex.ru/i/pGzCtPjlzO_1jQ", // Занятие 25
-      "https://disk.yandex.ru/i/MlvNTBHr4w9YQw", // Занятие 26
-      "https://disk.yandex.ru/i/e6QWBV0hxY5DXA", // Занятие 27
-      "https://disk.yandex.ru/i/zWpE4BlEKJ0ybA", // Занятие 28
-      "https://disk.yandex.ru/i/xrQUaLJsJFQAaw", // Занятие 29
-      "https://disk.yandex.ru/i/U2DPzSlWkBUv3Q", // Занятие 30
+      "https://disk.yandex.ru/i/your-file-id-1", // Занятие 1
+      "https://disk.yandex.ru/i/your-file-id-2", // Занятие 2
+      "https://disk.yandex.ru/i/your-file-id-3", // Занятие 3
+      "https://disk.yandex.ru/i/your-file-id-4", // Занятие 4
+      "https://disk.yandex.ru/i/your-file-id-5", // Занятие 5
+      "https://disk.yandex.ru/i/your-file-id-6", // Занятие 6
+      "https://disk.yandex.ru/i/your-file-id-7", // Занятие 7
+      "https://disk.yandex.ru/i/your-file-id-8", // Занятие 8
+      "https://disk.yandex.ru/i/your-file-id-9", // Занятие 9
+      "https://disk.yandex.ru/i/your-file-id-10", // Занятие 10
+      "https://disk.yandex.ru/i/your-file-id-11", // Занятие 11
+      "https://disk.yandex.ru/i/your-file-id-12", // Занятие 12
+      "https://disk.yandex.ru/i/your-file-id-13", // Занятие 13
+      "https://disk.yandex.ru/i/your-file-id-14", // Занятие 14
+      "https://disk.yandex.ru/i/your-file-id-15", // Занятие 15
+      "https://disk.yandex.ru/i/your-file-id-16", // Занятие 16
+      "https://disk.yandex.ru/i/your-file-id-17", // Занятие 17
+      "https://disk.yandex.ru/i/your-file-id-18", // Занятие 18
+      "https://disk.yandex.ru/i/your-file-id-19", // Занятие 19
+      "https://disk.yandex.ru/i/your-file-id-20", // Занятие 20
+      "https://disk.yandex.ru/i/your-file-id-21", // Занятие 21
+      "https://disk.yandex.ru/i/your-file-id-22", // Занятие 22
+      "https://disk.yandex.ru/i/your-file-id-23", // Занятие 23
+      "https://disk.yandex.ru/i/your-file-id-24", // Занятие 24
+      "https://disk.yandex.ru/i/your-file-id-25", // Занятие 25
+      "https://disk.yandex.ru/i/your-file-id-26", // Занятие 26
+      "https://disk.yandex.ru/i/your-file-id-27", // Занятие 27
+      "https://disk.yandex.ru/i/your-file-id-28", // Занятие 28
+      "https://disk.yandex.ru/i/your-file-id-29", // Занятие 29
+      "https://disk.yandex.ru/i/your-file-id-30", // Занятие 30
     ];
 
     // Проверяем, что индекс в пределах массива
