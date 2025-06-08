@@ -1555,20 +1555,82 @@ const MethodicalGuideSection = () => {
   ];
 
   const handleLessonDownload = (lessonIndex: number, lessonTitle: string) => {
-    // URL документа для первого урока
-    const documentUrl =
-      "https://cdn.poehali.dev/files/1735221632833-plan-konspekt-uroka.docx";
+    // Генерируем содержимое плана-конспекта для каждого урока
+    const generateLessonPlan = (lesson: any, index: number) => {
+      return `
+ПЛАН-КОНСПЕКТ УРОКА
+=====================
 
-    // Создаем временную ссылку для скачивания
-    const link = document.createElement("a");
-    link.href = documentUrl;
-    link.download = `План-конспект_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.docx`;
-    link.target = "_blank";
+Урок №${index + 1}: ${lesson.title}
+Продолжительность: ${lesson.duration}
 
-    // Добавляем ссылку в DOM, кликаем и удаляем
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+ЦЕЛИ УРОКА:
+${lesson.objectives.map((obj: string, i: number) => `${i + 1}. ${obj}`).join("\n")}
+
+СТРУКТУРА УРОКА:
+${lesson.activities.map((act: string, i: number) => `${i + 1}. ${act}`).join("\n")}
+
+МЕТОДИЧЕСКИЕ РЕКОМЕНДАЦИИ:
+- Использовать интерактивные методы обучения
+- Обеспечить индивидуальный подход к каждому ученику
+- Применять наглядные материалы и практические примеры
+- Проводить рефлексию в конце урока
+
+МАТЕРИАЛЫ И ОБОРУДОВАНИЕ:
+- Доска и маркеры
+- Раздаточный материал с задачами
+- Презентация урока
+- Интерактивные элементы
+
+ДОМАШНЕЕ ЗАДАНИЕ:
+- Решить 3-5 задач по теме урока
+- Подготовиться к следующему занятию
+- Повторить пройденный материал
+
+КРИТЕРИИ ОЦЕНИВАНИЯ:
+- Активность на уроке
+- Правильность решения задач
+- Логичность рассуждений
+- Работа в группе
+
+=====================
+Разработано в рамках курса "Развитие логического мышления"
+`;
+    };
+
+    // Если это первый урок, скачиваем готовый документ
+    if (lessonIndex === 0) {
+      const documentUrl =
+        "https://cdn.poehali.dev/files/1735221632833-plan-konspekt-uroka.docx";
+      const link = document.createElement("a");
+      link.href = documentUrl;
+      link.download = `План-конспект_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.docx`;
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      // Для остальных уроков генерируем текстовый файл
+      const lesson = lessonPlans[lessonIndex];
+      const content = generateLessonPlan(lesson, lessonIndex);
+
+      // Создаем blob с содержимым
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
+      // Создаем ссылку для скачивания
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `План-конспект_Урок_${lessonIndex + 1}_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.txt`;
+
+      // Добавляем в DOM, кликаем и удаляем
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Освобождаем память
+      URL.revokeObjectURL(url);
+    }
   };
 
   const lessonPlans = [
@@ -2557,36 +2619,24 @@ const MethodicalGuideSection = () => {
           {lessonPlans.map((lesson, index) => (
             <Card
               key={index}
-              className={
-                index === 0
-                  ? "cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
-                  : ""
-              }
-              onClick={
-                index === 0
-                  ? () => handleLessonDownload(index, lesson.title)
-                  : undefined
-              }
+              className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
+              onClick={() => handleLessonDownload(index, lesson.title)}
             >
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="Clock" className="text-blue-600" size={20} />
                   {lesson.title}
-                  {index === 0 && (
-                    <Icon
-                      name="Download"
-                      className="text-green-600 ml-auto"
-                      size={18}
-                    />
-                  )}
+                  <Icon
+                    name="Download"
+                    className="text-green-600 ml-auto"
+                    size={18}
+                  />
                 </CardTitle>
                 <CardDescription>
                   Продолжительность: {lesson.duration}
-                  {index === 0 && (
-                    <span className="block text-green-600 font-medium mt-1">
-                      📄 Нажмите для скачивания плана-конспекта
-                    </span>
-                  )}
+                  <span className="block text-green-600 font-medium mt-1">
+                    📄 Нажмите для скачивания плана-конспекта
+                  </span>
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
