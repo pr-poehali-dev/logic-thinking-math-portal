@@ -321,6 +321,301 @@ const MethodicalGuideSection = () => {
     </div>
   );
 
+  const renderAgeCharacteristicsContent = () => (
+    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+      {/* Заголовок */}
+      <div className="text-center space-y-4 border-b pb-6">
+        <h3 className="text-3xl font-bold text-purple-800 flex items-center justify-center gap-3">
+          👥 Возрастные особенности развития логического мышления у
+          шестиклассников
+        </h3>
+        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          Понимание особенностей развития мышления в{" "}
+          <strong className="text-purple-700">11–12 лет</strong> является
+          ключевым для эффективного планирования и проведения уроков математики.
+          Шестой класс — это важный этап перехода от более наглядного и
+          конкретного мышления к более абстрактному и логическому.
+        </p>
+      </div>
+
+      {/* Характерные черты мышления */}
+      <div className="space-y-6">
+        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+          🧠 Характерные черты мышления детей 11-12 лет
+        </h4>
+
+        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-lg border border-purple-200">
+          <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+            🔄 Переход к абстрактно-логическому мышлению
+          </h5>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            В возрасте 11–12 лет происходит переход от{" "}
+            <em>конкретно-образного</em> мышления к{" "}
+            <strong className="text-purple-700">абстрактно-логическому</strong>.
+            Это означает, что ученики постепенно учатся оперировать не только
+            конкретными предметами и образами, но и абстрактными понятиями и
+            идеями.
+          </p>
+          <div className="bg-white p-4 rounded-lg border border-purple-200">
+            <p className="text-sm text-purple-800 font-medium mb-2">
+              💡 Практический пример:
+            </p>
+            <p className="text-sm text-gray-600">
+              Если раньше ученику было сложно понять, что такое «площадь», пока
+              он не видел конкретный прямоугольник, то теперь он может понимать,
+              что площадь — это характеристика любой плоской фигуры.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+            <h5 className="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+              🎯 Понимание абстрактных понятий
+            </h5>
+            <p className="text-gray-700 leading-relaxed mb-3">
+              Учащиеся начинают лучше понимать{" "}
+              <strong className="text-blue-700">
+                абстрактные понятия и идеи
+              </strong>
+              . Вместо простого заучивания формул, они могут понять логику их
+              построения.
+            </p>
+            <div className="bg-white p-3 rounded border border-blue-200">
+              <p className="text-xs text-blue-800 font-medium">🔍 Пример:</p>
+              <p className="text-xs text-gray-600 mt-1">
+                Шестиклассник может понять, почему формула площади
+                прямоугольника именно такая, представив разбиение на квадратики.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+            <h5 className="text-xl font-bold text-green-800 mb-3 flex items-center gap-2">
+              🤔 Гипотетические рассуждения
+            </h5>
+            <p className="text-gray-700 leading-relaxed mb-3">
+              Способность рассуждать о <em>гипотетических ситуациях</em> и
+              делать выводы на основе логических рассуждений. Понимают фразы:{" "}
+              <strong className="text-green-700">
+                «что, если...?», «допустим...?»
+              </strong>
+            </p>
+            <div className="bg-white p-3 rounded border border-green-200">
+              <p className="text-xs text-green-800 font-medium">🎲 Пример:</p>
+              <p className="text-xs text-gray-600 mt-1">
+                «Если увеличить каждую сторону квадрата в 2 раза, как изменится
+                площадь?» → Логический вывод: увеличится в 4 раза.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg border border-orange-200">
+          <h5 className="text-xl font-bold text-orange-800 mb-3 flex items-center gap-2">
+            🪞 Развитие рефлексии
+          </h5>
+          <p className="text-gray-700 leading-relaxed">
+            Развивается способность к{" "}
+            <strong className="text-orange-700">самоанализу и рефлексии</strong>
+            . Дети начинают осознавать свои мыслительные процессы, понимать, как
+            они решают задачи, и анализировать свои ошибки. Это важный шаг к
+            развитию <em>умения учиться</em>.
+          </p>
+        </div>
+      </div>
+
+      {/* Возможности и ограничения */}
+      <div className="space-y-6">
+        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+          ⚖️ Возможности и ограничения развития
+        </h4>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Возможности */}
+          <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-lg border border-emerald-200">
+            <h5 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
+              ✅ Возможности
+            </h5>
+
+            <div className="space-y-4">
+              <div className="bg-white p-4 rounded-lg border border-emerald-200">
+                <h6 className="font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                  🎯 Критическое мышление
+                </h6>
+                <p className="text-sm text-gray-700 mb-2">
+                  Ученики становятся более критичными к информации, задают
+                  вопросы, ищут доказательства.
+                </p>
+                <div className="text-xs text-emerald-800 bg-emerald-50 p-2 rounded">
+                  <strong>Пример:</strong> «Все чётные числа делятся на 4» → «А
+                  как насчёт числа 6?»
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg border border-emerald-200">
+                <h6 className="font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                  💭 Абстрагирование
+                </h6>
+                <p className="text-sm text-gray-700 mb-2">
+                  Способность оперировать абстрактными понятиями: «множество»,
+                  «отношение», «функция».
+                </p>
+                <div className="text-xs text-emerald-800 bg-emerald-50 p-2 rounded">
+                  <strong>Пример:</strong> Понимание, что все числа, делящиеся
+                  на 2, образуют множество четных чисел.
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg border border-emerald-200">
+                <h6 className="font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                  🔍 Анализ и синтез
+                </h6>
+                <p className="text-sm text-gray-700">
+                  Улучшение навыков анализа сложных задач и синтеза решений.
+                </p>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg border border-emerald-200">
+                <h6 className="font-bold text-emerald-700 mb-2 flex items-center gap-2">
+                  🧩 Нестандартные задачи
+                </h6>
+                <p className="text-sm text-gray-700">
+                  Возрастает интерес к головоломкам и творческому подходу.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Ограничения */}
+          <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-lg border border-red-200">
+            <h5 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+              ⚠️ Ограничения
+            </h5>
+
+            <div className="space-y-4">
+              <div className="bg-white p-4 rounded-lg border border-red-200">
+                <h6 className="font-bold text-red-700 mb-2 flex items-center gap-2">
+                  😤 Эмоциональная нестабильность
+                </h6>
+                <p className="text-sm text-gray-700 mb-2">
+                  Гормональные изменения влияют на концентрацию и логическое
+                  мышление.
+                </p>
+                <div className="text-xs text-red-800 bg-red-50 p-2 rounded">
+                  <strong>💡 Рекомендация:</strong> Создавайте атмосферу
+                  поддержки, давайте возможность выражать эмоции.
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg border border-red-200">
+                <h6 className="font-bold text-red-700 mb-2 flex items-center gap-2">
+                  👥 Влияние сверстников
+                </h6>
+                <p className="text-sm text-gray-700 mb-2">
+                  Мнение сверстников может приводить к конформизму и нежеланию
+                  высказывать своё мнение.
+                </p>
+                <div className="text-xs text-red-800 bg-red-50 p-2 rounded">
+                  <strong>💡 Рекомендация:</strong> Поощряйте дискуссии и
+                  самостоятельность мышления.
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg border border-red-200">
+                <h6 className="font-bold text-red-700 mb-2 flex items-center gap-2">
+                  📈 Недостаток опыта
+                </h6>
+                <p className="text-sm text-gray-700 mb-2">
+                  Трудности при решении задач, требующих длительного анализа.
+                </p>
+                <div className="text-xs text-red-800 bg-red-50 p-2 rounded">
+                  <strong>💡 Рекомендация:</strong> Начинайте с простых задач,
+                  постепенно усложняя.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Индивидуальные особенности */}
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-lg border border-indigo-200">
+        <h4 className="text-2xl font-bold text-indigo-800 mb-6 text-center flex items-center justify-center gap-3">
+          🎭 Индивидуальные особенности развития мышления
+        </h4>
+        <p className="text-center text-gray-700 mb-6 text-lg">
+          <strong className="text-indigo-700">Важно помнить:</strong> каждый
+          ученик уникален. Скорость и особенности развития логического мышления
+          могут существенно различаться.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white p-6 rounded-lg border border-indigo-200">
+            <div className="text-center mb-4">
+              <div className="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl text-white">🧠</span>
+              </div>
+              <h5 className="font-bold text-indigo-800">Уровень интеллекта</h5>
+            </div>
+            <p className="text-sm text-gray-700 mb-3">
+              Ученики с более высоким уровнем интеллекта быстрее усваивают новые
+              понятия.
+            </p>
+            <div className="bg-indigo-50 p-3 rounded text-xs">
+              <strong className="text-indigo-800">💡 Решение:</strong>{" "}
+              Дифференцированные задания для разных уровней подготовки.
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg border border-indigo-200">
+            <div className="text-center mb-4">
+              <div className="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl text-white">📚</span>
+              </div>
+              <h5 className="font-bold text-indigo-800">Предыдущий опыт</h5>
+            </div>
+            <p className="text-sm text-gray-700 mb-3">
+              Ученики с большим опытом в решении логических задач справляются
+              лучше.
+            </p>
+            <div className="bg-indigo-50 p-3 rounded text-xs">
+              <strong className="text-indigo-800">💡 Решение:</strong>{" "}
+              Повторение и закрепление материала разными методами.
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg border border-indigo-200">
+            <div className="text-center mb-4">
+              <div className="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-2xl text-white">🎯</span>
+              </div>
+              <h5 className="font-bold text-indigo-800">Мотивация</h5>
+            </div>
+            <p className="text-sm text-gray-700 mb-3">
+              Мотивированные ученики активнее развивают логическое мышление.
+            </p>
+            <div className="bg-indigo-50 p-3 rounded text-xs">
+              <strong className="text-indigo-800">💡 Решение:</strong> Игровые
+              элементы, связь с реальной жизнью.
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 p-6 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg border border-purple-200">
+          <p className="text-center text-gray-800 font-medium">
+            🌟 <strong className="text-purple-700">Помните:</strong> развитие
+            логического мышления — это постепенный процесс, требующий
+            систематической работы и индивидуального подхода к каждому ученику.
+            Учитывая возрастные особенности и индивидуальные различия, вы
+            сможете создать оптимальные условия для развития логического
+            мышления ваших шестиклассников.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   const methodologyContent = [
     {
       title: "Глава 1. Теоретические основы формирования логического мышления",
@@ -556,18 +851,30 @@ const MethodicalGuideSection = () => {
                     {renderLogicalThinkingContent()}
                   </div>
                 )}
-                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
+                <div
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+                  onClick={() => handleSectionClick("age-characteristics")}
+                >
                   <span className="text-indigo-600 font-medium">1.2.</span>
                   <span className="text-gray-800 hover:text-indigo-700 transition-colors">
                     Возрастные особенности развития логического мышления у
                     шестиклассников
                   </span>
                   <Icon
-                    name="ChevronRight"
+                    name={
+                      expandedSection === "age-characteristics"
+                        ? "ChevronDown"
+                        : "ChevronRight"
+                    }
                     className="text-indigo-400 ml-auto"
                     size={16}
                   />
                 </div>
+                {expandedSection === "age-characteristics" && (
+                  <div className="ml-6 mt-4">
+                    {renderAgeCharacteristicsContent()}
+                  </div>
+                )}
                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
                   <span className="text-indigo-600 font-medium">1.3.</span>
                   <span className="text-gray-800 hover:text-indigo-700 transition-colors">
