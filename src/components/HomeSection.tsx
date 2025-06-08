@@ -38,7 +38,7 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
           Формирование логического мышления
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Образовательный портал для учителей математики 6 классов
+          Образовательный портал для учителей математики{" "}
         </p>
       </div>
 
