@@ -457,7 +457,6 @@ const EntertainingProblemsSection = () => {
                     className="w-full text-left justify-start text-xs"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedTopic(topic.id);
                       setSelectedSubtopic(subtopic.id);
                     }}
                   >
