@@ -451,16 +451,29 @@ const EntertainingProblemsSection = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button
-                className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedTopic(topic.id);
-                }}
-              >
-                Изучить тему
-                <Icon name="ArrowRight" size={16} />
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedTopic(topic.id);
+                  }}
+                >
+                  Виды задач
+                  <Icon name="List" size={16} className="ml-2" />
+                </Button>
+                <Button
+                  className={`flex-1 bg-${topic.color}-600 hover:bg-${topic.color}-700`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Логика изучения темы
+                  }}
+                >
+                  Изучение темы
+                  <Icon name="BookOpen" size={16} className="ml-2" />
+                </Button>
+              </div>
             </CardContent>
           </Card>
         ))}
