@@ -51,7 +51,7 @@ const PuzzleDetail = ({
 
             {showSolution && (
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold mb-2 text-green-800">Решение:</h3>
+                <h4 className="font-semibold text-green-800 mb-2">Решение:</h4>
                 <p className="text-green-700">{puzzle.solution}</p>
               </div>
             )}
