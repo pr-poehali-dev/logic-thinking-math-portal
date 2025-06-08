@@ -1555,81 +1555,56 @@ const MethodicalGuideSection = () => {
   ];
 
   const handleLessonDownload = (lessonIndex: number, lessonTitle: string) => {
-    // Генерируем содержимое плана-конспекта для каждого урока
-    const generateLessonPlan = (lesson: any, index: number) => {
-      return `
-ПЛАН-КОНСПЕКТ УРОКА
-=====================
+    // Прямые ссылки на файлы из Яндекс.Диска
+    const fileUrls = [
+      "https://disk.yandex.ru/i/YOGtzCEWAuGxcw", // Занятие 1
+      "https://disk.yandex.ru/i/mYGWK_8nN2cjzw", // Занятие 2
+      "https://disk.yandex.ru/i/J8Kl0bOHUEy6KA", // Занятие 3
+      "https://disk.yandex.ru/i/K0Zr1TG9u6lS-g", // Занятие 4
+      "https://disk.yandex.ru/i/lmL7M_1f6yMPDw", // Занятие 5
+      "https://disk.yandex.ru/i/bXU4oqcSkjTm2A", // Занятие 6
+      "https://disk.yandex.ru/i/gvMQvnW0V8jbvQ", // Занятие 7
+      "https://disk.yandex.ru/i/vGS8xvTFdNZe3Q", // Занятие 8
+      "https://disk.yandex.ru/i/aOVXzeLxPd8xMA", // Занятие 9
+      "https://disk.yandex.ru/i/nYFBIrDCl7F7DA", // Занятие 10
+      "https://disk.yandex.ru/i/0t8n3Q-qNOWrSQ", // Занятие 11
+      "https://disk.yandex.ru/i/8QzpFILN_mFU1A", // Занятие 12
+      "https://disk.yandex.ru/i/qeJJSBB39SPJZA", // Занятие 13
+      "https://disk.yandex.ru/i/wNL9VklJj6dE3A", // Занятие 14
+      "https://disk.yandex.ru/i/hdrHl5kKTw2v1w", // Занятие 15
+      "https://disk.yandex.ru/i/6YXzQ3rNuBbqpw", // Занятие 16
+      "https://disk.yandex.ru/i/F0D8tGODNiF7_A", // Занятие 17
+      "https://disk.yandex.ru/i/ycGlUHkmDANbgA", // Занятие 18
+      "https://disk.yandex.ru/i/3pJtZd-PZhgFww", // Занятие 19
+      "https://disk.yandex.ru/i/0NsklP4VvB9GGQ", // Занятие 20
+      "https://disk.yandex.ru/i/dBhwqMH3sYl-cQ", // Занятие 21
+      "https://disk.yandex.ru/i/Q6mJm7mH6oF1hA", // Занятие 22
+      "https://disk.yandex.ru/i/vQ8KrTjTNnFywQ", // Занятие 23
+      "https://disk.yandex.ru/i/qH8jB7zCmPBuqA", // Занятие 24
+      "https://disk.yandex.ru/i/pGzCtPjlzO_1jQ", // Занятие 25
+      "https://disk.yandex.ru/i/MlvNTBHr4w9YQw", // Занятие 26
+      "https://disk.yandex.ru/i/e6QWBV0hxY5DXA", // Занятие 27
+      "https://disk.yandex.ru/i/zWpE4BlEKJ0ybA", // Занятие 28
+      "https://disk.yandex.ru/i/xrQUaLJsJFQAaw", // Занятие 29
+      "https://disk.yandex.ru/i/U2DPzSlWkBUv3Q", // Занятие 30
+    ];
 
-Урок №${index + 1}: ${lesson.title}
-Продолжительность: ${lesson.duration}
-
-ЦЕЛИ УРОКА:
-${lesson.objectives.map((obj: string, i: number) => `${i + 1}. ${obj}`).join("\n")}
-
-СТРУКТУРА УРОКА:
-${lesson.activities.map((act: string, i: number) => `${i + 1}. ${act}`).join("\n")}
-
-МЕТОДИЧЕСКИЕ РЕКОМЕНДАЦИИ:
-- Использовать интерактивные методы обучения
-- Обеспечить индивидуальный подход к каждому ученику
-- Применять наглядные материалы и практические примеры
-- Проводить рефлексию в конце урока
-
-МАТЕРИАЛЫ И ОБОРУДОВАНИЕ:
-- Доска и маркеры
-- Раздаточный материал с задачами
-- Презентация урока
-- Интерактивные элементы
-
-ДОМАШНЕЕ ЗАДАНИЕ:
-- Решить 3-5 задач по теме урока
-- Подготовиться к следующему занятию
-- Повторить пройденный материал
-
-КРИТЕРИИ ОЦЕНИВАНИЯ:
-- Активность на уроке
-- Правильность решения задач
-- Логичность рассуждений
-- Работа в группе
-
-=====================
-Разработано в рамках курса "Развитие логического мышления"
-`;
-    };
-
-    // Если это первый урок, скачиваем готовый документ
-    if (lessonIndex === 0) {
-      const documentUrl =
-        "https://cdn.poehali.dev/files/1735221632833-plan-konspekt-uroka.docx";
-      const link = document.createElement("a");
-      link.href = documentUrl;
-      link.download = `План-конспект_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.docx`;
-      link.target = "_blank";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else {
-      // Для остальных уроков генерируем текстовый файл
-      const lesson = lessonPlans[lessonIndex];
-      const content = generateLessonPlan(lesson, lessonIndex);
-
-      // Создаем blob с содержимым
-      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
+    // Проверяем, что индекс в пределах массива
+    if (lessonIndex >= 0 && lessonIndex < fileUrls.length) {
+      const fileUrl = fileUrls[lessonIndex];
 
       // Создаем ссылку для скачивания
       const link = document.createElement("a");
-      link.href = url;
-      link.download = `План-конспект_Урок_${lessonIndex + 1}_${lessonTitle.replace(/[^\w\s]/gi, "").replace(/\s+/g, "_")}.txt`;
+      link.href = fileUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
 
       // Добавляем в DOM, кликаем и удаляем
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      // Освобождаем память
-      URL.revokeObjectURL(url);
+    } else {
+      console.error(`Файл для занятия ${lessonIndex + 1} не найден`);
     }
   };
 
