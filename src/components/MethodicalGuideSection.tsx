@@ -222,7 +222,7 @@ const MethodicalGuideSection = () => {
 
     </div>
 
-      <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
+    <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Icon name="GraduationCap" className="text-green-600" size={24} />
