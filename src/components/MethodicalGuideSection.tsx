@@ -224,55 +224,40 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
-                <a
-                  href="/methodology/chapter1/logical-thinking"
-                  className="block group"
-                >
-                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
-                    <span className="text-indigo-600 font-medium">1.1.</span>
-                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
-                      Что такое логическое мышление?
-                    </span>
-                    <Icon
-                      name="ChevronRight"
-                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={16}
-                    />
-                  </div>
-                </a>
-                <a
-                  href="/methodology/chapter1/age-features"
-                  className="block group"
-                >
-                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
-                    <span className="text-indigo-600 font-medium">1.2.</span>
-                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
-                      Возрастные особенности развития логического мышления у
-                      шестиклассников
-                    </span>
-                    <Icon
-                      name="ChevronRight"
-                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={16}
-                    />
-                  </div>
-                </a>
-                <a
-                  href="/methodology/chapter1/principles"
-                  className="block group"
-                >
-                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors">
-                    <span className="text-indigo-600 font-medium">1.3.</span>
-                    <span className="text-gray-800 group-hover:text-indigo-700 transition-colors">
-                      Методические принципы формирования логического мышления
-                    </span>
-                    <Icon
-                      name="ChevronRight"
-                      className="text-indigo-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={16}
-                    />
-                  </div>
-                </a>
+                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
+                  <span className="text-indigo-600 font-medium">1.1.</span>
+                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
+                    Что такое логическое мышление?
+                  </span>
+                  <Icon
+                    name="ChevronRight"
+                    className="text-indigo-400 ml-auto"
+                    size={16}
+                  />
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
+                  <span className="text-indigo-600 font-medium">1.2.</span>
+                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
+                    Возрастные особенности развития логического мышления у
+                    шестиклассников
+                  </span>
+                  <Icon
+                    name="ChevronRight"
+                    className="text-indigo-400 ml-auto"
+                    size={16}
+                  />
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer">
+                  <span className="text-indigo-600 font-medium">1.3.</span>
+                  <span className="text-gray-800 hover:text-indigo-700 transition-colors">
+                    Методические принципы формирования логического мышления
+                  </span>
+                  <Icon
+                    name="ChevronRight"
+                    className="text-indigo-400 ml-auto"
+                    size={16}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -299,38 +284,28 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
-                <a
-                  href="/methodology/chapter2/problem-situations"
-                  className="block group"
-                >
-                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors">
-                    <span className="text-emerald-600 font-medium">2.1.</span>
-                    <span className="text-gray-800 group-hover:text-emerald-700 transition-colors">
-                      Использование проблемных ситуаций
-                    </span>
-                    <Icon
-                      name="ChevronRight"
-                      className="text-emerald-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={16}
-                    />
-                  </div>
-                </a>
-                <a
-                  href="/methodology/chapter2/logical-tasks"
-                  className="block group"
-                >
-                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors">
-                    <span className="text-emerald-600 font-medium">2.2.</span>
-                    <span className="text-gray-800 group-hover:text-emerald-700 transition-colors">
-                      Решение логических задач различных типов
-                    </span>
-                    <Icon
-                      name="ChevronRight"
-                      className="text-emerald-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                      size={16}
-                    />
-                  </div>
-                </a>
+                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer">
+                  <span className="text-emerald-600 font-medium">2.1.</span>
+                  <span className="text-gray-800 hover:text-emerald-700 transition-colors">
+                    Использование проблемных ситуаций
+                  </span>
+                  <Icon
+                    name="ChevronRight"
+                    className="text-emerald-400 ml-auto"
+                    size={16}
+                  />
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer">
+                  <span className="text-emerald-600 font-medium">2.2.</span>
+                  <span className="text-gray-800 hover:text-emerald-700 transition-colors">
+                    Решение логических задач различных типов
+                  </span>
+                  <Icon
+                    name="ChevronRight"
+                    className="text-emerald-400 ml-auto"
+                    size={16}
+                  />
+                </div>
               </div>
             </div>
           </div>
