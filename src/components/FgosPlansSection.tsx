@@ -370,30 +370,6 @@ const FgosPlansSection = () => {
           </Card>
         ))}
       </div>
-
-      <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
-        <CardContent className="p-6 text-center">
-          <div className="space-y-4">
-            <Icon
-              name="FolderOpen"
-              className="mx-auto text-green-600"
-              size={32}
-            />
-            <h3 className="text-xl font-semibold text-gray-800">
-              Получить все материалы одним архивом
-            </h3>
-            <p className="text-gray-600">
-              Скачайте полный комплект из 15 планов-конспектов уроков математики
-              по ФГОС с методическими рекомендациями и дидактическими
-              материалами
-            </p>
-            <Button className="bg-green-600 hover:bg-green-700" size="lg">
-              <Icon name="Download" size={18} className="mr-2" />
-              Скачать весь комплект (15 уроков)
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };
