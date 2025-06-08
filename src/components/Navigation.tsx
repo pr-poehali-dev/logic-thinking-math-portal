@@ -21,7 +21,9 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <Icon name="GraduationCap" className="text-purple-600" size={32} />
-            <h1 className="text-xl font-bold text-gray-800">МатЛогика 6</h1>
+            <h1 className="text-xl font-bold text-gray-800">
+              MindCraft: Строим логическое мышление
+            </h1>
           </div>
 
           <div className="flex space-x-2">
