@@ -13,6 +13,8 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
     { id: "puzzles", label: "Задачи", icon: "Puzzle" },
     { id: "entertaining", label: "Занимательные", icon: "Sparkles" },
     { id: "guide", label: "Методичка", icon: "BookOpen" },
+    { id: "fgos-plans", label: "Планы по ФГОС", icon: "GraduationCap" },
+    { id: "lesson-plans", label: "Планы уроков", icon: "FileText" },
   ];
 
   return (

@@ -386,29 +386,19 @@ const EntertainingProblemsSection = () => {
           {topic.subtopics.map((subtopic) => (
             <Card
               key={subtopic.id}
-              className="hover:shadow-xl transition-all duration-300 cursor-pointer group"
+              className="hover:shadow-lg transition-shadow cursor-pointer"
               onClick={() => setSelectedSubtopic(subtopic.id)}
             >
               <CardHeader>
-                <CardTitle className="flex items-center justify-between text-xl">
+                <CardTitle className="flex items-center justify-between">
                   <span>{subtopic.title}</span>
+                  <Icon
+                    name="ChevronRight"
+                    size={20}
+                    className="text-gray-400"
+                  />
                 </CardTitle>
-                <CardDescription className="text-sm">
-                  Задачи этого типа
-                </CardDescription>
               </CardHeader>
-              <CardContent>
-                <Button
-                  className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700 text-white`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedSubtopic(subtopic.id);
-                  }}
-                >
-                  Изучить тему
-                  <Icon name="ArrowRight" size={16} className="ml-2" />
-                </Button>
-              </CardContent>
             </Card>
           ))}
         </div>
@@ -449,15 +439,32 @@ const EntertainingProblemsSection = () => {
             </CardHeader>
             <CardContent>
               <Button
-                className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700 text-white`}
+                className={`w-full bg-${topic.color}-600 hover:bg-${topic.color}-700`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedTopic(topic.id);
                 }}
               >
                 Изучить тему
-                <Icon name="ArrowRight" size={16} className="ml-2" />
+                <Icon name="ArrowRight" size={16} />
               </Button>
+              <div className="mt-3 space-y-1">
+                {topic.subtopics.map((subtopic) => (
+                  <Button
+                    key={subtopic.id}
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-left justify-start text-xs"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedTopic(topic.id);
+                      setSelectedSubtopic(subtopic.id);
+                    }}
+                  >
+                    {subtopic.title}
+                  </Button>
+                ))}
+              </div>
             </CardContent>
           </Card>
         ))}
