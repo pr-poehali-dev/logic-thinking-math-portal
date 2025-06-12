@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import HomeSection from "@/components/HomeSection";
 import TestSection from "@/components/TestSection";
-import PuzzleSection from "@/components/PuzzleSection";
 import MethodicalGuideSection from "@/components/MethodicalGuideSection";
 import EntertainingProblemsSection from "@/components/EntertainingProblemsSection";
 
@@ -14,8 +13,6 @@ const Index = () => {
     switch (activeSection) {
       case "tests":
         return <TestSection />;
-      case "puzzles":
-        return <PuzzleSection />;
       case "entertaining":
         return <EntertainingProblemsSection />;
       case "guide":

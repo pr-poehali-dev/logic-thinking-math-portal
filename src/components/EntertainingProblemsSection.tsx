@@ -6,7 +6,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
+import PuzzleGrid from "./puzzle/PuzzleGrid";
+import PuzzleDetail from "./puzzle/PuzzleDetail";
+import { usePuzzleState } from "@/hooks/usePuzzleState";
+import { puzzleCategories } from "@/data/puzzleData";
 import { useState } from "react";
 
 const EntertainingProblemsSection = () => {
@@ -15,6 +20,16 @@ const EntertainingProblemsSection = () => {
   const [showSolutions, setShowSolutions] = useState<{
     [key: string]: boolean;
   }>({});
+  const [activeTab, setActiveTab] = useState("logic");
+
+  // Puzzle state for puzzles tab
+  const {
+    selectedPuzzle,
+    setSelectedPuzzle,
+    showSolutions: puzzleShowSolutions,
+    toggleSolution: puzzleToggleSolution,
+    resetPuzzle,
+  } = usePuzzleState();
 
   const topics = [
     {
@@ -411,44 +426,116 @@ const EntertainingProblemsSection = () => {
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-gray-800">
-          Занимательные задачи{" "}
+          Занимательные задачи
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Выберите тему для изучения увлекательных логических задач с пошаговыми
-          решениями
+          Выберите раздел для изучения увлекательных логических задач и
+          головоломок
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {topics.map((topic) => (
-          <Card
-            key={topic.id}
-            className="hover:shadow-xl transition-all duration-300 cursor-pointer group"
-            onClick={() => setSelectedTopic(topic.id)}
-          >
-            <CardHeader className="text-center">
-              <div
-                className={`w-16 h-16 bg-${topic.color}-100 text-${topic.color}-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto">
+          <TabsTrigger value="logic" className="flex items-center gap-2">
+            <Icon name="Brain" size={16} />
+            Логические задачи
+          </TabsTrigger>
+          <TabsTrigger value="puzzles" className="flex items-center gap-2">
+            <Icon name="Puzzle" size={16} />
+            Головоломки
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="logic" className="mt-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {topics.map((topic) => (
+              <Card
+                key={topic.id}
+                className="hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                onClick={() => setSelectedTopic(topic.id)}
               >
-                <Icon name={topic.icon as any} size={32} />
+                <CardHeader className="text-center">
+                  <div
+                    className={`w-16 h-16 bg-${topic.color}-100 text-${topic.color}-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+                  >
+                    <Icon name={topic.icon as any} size={32} />
+                  </div>
+                  <CardTitle className="text-xl">{topic.title}</CardTitle>
+                  <CardDescription className="text-sm">
+                    {topic.subtopics.length} видов задач
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="puzzles" className="mt-8">
+          {selectedPuzzle ? (
+            (() => {
+              const puzzle = puzzleCategories
+                .flatMap((cat) => cat.puzzles)
+                .find((p) => p.id === selectedPuzzle);
+
+              if (!puzzle) return null;
+
+              return (
+                <PuzzleDetail
+                  puzzle={puzzle}
+                  showSolution={puzzleShowSolutions[puzzle.id]}
+                  onToggleSolution={puzzleToggleSolution}
+                  onBack={resetPuzzle}
+                />
+              );
+            })()
+          ) : (
+            <div className="space-y-6">
+              <div className="text-center space-y-2">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Головоломки и задачи
+                </h2>
+                <p className="text-gray-600">
+                  Развивайте логическое мышление через интересные головоломки
+                </p>
               </div>
-              <CardTitle className="text-xl">{topic.title}</CardTitle>
-              <CardDescription className="text-sm">
-                {topic.subtopics.length} видов задач
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* Убираем кнопку "Изучить тему" и список подтем */}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+
+              <Tabs defaultValue={puzzleCategories[0].id} className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  {puzzleCategories.map((category) => (
+                    <TabsTrigger
+                      key={category.id}
+                      value={category.id}
+                      className="flex items-center gap-2"
+                    >
+                      <Icon name={category.icon} size={16} />
+                      {category.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+
+                {puzzleCategories.map((category) => (
+                  <TabsContent
+                    key={category.id}
+                    value={category.id}
+                    className="mt-6"
+                  >
+                    <PuzzleGrid
+                      puzzles={category.puzzles}
+                      onSelectPuzzle={setSelectedPuzzle}
+                    />
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </div>
+          )}
+        </TabsContent>
+      </Tabs>
 
       <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 max-w-4xl mx-auto">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-center">
             <Icon name="Star" className="text-yellow-500" size={24} />
-            Особенности логических задач
+            Особенности занимательных задач
           </CardTitle>
         </CardHeader>
         <CardContent className="grid md:grid-cols-2 gap-4 text-sm">
@@ -459,7 +546,7 @@ const EntertainingProblemsSection = () => {
           </div>
           <div className="space-y-2">
             <p>• Задачи разного уровня сложности</p>
-            <p>• Классические логические головоломки</p>
+            <p>• Классические головоломки и задачи</p>
             <p>• Подготовка к олимпиадам</p>
           </div>
         </CardContent>
