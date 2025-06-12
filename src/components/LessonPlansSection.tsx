@@ -152,6 +152,11 @@ const LessonPlansSection = () => {
     },
   ];
 
+  console.log(
+    "LessonPlansSection rendering, lessons count:",
+    lessonPlans.length,
+  );
+
   return (
     <div className="space-y-6">
       <div className="text-center space-y-4">
