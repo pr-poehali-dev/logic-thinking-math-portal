@@ -84,7 +84,7 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
       <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-8 shadow-sm border border-purple-200 max-w-6xl mx-auto">
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-bold text-purple-800 flex items-center justify-center gap-3">
-            🎓 Курс "Основы логического мышления"
+            🎓 О курсе
           </h2>
           <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
             Курс предназначен для учителей математики, которые хотят эффективно
@@ -92,13 +92,6 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
             современные методики, практические инструменты и готовые материалы
             для работы.
           </p>
-          <Button
-            onClick={() => onNavigate("course")}
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-3 text-lg font-semibold"
-          >
-            Перейти к курсу
-            <Icon name="Play" size={20} />
-          </Button>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mt-8">
