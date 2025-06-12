@@ -3,6 +3,7 @@ import HomeSection from "@/components/HomeSection";
 import TestSection from "@/components/TestSection";
 import MethodicalGuideSection from "@/components/MethodicalGuideSection";
 import EntertainingProblemsSection from "@/components/EntertainingProblemsSection";
+import LessonPlansSection from "@/components/LessonPlansSection";
 
 import { useState } from "react";
 
@@ -15,6 +16,8 @@ const Index = () => {
         return <TestSection />;
       case "entertaining":
         return <EntertainingProblemsSection />;
+      case "lesson-plans":
+        return <LessonPlansSection />;
       case "guide":
         return <MethodicalGuideSection />;
       default:
