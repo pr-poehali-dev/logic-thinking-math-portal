@@ -5,7 +5,6 @@ import PuzzleSection from "@/components/PuzzleSection";
 import MethodicalGuideSection from "@/components/MethodicalGuideSection";
 import EntertainingProblemsSection from "@/components/EntertainingProblemsSection";
 
-import FgosPlansSection from "@/components/FgosPlansSection";
 import { useState } from "react";
 
 const Index = () => {
@@ -21,9 +20,6 @@ const Index = () => {
         return <EntertainingProblemsSection />;
       case "guide":
         return <MethodicalGuideSection />;
-      case "fgos-plans":
-        return <FgosPlansSection />;
-
       default:
         return <HomeSection onNavigate={setActiveSection} />;
     }
