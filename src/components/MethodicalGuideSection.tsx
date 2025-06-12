@@ -2094,10 +2094,7 @@ const MethodicalGuideSection = () => {
               </div>
             </div>
             <div className="pt-4 border-t border-gray-200">
-              <Button className="w-full bg-green-600 hover:bg-green-700">
-                <Icon name="FolderOpen" size={16} className="mr-2" />
-                Все планы-конспекты (15 уроков)
-              </Button>
+              <Button className="w-full bg-green-600 hover:bg-green-700"></Button>
             </div>
           </CardContent>
         </Card>
