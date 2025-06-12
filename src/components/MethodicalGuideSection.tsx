@@ -17,72 +17,6 @@ const MethodicalGuideSection = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case "methodology":
-        return renderMethodologyContent();
-      case "examples":
-        return renderExamplesContent();
-      case "assessment":
-        return renderAssessmentContent();
-      default:
-        return renderMethodologyContent();
-    }
-  };
-
-  const renderMethodologyContent = () => (
-    <div className="space-y-8">
-      <div className="grid gap-6">
-        <Card
-          className="cursor-pointer hover:shadow-lg transition-shadow"
-          onClick={() => handleSectionClick("problem-situations")}
-        >
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <span className="flex items-center gap-2">
-                <Icon name="Target" className="text-purple-600" />
-                2.1. Использование проблемных ситуаций
-              </span>
-              <Icon
-                name={
-                  expandedSection === "problem-situations"
-                    ? "ChevronUp"
-                    : "ChevronDown"
-                }
-                size={20}
-              />
-            </CardTitle>
-            <CardDescription>
-              Эффективные способы развития логического мышления через проблемные
-              задачи
-            </CardDescription>
-          </CardHeader>
-          {expandedSection === "problem-situations" && (
-            <CardContent>{renderProblemSituationsContent()}</CardContent>
-          )}
-        </Card>
-      </div>
-    </div>
-  );
-
-  const renderExamplesContent = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center">Практические примеры</h2>
-      <p className="text-gray-600 text-center">
-        Готовые примеры задач и упражнений для развития логического мышления
-      </p>
-    </div>
-  );
-
-  const renderAssessmentContent = () => (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center">Система оценивания</h2>
-      <p className="text-gray-600 text-center">
-        Критерии и методы оценки развития логического мышления учащихся
-      </p>
-    </div>
-  );
-
   const renderProblemSituationsContent = () => (
     <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
       {/* Заголовок */}
@@ -2089,46 +2023,15 @@ const MethodicalGuideSection = () => {
   ];
 
   return (
-    <>
-      <div className="space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-800">
-            Методическое пособие
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Полное руководство для учителей по развитию логического мышления у
-            учащихся
-          </p>
-        </div>
-
-        <div className="flex justify-center space-x-4 mb-8">
-          <Button
-            variant={activeTab === "methodology" ? "default" : "outline"}
-            onClick={() => setActiveTab("methodology")}
-            className="flex items-center gap-2"
-          >
-            <Icon name="BookOpen" size={16} />
-            Методология
-          </Button>
-          <Button
-            variant={activeTab === "examples" ? "default" : "outline"}
-            onClick={() => setActiveTab("examples")}
-            className="flex items-center gap-2"
-          >
-            <Icon name="Lightbulb" size={16} />
-            Примеры
-          </Button>
-          <Button
-            variant={activeTab === "assessment" ? "default" : "outline"}
-            onClick={() => setActiveTab("assessment")}
-            className="flex items-center gap-2"
-          >
-            <Icon name="CheckCircle" size={16} />
-            Оценивание
-          </Button>
-        </div>
-
-        {renderContent()}
+    <div className="space-y-6">
+      <div className="text-center space-y-4">
+        <h1 className="text-3xl font-bold text-gray-800">
+          Методическое пособие для учителей
+        </h1>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          Комплексное руководство по развитию логического мышления у учащихся 6
+          класса
+        </p>
       </div>
 
       <div className="flex justify-center space-x-4 border-b border-gray-200">
@@ -2688,289 +2591,53 @@ const MethodicalGuideSection = () => {
 
       {activeTab === "lessons" && (
         <div className="space-y-6">
-          {/* Описание курса */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200 shadow-lg overflow-hidden">
-            <div className="p-8">
-              <div className="text-center space-y-4 mb-8">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                    <Icon name="BookOpen" className="text-white" size={24} />
-                  </div>
-                  <h2 className="text-3xl font-bold text-blue-800">
-                    Курс развития логического мышления
-                  </h2>
+          {lessonPlans.map((lesson, index) => (
+            <Card
+              key={index}
+              className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
+              onClick={() => handleLessonDownload(index, lesson.title)}
+            >
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="Clock" className="text-blue-600" size={20} />
+                  {lesson.title}
+                  <Icon
+                    name="Download"
+                    className="text-green-600 ml-auto"
+                    size={18}
+                  />
+                </CardTitle>
+                <CardDescription>
+                  Продолжительность: {lesson.duration}
+                  <span className="block text-green-600 font-medium mt-1">
+                    📄 Нажмите для скачивания плана-конспекта
+                  </span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold mb-2">Цели урока:</h4>
+                  <ul className="list-disc list-inside space-y-1">
+                    {lesson.objectives.map((objective, objIndex) => (
+                      <li key={objIndex} className="text-gray-700">
+                        {objective}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Комплексная программа из{" "}
-                  <strong className="text-blue-700">30 занятий</strong> для
-                  учащихся 6 класса, направленная на систематическое развитие
-                  логического мышления через решение математических задач и
-                  проблемных ситуаций.
-                </p>
-              </div>
-
-              {/* Цели курса */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm">
-                  <div className="text-center mb-4">
-                    <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Icon name="Target" size={24} className="text-white" />
-                    </div>
-                    <h3 className="font-bold text-blue-800 text-lg">
-                      Основная цель
-                    </h3>
-                  </div>
-                  <p className="text-gray-700 text-center">
-                    Формирование и развитие логического мышления учащихся через
-                    систематическое решение задач различного типа
-                  </p>
+                <div>
+                  <h4 className="font-semibold mb-2">Структура урока:</h4>
+                  <ul className="list-disc list-inside space-y-1">
+                    {lesson.activities.map((activity, actIndex) => (
+                      <li key={actIndex} className="text-gray-700">
+                        {activity}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm">
-                  <div className="text-center mb-4">
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Icon name="Users" size={24} className="text-white" />
-                    </div>
-                    <h3 className="font-bold text-green-800 text-lg">
-                      Возрастная группа
-                    </h3>
-                  </div>
-                  <p className="text-gray-700 text-center">
-                    Учащиеся 6 класса (11-12 лет) в период активного перехода к
-                    абстрактно-логическому мышлению
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm">
-                  <div className="text-center mb-4">
-                    <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Icon name="Clock" size={24} className="text-white" />
-                    </div>
-                    <h3 className="font-bold text-purple-800 text-lg">
-                      Продолжительность
-                    </h3>
-                  </div>
-                  <p className="text-gray-700 text-center">
-                    30 занятий по 45 минут каждое, рассчитанных на учебную
-                    четверть или полугодие
-                  </p>
-                </div>
-              </div>
-
-              {/* Структура курса */}
-              <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm mb-8">
-                <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-                  <Icon name="Layers" size={20} />
-                  Структура курса
-                </h3>
-                <div className="grid md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                      1-7
-                    </div>
-                    <h4 className="font-semibold text-blue-800 mb-2">
-                      Основы логики
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      Анализ, синтез, сравнение, обобщение, классификация
-                    </p>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600 mb-2">
-                      8-16
-                    </div>
-                    <h4 className="font-semibold text-green-800 mb-2">
-                      Типы задач
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      Соответствие, правда/ложь, взвешивание, переливание
-                    </p>
-                  </div>
-                  <div className="text-center p-4 bg-orange-50 rounded-lg">
-                    <div className="text-2xl font-bold text-orange-600 mb-2">
-                      17-23
-                    </div>
-                    <h4 className="font-semibold text-orange-800 mb-2">
-                      Применение
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      Критическое мышление, аргументация, принятие решений
-                    </p>
-                  </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">
-                      24-30
-                    </div>
-                    <h4 className="font-semibold text-purple-800 mb-2">
-                      Закрепление
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      Игры, дебаты, комплексные задачи
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ключевые особенности */}
-              <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-200">
-                <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-                  <Icon name="Star" size={20} />
-                  Ключевые особенности курса
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Системность подхода
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          От простых операций к сложным логическим построениям
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Практическая направленность
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Все задачи связаны с реальными жизненными ситуациями
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Игровые элементы
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Дебаты, математические бои, интеллектуальные игры
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Дифференциация
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Задания разного уровня сложности для всех учащихся
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Готовые материалы
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Полные планы-конспекты для каждого занятия
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        name="CheckCircle"
-                        size={18}
-                        className="text-green-600 mt-0.5"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Соответствие ФГОС
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Формирование универсальных учебных действий
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Список занятий */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800 text-center mb-6 flex items-center justify-center gap-2">
-              <Icon name="Calendar" size={24} />
-              Планы занятий курса
-            </h2>
-            {lessonPlans.map((lesson, index) => (
-              <Card
-                key={index}
-                className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
-                onClick={() => handleLessonDownload(index, lesson.title)}
-              >
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Icon name="Clock" className="text-blue-600" size={20} />
-                    {lesson.title}
-                    <Icon
-                      name="Download"
-                      className="text-green-600 ml-auto"
-                      size={18}
-                    />
-                  </CardTitle>
-                  <CardDescription>
-                    Продолжительность: {lesson.duration}
-                    <span className="block text-green-600 font-medium mt-1">
-                      📄 Нажмите для скачивания плана-конспекта
-                    </span>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Цели урока:</h4>
-                    <ul className="list-disc list-inside space-y-1">
-                      {lesson.objectives.map((objective, objIndex) => (
-                        <li key={objIndex} className="text-gray-700">
-                          {objective}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Структура урока:</h4>
-                    <ul className="list-disc list-inside space-y-1">
-                      {lesson.activities.map((activity, actIndex) => (
-                        <li key={actIndex} className="text-gray-700">
-                          {activity}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       )}
 
@@ -3048,7 +2715,7 @@ const MethodicalGuideSection = () => {
           </CardContent>
         </Card>
       )}
-    </>
+    </div>
   );
 };
 

@@ -80,68 +80,33 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
         ))}
       </div>
 
-      {/* Раздел о курсе */}
-      <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-8 shadow-sm border border-purple-200 max-w-6xl mx-auto">
-        <div className="text-center space-y-6">
-          <h2 className="text-3xl font-bold text-purple-800 flex items-center justify-center gap-3">
-            🎓 Курс "Основы логического мышления"
-          </h2>
-          <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Курс предназначен для учителей математики, которые хотят эффективно
-            развивать логическое мышление у своих учеников. Программа включает
-            современные методики, практические инструменты и готовые материалы
-            для работы.
-          </p>
-          <Button
-            onClick={() => onNavigate("course")}
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-3 text-lg font-semibold"
-          >
-            Перейти к курсу
-            <Icon name="Play" size={20} />
-          </Button>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mt-8">
-          <div className="bg-white p-6 rounded-lg border border-purple-100 space-y-4">
-            <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto">
-              <Icon name="Target" className="text-purple-600" size={24} />
-            </div>
-            <h3 className="font-bold text-lg text-center text-gray-800">
-              Цели курса
-            </h3>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>• Освоение методик развития логического мышления</li>
-              <li>• Практическое применение инструментов диагностики</li>
-              <li>• Создание эффективных учебных материалов</li>
-            </ul>
+      <div className="bg-white rounded-lg p-6 shadow-sm border border-purple-100 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-4 text-center">О платформе</h2>
+        <div className="grid md:grid-cols-3 gap-6 text-center">
+          <div className="space-y-2">
+            <Icon name="Target" className="mx-auto text-purple-600" size={24} />
+            <h3 className="font-semibold">Диагностика</h3>
+            <p className="text-sm text-gray-600">
+              Определите текущий уровень логического мышления
+            </p>
           </div>
-
-          <div className="bg-white p-6 rounded-lg border border-purple-100 space-y-4">
-            <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto">
-              <Icon name="BookOpen" className="text-blue-600" size={24} />
-            </div>
-            <h3 className="font-bold text-lg text-center text-gray-800">
-              Структура
-            </h3>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>• Теоретические основы</li>
-              <li>• Практические методики</li>
-              <li>• Готовые материалы и задания</li>
-            </ul>
+          <div className="space-y-2">
+            <Icon
+              name="TrendingUp"
+              className="mx-auto text-blue-600"
+              size={24}
+            />
+            <h3 className="font-semibold">Развитие</h3>
+            <p className="text-sm text-gray-600">
+              Систематическое улучшение навыков логики
+            </p>
           </div>
-
-          <div className="bg-white p-6 rounded-lg border border-purple-100 space-y-4">
-            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto">
-              <Icon name="Award" className="text-green-600" size={24} />
-            </div>
-            <h3 className="font-bold text-lg text-center text-gray-800">
-              Особенности
-            </h3>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>• Основан на научных исследованиях</li>
-              <li>• Проверен на практике</li>
-              <li>• Адаптирован под российскую школу</li>
-            </ul>
+          <div className="space-y-2">
+            <Icon name="Award" className="mx-auto text-green-600" size={24} />
+            <h3 className="font-semibold">Результат</h3>
+            <p className="text-sm text-gray-600">
+              Повышение успеваемости по математике
+            </p>
           </div>
         </div>
       </div>
