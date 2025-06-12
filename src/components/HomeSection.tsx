@@ -27,7 +27,7 @@ const HomeSection = ({ onNavigate }: HomeSectionProps) => {
         "Развивайте логику через интересные математические головоломки",
       icon: "Puzzle",
       color: "bg-blue-100 text-blue-600",
-      action: () => onNavigate("puzzles"),
+      action: () => onNavigate("entertaining"),
     },
     {
       title: "Методическое пособие",
