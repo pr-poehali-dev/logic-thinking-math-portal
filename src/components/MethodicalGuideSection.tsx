@@ -12,7 +12,6 @@ import { useState } from "react";
 const MethodicalGuideSection = () => {
   const [activeTab, setActiveTab] = useState("methodology");
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  const [showMath6Lessons, setShowMath6Lessons] = useState(false);
 
   const handleSectionClick = (sectionId: string) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
@@ -1441,14 +1440,10 @@ const MethodicalGuideSection = () => {
     { id: "methodology", label: "Методология", icon: "BookOpen" },
     {
       id: "lesson-plans",
-      label: "Планы-конспекты уроков по математике 6 класс",
-      icon: "Calculator",
-    },
-    {
-      id: "lessons",
-      label: "Курс",
+      label: "Планы-конспекты уроков по ФГОС",
       icon: "GraduationCap",
     },
+    { id: "lessons", label: "Курс", icon: "Calendar" },
     { id: "resources", label: "Ресурсы", icon: "FolderOpen" },
   ];
 
@@ -2032,199 +2027,6 @@ const MethodicalGuideSection = () => {
           ))}
         </div>
       )}
-
-      {/* Новая секция: Планы-конспекты уроков по математике 6 класс */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-r-lg shadow-sm overflow-hidden">
-        <div className="p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-              <Icon name="Calculator" className="text-white" size={20} />
-            </div>
-            <h2 className="text-2xl font-bold text-blue-900">
-              Планы-конспекты уроков по математике 6 класс
-            </h2>
-          </div>
-          <div className="space-y-3 pl-13">
-            <Card
-              key="math-6-lessons"
-              className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
-              onClick={() => setShowMath6Lessons(!showMath6Lessons)}
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <div className="bg-blue-100 p-2 rounded-full">
-                    <Icon name="BookOpen" size={20} className="text-blue-600" />
-                  </div>
-                  Готовые планы-конспекты по математике для 6 класса
-                  <Icon
-                    name={showMath6Lessons ? "ChevronUp" : "ChevronDown"}
-                    size={16}
-                    className="ml-auto text-gray-400"
-                  />
-                </CardTitle>
-                <CardDescription>
-                  Все темы программы 6 класса с подробными планами уроков
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            {showMath6Lessons && (
-              <div className="mt-4 animate-fade-in">
-                <div className="space-y-6">
-                  <div className="text-center space-y-4 mb-8">
-                    <h2 className="text-3xl font-bold text-indigo-800 flex items-center justify-center gap-3">
-                      📚 Планы-конспекты уроков по математике 6 класс
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                      Готовые планы-конспекты уроков математики для 6 класса,
-                      составленные в соответствии с ФГОС
-                    </p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[
-                      {
-                        title:
-                          "Арифметические действия с обыкновенными и десятичными дробями",
-                        description:
-                          "Освоение правил выполнения операций с дробями разных видов. Практические задачи с дробями.",
-                        icon: "Calculator",
-                        color: "blue",
-                      },
-                      {
-                        title:
-                          "Арифметические действия с положительными и отрицательными числами",
-                        description:
-                          "Правила выполнения операций с числами разных знаков. Координатная прямая.",
-                        icon: "Plus",
-                        color: "green",
-                      },
-                      {
-                        title:
-                          "Вычисление процента от величины и величины по её проценту",
-                        description:
-                          "Понятие процента, основные задачи на проценты. Применение в жизненных ситуациях.",
-                        icon: "Percent",
-                        color: "purple",
-                      },
-                      {
-                        title:
-                          "Координаты точки на плоскости, абсцисса и ордината",
-                        description:
-                          "Декартова система координат. Построение точек по координатам и определение координат точек.",
-                        icon: "Grid3X3",
-                        color: "orange",
-                      },
-                      {
-                        title: "Масштаб, пропорция",
-                        description:
-                          "Понятие масштаба и пропорции. Решение задач на прямую и обратную пропорциональность.",
-                        icon: "Ruler",
-                        color: "teal",
-                      },
-                      {
-                        title: "Модуль числа",
-                        description:
-                          "Определение модуля числа. Геометрический смысл модуля. Решение уравнений с модулем.",
-                        icon: "BarChart3",
-                        color: "red",
-                      },
-                    ].map((lesson, index) => (
-                      <Card
-                        key={index}
-                        className={`hover:shadow-lg transition-all duration-300 border-l-4 border-l-${lesson.color}-500 cursor-pointer`}
-                      >
-                        <CardHeader>
-                          <CardTitle className="flex items-center gap-3 text-lg">
-                            <div
-                              className={`w-10 h-10 bg-${lesson.color}-100 rounded-full flex items-center justify-center`}
-                            >
-                              <Icon
-                                name={lesson.icon as any}
-                                size={20}
-                                className={`text-${lesson.color}-600`}
-                              />
-                            </div>
-                            <span className="leading-tight">
-                              {lesson.title}
-                            </span>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <p className="text-gray-600 text-sm leading-relaxed">
-                            {lesson.description}
-                          </p>
-                          <div className="flex gap-2">
-                            <Button
-                              size="sm"
-                              className={`bg-${lesson.color}-600 hover:bg-${lesson.color}-700 flex-1`}
-                            >
-                              <Icon
-                                name="Download"
-                                size={16}
-                                className="mr-2"
-                              />
-                              Скачать план
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="flex-1"
-                            >
-                              <Icon name="Eye" size={16} className="mr-2" />
-                              Просмотр
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-200">
-                    <div className="text-center space-y-4">
-                      <h3 className="text-xl font-bold text-indigo-800 flex items-center justify-center gap-2">
-                        <Icon name="Info" size={24} />
-                        Информация о планах-конспектах
-                      </h3>
-                      <p className="text-gray-700 max-w-3xl mx-auto">
-                        Все планы-конспекты составлены в соответствии с
-                        требованиями ФГОС и включают: цели урока, планируемые
-                        результаты, методы обучения, дидактические материалы и
-                        домашнее задание.
-                      </p>
-                      <div className="flex justify-center gap-4 mt-6">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Icon
-                            name="CheckCircle"
-                            size={16}
-                            className="text-green-600"
-                          />
-                          Соответствие ФГОС
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Icon
-                            name="Clock"
-                            size={16}
-                            className="text-blue-600"
-                          />
-                          45 минут урока
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Icon
-                            name="Users"
-                            size={16}
-                            className="text-purple-600"
-                          />
-                          6 класс
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
 
       {activeTab === "resources" && (
         <div className="grid md:grid-cols-3 gap-6">
