@@ -1623,7 +1623,351 @@ const MethodicalGuideSection = () => {
                 </h2>
               </div>
               <div className="space-y-3 pl-13">
-                {/* Раздел 2.1 - Решение логических задач */}
+                {/* Раздел 2.1 - Использование проблемных ситуаций */}
+                <Card
+                  key="problem-situations"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
+                  onClick={() => handleSectionClick("problem-situations")}
+                >
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-emerald-100 p-2 rounded-full">
+                        <Icon
+                          name="AlertTriangle"
+                          size={20}
+                          className="text-emerald-600"
+                        />
+                      </div>
+                      2.1. Использование проблемных ситуаций
+                      <Icon
+                        name={
+                          expandedSection === "problem-situations"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Методы создания и организации проблемных ситуаций для развития логического мышления
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+                {expandedSection === "problem-situations" && (
+                  <div className="mt-4 animate-fade-in">
+                    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+                      {/* Заголовок */}
+                      <div className="text-center space-y-4 border-b pb-6">
+                        <h3 className="text-3xl font-bold text-emerald-800 flex items-center justify-center gap-3">
+                          🧩 Использование проблемных ситуаций
+                        </h3>
+                        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                          Проблемные ситуации — это специально сконструированные задачи, которые требуют от учащихся 
+                          <strong className="text-emerald-700"> логического анализа и самостоятельного поиска решений</strong>. 
+                          Они создают когнитивный диссонанс, стимулируя активную мыслительную деятельность.
+                        </p>
+                      </div>
+
+                      {/* Типы проблемных ситуаций */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          🎯 Типы проблемных ситуаций
+                        </h4>
+
+                        <div className="grid md:grid-cols-3 gap-6">
+                          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+                            <h5 className="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+                              🌍 На основе реальных ситуаций
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed mb-3">
+                              Задачи, связанные с повседневной жизнью учащихся, которые требуют математического решения.
+                            </p>
+                            <div className="bg-white p-3 rounded border border-blue-200">
+                              <p className="text-xs text-blue-800 font-medium">💡 Пример:</p>
+                              <p className="text-xs text-gray-600 mt-1">
+                                "Как справедливо разделить пиццу между друзьями, если у всех разные аппетиты?"
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                            <h5 className="text-xl font-bold text-purple-800 mb-3 flex items-center gap-2">
+                              🔢 На основе абстрактных концепций
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed mb-3">
+                              Математические парадоксы и неожиданные результаты, которые противоречат интуиции.
+                            </p>
+                            <div className="bg-white p-3 rounded border border-purple-200">
+                              <p className="text-xs text-purple-800 font-medium">🤔 Пример:</p>
+                              <p className="text-xs text-gray-600 mt-1">
+                                "Почему при умножении отрицательных чисел получается положительное?"
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg border border-orange-200">
+                            <h5 className="text-xl font-bold text-orange-800 mb-3 flex items-center gap-2">
+                              📚 На основе исторических фактов
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed mb-3">
+                              Занимательные истории из жизни математиков и исторические задачи.
+                            </p>
+                            <div className="bg-white p-3 rounded border border-orange-200">
+                              <p className="text-xs text-orange-800 font-medium">🏛️ Пример:</p>
+                              <p className="text-xs text-gray-600 mt-1">
+                                "Как древние египтяне строили точные прямые углы без современных инструментов?"
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Методика организации работы */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          ⚙️ Методика организации работы с проблемными ситуациями
+                        </h4>
+
+                        <div className="space-y-4">
+                          {[
+                            {
+                              step: "1",
+                              title: "Формулировка проблемы",
+                              description: "Четкое и понятное изложение проблемной ситуации, которая вызывает познавательный интерес",
+                              details: "Проблема должна быть сформулирована так, чтобы ученики почувствовали противоречие или неожиданность",
+                              color: "red",
+                              time: "5-7 минут"
+                            },
+                            {
+                              step: "2", 
+                              title: "Актуализация знаний",
+                              description: "Повторение и систематизация уже известных учащимся фактов и методов",
+                              details: "Помогает ученикам понять, какие знания они могут использовать для решения проблемы",
+                              color: "orange",
+                              time: "8-10 минут"
+                            },
+                            {
+                              step: "3",
+                              title: "Генерация идей (мозговой штурм)",
+                              description: "Свободное высказывание всех возможных идей и гипотез без критики",
+                              details: "Важно создать атмосферу, где каждый ученик может высказать свою точку зрения",
+                              color: "yellow",
+                              time: "10-12 минут"
+                            },
+                            {
+                              step: "4",
+                              title: "Групповая работа",
+                              description: "Разделение класса на малые группы для детальной проработки идей",
+                              details: "Каждая группа разрабатывает один из предложенных подходов к решению",
+                              color: "green",
+                              time: "15-18 минут"
+                            },
+                            {
+                              step: "5",
+                              title: "Презентация решений",
+                              description: "Представление и обоснование найденных решений каждой группой",
+                              details: "Развивает навыки аргументации и публичного выступления",
+                              color: "blue",
+                              time: "8-10 минут"
+                            },
+                            {
+                              step: "6",
+                              title: "Рефлексия",
+                              description: "Анализ процесса решения, выводы и обобщения",
+                              details: "Помогает осознать использованные методы и зафиксировать новые знания",
+                              color: "purple",
+                              time: "5-7 минут"
+                            }
+                          ].map((item, index) => (
+                            <div
+                              key={index}
+                              className={`bg-gradient-to-r from-${item.color}-50 to-white p-6 rounded-lg border-l-4 border-${item.color}-500 shadow-md`}
+                            >
+                              <div className="flex items-start gap-4">
+                                <div className={`w-12 h-12 bg-${item.color}-500 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0`}>
+                                  {item.step}
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-3 mb-2">
+                                    <h5 className={`text-xl font-bold text-${item.color}-800`}>
+                                      {item.title}
+                                    </h5>
+                                    <span className={`px-2 py-1 bg-${item.color}-100 text-${item.color}-700 rounded-full text-xs font-medium`}>
+                                      {item.time}
+                                    </span>
+                                  </div>
+                                  <p className="text-gray-700 mb-3 leading-relaxed">
+                                    {item.description}
+                                  </p>
+                                  <div className="bg-white p-3 rounded-lg border border-gray-200">
+                                    <p className="text-sm text-gray-600 italic">
+                                      💡 {item.details}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Практический пример */}
+                      <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-lg border border-indigo-200">
+                        <h4 className="text-2xl font-bold text-indigo-800 mb-6 text-center flex items-center justify-center gap-3">
+                          🚀 Практический пример проблемной ситуации
+                        </h4>
+
+                        <div className="bg-white rounded-lg p-6 shadow-md mb-6">
+                          <h5 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <Icon name="AlertCircle" size={24} className="text-red-600" />
+                            Проблемная ситуация: "Парадокс дня рождения"
+                          </h5>
+                          <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500 mb-4">
+                            <p className="text-gray-800 leading-relaxed">
+                              <strong>Вопрос:</strong> "В классе 25 учеников. Как вы думаете, какова вероятность того, 
+                              что у двоих из них день рождения в один и тот же день?"
+                            </p>
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-3">
+                              <h6 className="font-bold text-indigo-700">Первичные гипотезы учеников:</h6>
+                              <ul className="space-y-2 text-sm">
+                                <li className="flex items-center gap-2">
+                                  <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                                  <span>"Очень маленькая, примерно 1-2%"</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
+                                  <span>"Около 10%, потому что класс небольшой"</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                                  <span>"25/365 ≈ 7%"</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="space-y-3">
+                              <h6 className="font-bold text-green-700">Неожиданный результат:</h6>
+                              <div className="bg-green-100 p-4 rounded-lg border border-green-300">
+                                <p className="text-lg font-bold text-green-800 text-center">
+                                  Вероятность составляет около 57%!
+                                </p>
+                                <p className="text-sm text-green-700 text-center mt-2">
+                                  Это больше половины!
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-50 p-6 rounded-lg">
+                          <h6 className="font-bold text-gray-800 mb-3">🎯 Педагогические цели данной проблемной ситуации:</h6>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <ul className="space-y-2 text-sm">
+                              <li className="flex items-start gap-2">
+                                <Icon name="Target" size={16} className="text-blue-600 mt-0.5" />
+                                <span>Развитие интуиции о вероятности</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon name="Brain" size={16} className="text-purple-600 mt-0.5" />
+                                <span>Понимание комбинаторики</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon name="Calculator" size={16} className="text-green-600 mt-0.5" />
+                                <span>Навыки логических вычислений</span>
+                              </li>
+                            </ul>
+                            <ul className="space-y-2 text-sm">
+                              <li className="flex items-start gap-2">
+                                <Icon name="Users" size={16} className="text-orange-600 mt-0.5" />
+                                <span>Групповое обсуждение гипотез</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon name="Lightbulb" size={16} className="text-yellow-600 mt-0.5" />
+                                <span>Критическое мышление</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon name="CheckCircle" size={16} className="text-indigo-600 mt-0.5" />
+                                <span>Проверка предположений</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Преимущества метода */}
+                      <div className="bg-gradient-to-r from-emerald-50 to-green-50 p-8 rounded-lg border border-emerald-200">
+                        <h4 className="text-2xl font-bold text-emerald-800 mb-6 text-center flex items-center justify-center gap-3">
+                          ⭐ Преимущества использования проблемных ситуаций
+                        </h4>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="Zap" size={18} />
+                                Мотивация к обучению
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Создает интерес и желание найти решение, активизирует познавательную деятельность
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="Users" size={18} />
+                                Развитие коммуникации
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Стимулирует обсуждение, обмен мнениями, развивает навыки аргументации
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="Brain" size={18} />
+                                Глубокое понимание
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Знания, полученные через решение проблем, усваиваются лучше и дольше сохраняются
+                              </p>
+                            </div>
+                          </div>
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="Target" size={18} />
+                                Развитие самостоятельности
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Учит принимать решения, брать ответственность за свой выбор
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="Lightbulb" size={18} />
+                                Творческое мышление
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Поощряет поиск нестандартных решений, развивает креативность
+                              </p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                              <h5 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                                <Icon name="CheckCircle" size={18} />
+                                Практические навыки
+                              </h5>
+                              <p className="text-sm text-gray-700">
+                                Готовит к решению реальных жизненных задач и проблем
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Раздел 2.2 - Решение логических задач */}
                 <Card
                   key="logical-tasks"
                   className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
@@ -1638,7 +1982,7 @@ const MethodicalGuideSection = () => {
                           className="text-emerald-600"
                         />
                       </div>
-                      2.2. Решение логических задач различных типов
+                      2.2. Решение логических задач различных типов</CardTitle>
                       <Icon
                         name={
                           expandedSection === "logical-tasks"
