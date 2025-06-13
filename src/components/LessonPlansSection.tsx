@@ -20,7 +20,7 @@ const LessonPlansSection = () => {
         "Развить понимание равенства дробей",
       ],
       materials: "Модели дробей, наглядные пособия",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/BcXY0xsuHIdV5A",
     },
     {
       title: "Урок 2: Сокращение дробей",
@@ -32,7 +32,7 @@ const LessonPlansSection = () => {
         "Развить вычислительные навыки",
       ],
       materials: "Карточки с дробями, алгоритм сокращения",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/yblMPFWwL-4Yqw",
     },
     {
       title: "Урок 3: Приведение дробей к общему знаменателю",
@@ -44,7 +44,7 @@ const LessonPlansSection = () => {
         "Подготовить к сложению и вычитанию дробей",
       ],
       materials: "Схемы приведения, практические задания",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/yblMPFWwL-4Yqw",
     },
     {
       title:
@@ -57,7 +57,7 @@ const LessonPlansSection = () => {
         "Развить навыки работы с алгоритмами",
       ],
       materials: "Числовая прямая, карточки с примерами",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/uXeQ0ZEerC6-0g",
     },
     {
       title: "Урок 5: Сложение и вычитание смешанных чисел",
@@ -69,7 +69,7 @@ const LessonPlansSection = () => {
         "Развить вычислительную культуру",
       ],
       materials: "Модели смешанных чисел, задачи",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/WDSfAYvOrDJAXw",
     },
     {
       title: "Урок 6: Умножение и деление обыкновенных дробей",
@@ -81,7 +81,7 @@ const LessonPlansSection = () => {
         "Развить логическое обоснование действий",
       ],
       materials: "Геометрические модели, алгоритмы действий",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/5QBW8kz7RLhe_g",
     },
     {
       title:
@@ -94,7 +94,7 @@ const LessonPlansSection = () => {
         "Формировать вычислительную культуру",
       ],
       materials: "Калькулятор, таблицы дробей, карточки с примерами",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/36VRLs-A8UE2rQ",
     },
     {
       title: "Урок 8: Положительные и отрицательные числа",
@@ -106,7 +106,7 @@ const LessonPlansSection = () => {
         "Развить понимание числовой прямой",
       ],
       materials: "Числовая прямая, термометр, карточки с числами",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/5GpQQC60wtUDXw",
     },
     {
       title: "Урок 9: Модуль числа",
@@ -118,7 +118,7 @@ const LessonPlansSection = () => {
         "Развить понимание геометрического смысла модуля",
       ],
       materials: "Числовая прямая, карточки с числами, схемы",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/4Az80wd7lq5IKQ",
     },
     {
       title: "Урок 10: Координаты точки на плоскости, абсцисса и ордината",
@@ -130,7 +130,7 @@ const LessonPlansSection = () => {
         "Изучить понятия абсциссы и ординаты",
       ],
       materials: "Координатная сетка, линейка, цветные карандаши",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/JTKU83-_0EWv2Q",
     },
     {
       title: "Урок 11: Масштаб, пропорция",
@@ -142,7 +142,7 @@ const LessonPlansSection = () => {
         "Формировать навык работы с картами и планами",
       ],
       materials: "Карты, планы, линейка, задачи на масштаб",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/EYVBf3KhWCoekg",
     },
     {
       title:
@@ -155,7 +155,7 @@ const LessonPlansSection = () => {
         "Развить пространственное мышление",
       ],
       materials: "Модели фигур, линейка, формулы объёма",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/XKQoOySUc94YgA",
     },
     {
       title: "Урок 13: Осевая и центральная симметрия",
@@ -167,7 +167,7 @@ const LessonPlansSection = () => {
         "Развить понимание симметрии в природе и искусстве",
       ],
       materials: "Зеркало, циркуль, линейка, симметричные фигуры",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/-KTi2vuxwpg76g",
     },
     {
       title: "Урок 14: Положительные и отрицательные числа",
@@ -179,7 +179,7 @@ const LessonPlansSection = () => {
         "Развить понимание практического применения отрицательных чисел",
       ],
       materials: "Термометр, числовая прямая, примеры из жизни",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/5GpQQC60wtUDXw",
     },
     {
       title:
@@ -192,7 +192,7 @@ const LessonPlansSection = () => {
         "Развить пространственное воображение",
       ],
       materials: "Модели геометрических тел, развёртки, схемы",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/3w5TAydDWt3yBw",
     },
     {
       title: "Урок 16: Сравнение и упорядочивание дробей",
@@ -204,7 +204,7 @@ const LessonPlansSection = () => {
         "Развить логическое мышление",
       ],
       materials: "Числовая прямая, карточки с дробями, алгоритмы сравнения",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/bFzQi8itTt9nGg",
     },
     {
       title: "Урок 17: Сравнение положительных и отрицательных чисел",
@@ -216,7 +216,7 @@ const LessonPlansSection = () => {
         "Формировать навык работы с числовой прямой",
       ],
       materials: "Числовая прямая, карточки с числами, термометр",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/43NLZDrJSzzAJw",
     },
     {
       title:
@@ -229,7 +229,7 @@ const LessonPlansSection = () => {
         "Формировать навыки вычислений с числами разных знаков",
       ],
       materials: "Числовая прямая, карточки с примерами, алгоритмы действий",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/c_XRcigKxzpxhA",
     },
     {
       title:
@@ -242,7 +242,7 @@ const LessonPlansSection = () => {
         "Формировать навыки решения практических задач с процентами",
       ],
       materials: "Калькулятор, задачи из повседневной жизни, схемы вычислений",
-      downloadUrl: "#",
+      downloadUrl: "https://disk.yandex.ru/i/_nEMvqShgJyhgQ",
     },
   ];
 
