@@ -246,9 +246,23 @@ const LessonPlansSection = () => {
     },
   ];
 
-  const handleDownload = (title: string) => {
-    // В будущем здесь будет реальная загрузка файлов
-    alert(`Скачивание конспекта: ${title}`);
+  const handleDownload = (downloadUrl: string, title: string) => {
+    if (downloadUrl === "#") {
+      // Временная заглушка для демонстрации
+      alert(`Скачивание конспекта: ${title}`);
+      return;
+    }
+
+    // Создаем временную ссылку для скачивания
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = `${title}.pdf`; // Задаем имя файла
+    link.target = "_blank";
+
+    // Добавляем в DOM, кликаем и удаляем
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -318,7 +332,9 @@ const LessonPlansSection = () => {
                   </div>
                 </div>
                 <Button
-                  onClick={() => handleDownload(lesson.title)}
+                  onClick={() =>
+                    handleDownload(lesson.downloadUrl, lesson.title)
+                  }
                   className="bg-green-600 hover:bg-green-700"
                   size="sm"
                 >
