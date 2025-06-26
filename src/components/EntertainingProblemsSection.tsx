@@ -37,124 +37,97 @@ const EntertainingProblemsSection = () => {
       title: "Задачи на переливание",
       icon: "Droplets",
       color: "blue",
-      // Убираем subtopics для этой категории
     },
     {
       id: "knights-liars",
       title: "Задачи про рыцарей и лжецов",
       icon: "Shield",
       color: "red",
-      subtopics: [
-        { id: "identify", title: "Определение лжеца и рыцаря" },
-        {
-          id: "combined",
-          title: "Комбинированные задачи (рыцари, лжецы и нормальные люди)",
-        },
-        { id: "identity", title: "Задачи на определение личности" },
-      ],
     },
     {
       id: "wise-men",
       title: "Задачи о мудрецах",
       icon: "Brain",
       color: "purple",
-      subtopics: [
-        { id: "reasoning", title: "Задачи на рассуждения мудрецов" },
-        { id: "alternatives", title: "Задачи с альтернативными вариантами" },
-        { id: "eyes", title: "Задачи о глазах мудрецов" },
-      ],
     },
     {
       id: "weighing",
       title: "Задачи про взвешивание",
       icon: "Scale",
       color: "green",
-      subtopics: [
-        { id: "fake-coin", title: "Поиск фальшивой монеты" },
-        { id: "weight", title: "Определение веса" },
-        { id: "complex", title: "Комбинированные задачи" },
-      ],
     },
     {
       id: "non-standard",
       title: "Нестандартная логика",
       icon: "Lightbulb",
       color: "yellow",
-      subtopics: [
-        { id: "cutting", title: "Задачи на разрезание и складывание" },
-        { id: "matches", title: "Задачи со спичками" },
-        { id: "crosswords", title: "Решение кроссвордов" },
-      ],
     },
     {
       id: "paradoxes",
       title: "Логические парадоксы",
       icon: "Infinity",
       color: "indigo",
-      subtopics: [
-        { id: "liar", title: "Парадокс лжеца" },
-        { id: "heap", title: "Парадокс кучи" },
-        { id: "barber", title: "Парадокс парикмахера" },
-      ],
     },
     {
       id: "crossings",
       title: "Переправы и путешествия",
       icon: "MapPin",
       color: "teal",
-      subtopics: [
-        { id: "wolf-goat", title: "Задача о волке, козе и капусте" },
-        { id: "missionaries", title: "Задача о миссионерах и каннибалах" },
-        { id: "harbor", title: "Задача о гавани" },
-      ],
     },
     {
       id: "who-is-who",
       title: "Кто есть кто",
       icon: "Users",
       color: "pink",
-      subtopics: [
-        { id: "description", title: "Установление личности по описанию" },
-        { id: "conditions", title: "Задачи с дополнительными условиями" },
-        { id: "age", title: "Задачи на вычисление возраста" },
-      ],
     },
     {
       id: "number-systems",
       title: "Системы счисления",
       icon: "Binary",
       color: "orange",
-      subtopics: [
-        {
-          id: "conversion",
-          title: "Задачи на перевод из одной системы в другую",
-        },
-        {
-          id: "arithmetic",
-          title: "Задачи на сложение и вычитание в разных системах счисления",
-        },
-        { id: "hidden", title: "Задачи со скрытой системой" },
-      ],
     },
     {
       id: "sequences",
       title: "Последовательности",
       icon: "TrendingUp",
       color: "cyan",
-      subtopics: [
-        { id: "next", title: "Нахождение следующего члена последовательности" },
-        {
-          id: "pattern",
-          title: "Определение закономерности последовательности",
-        },
-        { id: "missing", title: "Задачи на восстановление пропущенных членов" },
-      ],
     },
   ];
 
-  const getTasksBySubtopic = (topicId: string, subtopicId: string) => {
-    // Здесь пример для "Поиск фальшивой монеты"
-    if (topicId === "weighing" && subtopicId === "fake-coin") {
+  const getTasksByTopic = (topicId: string) => {
+    // Обработка задач на переливание из puzzleData
+    if (topicId === "pouring") {
+      const pouringCategory = puzzleCategories.find(
+        (cat) => cat.id === "pouring",
+      );
+      if (pouringCategory) {
+        return {
+          description:
+            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
+          easy: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+      }
+    }
+
+    // Задачи про взвешивание
+    if (topicId === "weighing") {
       return {
         description:
           "Задачи на поиск фальшивой монеты с помощью весов. Цель - найти отличающуюся по весу монету за минимальное количество взвешиваний.",
@@ -276,7 +249,7 @@ const EntertainingProblemsSection = () => {
       }
     }
 
-    // Для других комбинаций возвращаем базовый шаблон
+    // Для остальных категорий возвращаем базовый шаблон
     return {
       description:
         "Описание данного типа задач будет добавлено в следующих обновлениях.",
