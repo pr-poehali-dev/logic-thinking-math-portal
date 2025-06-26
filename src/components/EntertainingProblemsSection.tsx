@@ -126,6 +126,37 @@ const EntertainingProblemsSection = () => {
       }
     }
 
+    // Задачи про рыцарей и лжецов
+    if (topicId === "knights-liars") {
+      const knightsCategory = puzzleCategories.find(
+        (cat) => cat.id === "knights-knaves",
+      );
+      if (knightsCategory) {
+        return {
+          description:
+            "Логические задачи про рыцарей (всегда говорят правду) и лжецов (всегда лгут). Развивают навыки логического анализа высказываний.",
+          easy: knightsCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: knightsCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: knightsCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+      }
+    }
+
     // Задачи про взвешивание
     if (topicId === "weighing") {
       return {
