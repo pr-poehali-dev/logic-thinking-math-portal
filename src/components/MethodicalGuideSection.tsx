@@ -2082,330 +2082,592 @@ const MethodicalGuideSection = () => {
                 {expandedSection === "logical-tasks" && (
                   <div className="mt-4 animate-fade-in">
                     <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
-                      {/* Классификация логических задач */}
-                      <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-lg border-l-4 border-green-500">
-                        <h5 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
-                          📋 Классификация логических задач
-                        </h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="space-y-3">
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="CheckCircle"
-                                size={16}
-                                className="text-blue-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                1. Истинностные задачи
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="ArrowLeft"
-                                size={16}
-                                className="text-purple-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                2. Задачи, решаемые с конца
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Coffee"
-                                size={16}
-                                className="text-orange-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                3. Задачи на переливание
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Scale"
-                                size={16}
-                                className="text-red-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                4. Задачи на взвешивание
-                              </span>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Users"
-                                size={16}
-                                className="text-indigo-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                5. Задачи типа «Кто есть кто?»
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Layers"
-                                size={16}
-                                className="text-green-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                6. Задачи на пересечение или объединение
-                                множеств
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Shield"
-                                size={16}
-                                className="text-yellow-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                7. Задачи о рыцарях и лжецах
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="Target"
-                                size={16}
-                                className="text-pink-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                8. Задачи на выработку стратегии
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                      {/* Заголовок */}
+                      <div className="text-center space-y-4 border-b pb-6">
+                        <h3 className="text-3xl font-bold text-emerald-800 flex items-center justify-center gap-3">
+                          🧩 Решение логических задач различных типов
+                        </h3>
+                        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                          Логические задачи — это мощный инструмент развития
+                          мышления. Каждый тип задач развивает определенные
+                          аспекты логического мышления: от анализа и синтеза до
+                          пространственного мышления и планирования действий.
+                        </p>
                       </div>
 
-                      {/* Пример задачи на соответствие */}
-                      <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                        <h5 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-                          🎯 Пример: Задача на соответствие
-                        </h5>
-                        <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
-                          <p className="text-gray-800 font-medium mb-3">
-                            <strong>Условие:</strong> Трое друзей — Петя, Вася и
-                            Коля — живут в разных городах: Москва,
-                            Санкт-Петербург и Киев. Определите, кто где живёт,
-                            если известно:
+                      {/* 8 типов логических задач */}
+                      <div className="space-y-8">
+                        {/* Тип 1: Истинностные задачи */}
+                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+                          <h4 className="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
+                              1
+                            </span>
+                            Истинностные задачи
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Задачи, в которых требуется установить ложность или
+                            истинность высказываний.
                           </p>
-                          <ul className="space-y-2 text-gray-700 ml-4">
-                            <li>• Петя не живёт в Москве</li>
-                            <li>• Вася живёт в Москве</li>
-                            <li>
-                              • Коля не живёт в Москве и не в Санкт-Петербурге
-                            </li>
-                          </ul>
-                        </div>
 
-                        {/* Таблица решения */}
-                        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                          <h6 className="text-lg font-bold text-gray-800 p-4 bg-gray-50 border-b">
-                            📊 Таблица для решения:
-                          </h6>
-                          <div className="p-4">
-                            <img
-                              src="https://cdn.poehali.dev/files/b1cceb5b-89cd-492c-8608-919c92824bcd.png"
-                              alt="Таблица решения логической задачи"
-                              className="mx-auto max-w-full h-auto rounded-lg border"
-                            />
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-blue-800 mb-3">
+                              📦 Пример: Задача о коробках
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> В трёх коробках лежат
+                              ручки, ластики и фломастеры. На первой коробке
+                              написано «Ластики», на второй – «Ручки», на
+                              третьей – «Ластики или фломастеры». Содержимое
+                              каждой коробки не соответствует надписи. В какой
+                              коробке что находится?
+                            </p>
+
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-blue-800 mb-2">
+                                🔍 Решение:
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Шаг 1:</strong> Начинаем с третьей
+                                  коробки. На ней написано «Ластики или
+                                  фломастеры», но содержимое не соответствует
+                                  надписи. Значит, там не могут быть ни ластики,
+                                  ни фломастеры.
+                                  <span className="text-blue-700 font-bold">
+                                    → В третьей коробке ручки!
+                                  </span>
+                                </p>
+
+                                <p>
+                                  <strong>Шаг 2:</strong> Ручки уже в третьей
+                                  коробке. На первой написано «Ластики», но
+                                  содержимое не соответствует надписи.
+                                  <span className="text-blue-700 font-bold">
+                                    → В первой коробке фломастеры!
+                                  </span>
+                                </p>
+
+                                <p>
+                                  <strong>Шаг 3:</strong> Остается вторая
+                                  коробка.
+                                  <span className="text-blue-700 font-bold">
+                                    → Во второй коробке ластики!
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
-                        {/* Пошаговое решение */}
-                        <div className="mt-4 bg-white p-4 rounded-lg shadow-sm">
-                          <h6 className="text-lg font-bold text-blue-800 mb-3 flex items-center gap-2">
-                            <Icon name="List" size={20} />
-                            Пошаговое решение:
-                          </h6>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                              <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                                1
+                        {/* Тип 2: Задачи, решаемые с конца */}
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                          <h4 className="text-2xl font-bold text-purple-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">
+                              2
+                            </span>
+                            Задачи, решаемые с конца
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Интересный тип задач, в которых решение начинается с
+                            известного конечного результата и осуществляется в
+                            обратном порядке.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-purple-800 mb-3">
+                              🔢 Пример: Задуманное число
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> Я задумал число,
+                              прибавил к нему 5, потом разделил сумму на 3,
+                              умножил на 4, отнял 6, разделил на 7 и получил
+                              число 2. Какое число я задумал?
+                            </p>
+
+                            <div className="bg-purple-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-purple-800 mb-2">
+                                ⬅️ Решение (с конца):
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Результат:</strong> 2
+                                </p>
+                                <p>
+                                  <strong>Шаг 1:</strong> 2 × 7 ={" "}
+                                  <span className="text-purple-700 font-bold">
+                                    14
+                                  </span>{" "}
+                                  (число до деления на 7)
+                                </p>
+                                <p>
+                                  <strong>Шаг 2:</strong> 14 + 6 ={" "}
+                                  <span className="text-purple-700 font-bold">
+                                    20
+                                  </span>{" "}
+                                  (число до вычитания 6)
+                                </p>
+                                <p>
+                                  <strong>Шаг 3:</strong> 20 ÷ 4 ={" "}
+                                  <span className="text-purple-700 font-bold">
+                                    5
+                                  </span>{" "}
+                                  (число до умножения на 4)
+                                </p>
+                                <p>
+                                  <strong>Шаг 4:</strong> 5 × 3 ={" "}
+                                  <span className="text-purple-700 font-bold">
+                                    15
+                                  </span>{" "}
+                                  (число до деления на 3)
+                                </p>
+                                <p>
+                                  <strong>Шаг 5:</strong> 15 - 5 ={" "}
+                                  <span className="text-purple-700 font-bold">
+                                    10
+                                  </span>{" "}
+                                  (искомое число)
+                                </p>
                               </div>
-                              <p className="text-gray-800">
-                                Вася живёт в Москве — ставим{" "}
-                                <strong className="text-green-600">+</strong> в
-                                соответствующую ячейку
-                              </p>
                             </div>
-                            <div className="flex items-start gap-3 p-3 bg-yellow-50 rounded-lg">
-                              <div className="w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                                2
+                          </div>
+                        </div>
+
+                        {/* Тип 3: Задачи на переливание */}
+                        <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg border border-orange-200">
+                          <h4 className="text-2xl font-bold text-orange-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+                              3
+                            </span>
+                            Задачи на переливание
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Задачи, в которых с помощью сосудов определённых
+                            ёмкостей требуется отмерить некоторое количество
+                            жидкости.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-orange-800 mb-3">
+                              🫗 Пример: Кастрюля и банка
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> Необходимо отмерить 3
+                              литра воды, используя четырёхлитровую кастрюлю и
+                              5-литровую банку. Какое наименьшее количество
+                              переливаний потребуется?
+                            </p>
+
+                            <div className="bg-orange-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-orange-800 mb-2">
+                                💧 Алгоритм решения:
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Шаг 1:</strong> Наполняем кастрюлю (4
+                                  л) водой
+                                </p>
+                                <p>
+                                  <strong>Шаг 2:</strong> Переливаем воду из
+                                  кастрюли в банку (в банке 4 л, в кастрюле 0 л)
+                                </p>
+                                <p>
+                                  <strong>Шаг 3:</strong> Снова наполняем
+                                  кастрюлю (4 л)
+                                </p>
+                                <p>
+                                  <strong>Шаг 4:</strong> Полностью заполняем
+                                  банку из кастрюли. В банке помещается еще 1 л,
+                                  значит в кастрюле остается
+                                  <span className="text-orange-700 font-bold">
+                                    3 литра!
+                                  </span>
+                                </p>
                               </div>
-                              <p className="text-gray-800">
-                                Петя не живёт в Москве — ставим{" "}
-                                <strong className="text-red-600">-</strong> в
-                                ячейку "Петя-Москва"
-                              </p>
                             </div>
-                            <div className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
-                              <div className="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                                3
+                          </div>
+                        </div>
+
+                        {/* Тип 4: Задачи на взвешивание */}
+                        <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-lg border border-red-200">
+                          <h4 className="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold">
+                              4
+                            </span>
+                            Задачи на взвешивание
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Тип олимпиадных математических задач, в которых
+                            требуется установить какой-либо факт (выделить
+                            фальшивую монету из настоящих, отсортировать набор
+                            грузов по убыванию веса) посредством взвешивания на
+                            весах.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h5 className="font-bold text-red-800 mb-3">
+                              ⚖️ Основные приемы решения:
+                            </h5>
+                            <div className="grid md:grid-cols-2 gap-4">
+                              <div className="space-y-2 text-sm">
+                                <p>• Принцип деления пополам</p>
+                                <p>• Метод исключения групп</p>
+                                <p>• Анализ результатов взвешивания</p>
                               </div>
-                              <p className="text-gray-800">
-                                Коля не живёт в Москве и СПб — ставим{" "}
-                                <strong className="text-red-600">-</strong> в
-                                соответствующие ячейки
-                              </p>
+                              <div className="space-y-2 text-sm">
+                                <p>• Логическое рассуждение</p>
+                                <p>• Минимизация числа взвешиваний</p>
+                                <p>• Проверка всех случаев</p>
+                              </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
-                              <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                                4
-                              </div>
-                              <p className="text-gray-800">
-                                Логический вывод: Коля живёт в Киеве, Петя — в
-                                Санкт-Петербурге
+                          </div>
+                        </div>
+
+                        {/* Тип 5: Задачи типа «Кто есть кто?» */}
+                        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-200">
+                          <h4 className="text-2xl font-bold text-indigo-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">
+                              5
+                            </span>
+                            Задачи типа «Кто есть кто?»
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Увлекательные логические головоломки, в которых
+                            необходимо установить соответствие между различными
+                            элементами на основе заданных условий.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-indigo-800 mb-3">
+                              👥 Пример: Люди в кругу
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> В кругу сидят четыре
+                              человека: Смирнов, Петров, Марков и Карпов.
+                              Каждому соответствует одно из имён: Андрей,
+                              Сергей, Василий и Алексей.
+                            </p>
+
+                            <div className="bg-gray-50 p-3 rounded mb-3">
+                              <p className="text-sm">
+                                <strong>Условия:</strong>
                               </p>
+                              <ul className="text-sm space-y-1 ml-4">
+                                <li>1) Смирнов не Алексей и не Андрей</li>
+                                <li>
+                                  2) Сергей сидит между Марковым и Василием
+                                </li>
+                                <li>3) Карпов не Сергей и не Алексей</li>
+                                <li>
+                                  4) Петров сидит между Карповым и Андреем
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div className="bg-indigo-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-indigo-800 mb-2">
+                                ✅ Результат:
+                              </h6>
+                              <div className="grid grid-cols-2 gap-2 text-sm">
+                                <p>
+                                  • <strong>Смирнов</strong> — Василий
+                                </p>
+                                <p>
+                                  • <strong>Петров</strong> — Андрей
+                                </p>
+                                <p>
+                                  • <strong>Марков</strong> — Сергей
+                                </p>
+                                <p>
+                                  • <strong>Карпов</strong> — Алексей
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Тип 6: Задачи на пересечение множеств */}
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+                          <h4 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                              6
+                            </span>
+                            Задачи на пересечение множеств
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Тип задач, где требуется найти некоторое пересечение
+                            множеств или их объединение по данному условию
+                            задачи.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-green-800 mb-3">
+                              🎬 Пример: Любители кино
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> Ребята из 7 класса любят
+                              ходить в кино. 15 ребят смотрели фильм «Шрек», 11
+                              человек – фильм «Трансформеры». Из них 6 смотрели
+                              и «Шрек», и «Трансформеры». Сколько человек
+                              смотрели только фильм «Трансформеры»?
+                            </p>
+
+                            <div className="bg-green-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-green-800 mb-2">
+                                🔄 Решение:
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Шаг 1:</strong> 6 человек смотрели оба
+                                  фильма (пересечение множеств)
+                                </p>
+                                <p>
+                                  <strong>Шаг 2:</strong> Только «Шрек»: 15 - 6
+                                  ={" "}
+                                  <span className="text-green-700 font-bold">
+                                    9 человек
+                                  </span>
+                                </p>
+                                <p>
+                                  <strong>Шаг 3:</strong> Только «Трансформеры»:
+                                  11 - 6 ={" "}
+                                  <span className="text-green-700 font-bold">
+                                    5 человек
+                                  </span>
+                                </p>
+                              </div>
+                              <div className="mt-3 p-3 bg-white rounded border">
+                                <p className="text-center font-bold text-green-800">
+                                  Ответ: 5 человек смотрели только
+                                  «Трансформеры»
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Тип 7: Задачи о рыцарях и лжецах */}
+                        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-lg border border-yellow-200">
+                          <h4 className="text-2xl font-bold text-yellow-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">
+                              7
+                            </span>
+                            Задачи о рыцарях и лжецах
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Разновидность математических задач с двумя типами
+                            персонажей:
+                            <strong>лжец</strong> — человек, всегда говорящий
+                            ложь,
+                            <strong>рыцарь</strong> — человек, говорящий всегда
+                            правду.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-yellow-800 mb-3">
+                              ⚔️ Пример: 12 человек за столом
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> По кругу сидят рыцари и
+                              лжецы — всего 12 человек. Каждый из них сделал
+                              заявление: «Все кроме меня и моих соседей —
+                              лжецы». Сколько лжецов сидит за столом?
+                            </p>
+
+                            <div className="bg-yellow-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-yellow-800 mb-2">
+                                🧠 Логическое рассуждение:
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Анализ:</strong> Все не могут быть
+                                  лжецами — тогда все заявления были бы
+                                  истинными
+                                </p>
+                                <p>
+                                  <strong>Вывод 1:</strong> Есть рыцарь. Все,
+                                  кроме его 2 соседей — лжецы
+                                </p>
+                                <p>
+                                  <strong>Вывод 2:</strong> Оба соседа не могут
+                                  быть лжецами (сказали бы правду) и не могут
+                                  быть рыцарями (сказали бы ложь)
+                                </p>
+                                <p>
+                                  <strong>Решение:</strong> Один сосед — лжец,
+                                  другой — рыцарь (2 рыцаря рядом, остальные —
+                                  лжецы)
+                                </p>
+                                <p className="font-bold text-yellow-700">
+                                  Ответ: 10 лжецов
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Тип 8: Задачи на выработку стратегии */}
+                        <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-6 rounded-lg border border-pink-200">
+                          <h4 className="text-2xl font-bold text-pink-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-pink-500 text-white rounded-full flex items-center justify-center font-bold">
+                              8
+                            </span>
+                            Задачи на выработку стратегии
+                          </h4>
+                          <p className="text-gray-700 mb-4">
+                            Особая игровая ситуация, в которой предлагается
+                            выбрать игрока и доказать возможность проведения
+                            определённых действий, которые обязательно приведут
+                            к победе.
+                          </p>
+
+                          <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <h5 className="font-bold text-pink-800 mb-3">
+                              🍫 Пример: Шоколадка 5×8
+                            </h5>
+                            <p className="text-gray-800 mb-3">
+                              <strong>Условие:</strong> Двое по очереди ломают
+                              шоколадку 5×8. За ход можно разломать любой кусок
+                              по прямой линии между дольками. Проигрывает тот,
+                              кто не может сделать ход. Кто выиграет при
+                              правильной игре?
+                            </p>
+
+                            <div className="bg-pink-50 p-4 rounded-lg">
+                              <h6 className="font-bold text-pink-800 mb-2">
+                                🎯 Стратегическое решение:
+                              </h6>
+                              <div className="space-y-2 text-sm">
+                                <p>
+                                  <strong>Анализ:</strong> Долек всего 5 × 8 =
+                                  40 штук, шоколадка вначале была одна
+                                </p>
+                                <p>
+                                  <strong>Правило:</strong> На каждом ходу один
+                                  кусок разламывается на 2, количество кусков
+                                  увеличивается на 1
+                                </p>
+                                <p>
+                                  <strong>Расчет:</strong> Начало: 1 кусок →
+                                  Конец: 40 кусков → Ходов: 39
+                                </p>
+                                <p>
+                                  <strong>Вывод:</strong> 39 — нечетное число,
+                                  последний ход делает первый игрок
+                                </p>
+                                <p className="font-bold text-pink-700">
+                                  Ответ: Первый игрок всегда выиграет!
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Методы решения */}
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
-                        <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
-                          ⚡ Основные методы решения
-                        </h5>
+                      {/* Математическая логика и Аристотель */}
+                      <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-lg border border-gray-300 shadow-lg">
+                        <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-3">
+                          🏛️ Математическая логика и Аристотель
+                        </h4>
+
                         <div className="grid md:grid-cols-2 gap-6">
-                          <div className="space-y-4">
-                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Icon
-                                  name="Table"
-                                  size={18}
-                                  className="text-blue-600"
-                                />
-                                <h6 className="font-bold text-gray-800">
-                                  Табличный метод
-                                </h6>
-                              </div>
-                              <p className="text-gray-600 text-sm">
-                                Составление таблиц соответствий для визуализации
-                                условий
-                              </p>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Icon
-                                  name="TreePine"
-                                  size={18}
-                                  className="text-green-600"
-                                />
-                                <h6 className="font-bold text-gray-800">
-                                  Метод дерева решений
-                                </h6>
-                              </div>
-                              <p className="text-gray-600 text-sm">
-                                Пошаговое построение логических цепочек
+                          <div className="bg-white p-6 rounded-lg shadow-sm">
+                            <h5 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                              <Icon name="BookOpen" size={20} />
+                              Что такое математическая логика?
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed mb-4">
+                              В процессе решения задач на логику учащиеся
+                              познакомятся с
+                              <strong className="text-blue-700">
+                                {" "}
+                                математической логикой
+                              </strong>{" "}
+                              — отдельной наукой, именуемой по-другому
+                              <em>«математикой без формул»</em>.
+                            </p>
+                            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                              <p className="text-sm text-blue-800 font-medium">
+                                💡 <strong>Определение:</strong> Логика — это
+                                наука о правильном мышлении, или, иными словами,
+                                «искусство рассуждения».
                               </p>
                             </div>
                           </div>
-                          <div className="space-y-4">
-                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Icon
-                                  name="Minus"
-                                  size={18}
-                                  className="text-red-600"
-                                />
-                                <h6 className="font-bold text-gray-800">
-                                  Метод исключения
-                                </h6>
-                              </div>
-                              <p className="text-gray-600 text-sm">
-                                Последовательное исключение невозможных
-                                вариантов
+
+                          <div className="bg-white p-6 rounded-lg shadow-sm">
+                            <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                              <Icon name="Crown" size={20} />
+                              Аристотель — создатель логики
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed mb-4">
+                              Логика как наука была создана{" "}
+                              <strong className="text-purple-700">
+                                Аристотелем
+                              </strong>
+                              , который был не математиком, а философом. Логика
+                              первоначально была частью философии, одним из
+                              методов рассуждений.
+                            </p>
+                            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                              <p className="text-sm text-purple-800 font-medium mb-2">
+                                📜 <strong>Труд «Аналитики»:</strong>
                               </p>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Icon
-                                  name="CheckCircle"
-                                  size={18}
-                                  className="text-purple-600"
-                                />
-                                <h6 className="font-bold text-gray-800">
-                                  Метод допущений
-                                </h6>
-                              </div>
-                              <p className="text-gray-600 text-sm">
-                                Проверка гипотез методом от противного
+                              <p className="text-sm text-gray-700">
+                                Аристотель создал 20 схем рассуждений, которые
+                                назвал
+                                <strong>силлогизмами</strong>.
                               </p>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Практические советы */}
-                      <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
-                        <h5 className="text-xl font-bold text-orange-800 mb-4 flex items-center gap-2">
-                          💡 Практические советы
-                        </h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="Eye"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Внимательно читайте условие несколько раз
-                              </span>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="PenTool"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Выделяйте ключевые слова и условия
-                              </span>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="Grid"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Составляйте схемы и таблицы
-                              </span>
+                        {/* Знаменитый силлогизм */}
+                        <div className="mt-6 bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-lg border border-yellow-300">
+                          <h5 className="text-xl font-bold text-orange-800 mb-4 text-center">
+                            🎯 Самый известный силлогизм Аристотеля
+                          </h5>
+                          <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                            <div className="space-y-3">
+                              <p className="text-gray-800 font-medium">
+                                <span className="text-blue-700">
+                                  «Сократ — человек»
+                                </span>
+                              </p>
+                              <div className="flex justify-center">
+                                <Icon
+                                  name="ArrowDown"
+                                  size={20}
+                                  className="text-gray-400"
+                                />
+                              </div>
+                              <p className="text-gray-800 font-medium">
+                                <span className="text-green-700">
+                                  «Все люди смертны»
+                                </span>
+                              </p>
+                              <div className="flex justify-center">
+                                <Icon
+                                  name="ArrowDown"
+                                  size={20}
+                                  className="text-gray-400"
+                                />
+                              </div>
+                              <p className="text-lg font-bold text-orange-700">
+                                «Значит, Сократ смертен»
+                              </p>
                             </div>
                           </div>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="ArrowRight"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Действуйте пошагово, не спешите
-                              </span>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="RotateCcw"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Проверяйте полученные результаты
-                              </span>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <Icon
-                                name="BookOpen"
-                                size={16}
-                                className="text-orange-600 mt-1"
-                              />
-                              <span className="text-gray-700">
-                                Практикуйтесь на разных типах задач
-                              </span>
-                            </div>
-                          </div>
+                        </div>
+
+                        <div className="mt-6 p-4 bg-indigo-100 rounded-lg border border-indigo-300">
+                          <p className="text-center text-indigo-800 font-medium">
+                            🌟 <strong>Для учителя:</strong> Изучение различных
+                            типов логических задач помогает ученикам освоить
+                            основы логического мышления, которое является
+                            фундаментом математического образования и
+                            критического мышления в целом.
+                          </p>
                         </div>
                       </div>
                     </div>
