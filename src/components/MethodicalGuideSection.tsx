@@ -3469,6 +3469,878 @@ const MethodicalGuideSection = () => {
                     </div>
                   </div>
                 )}
+
+                {/* Раздел 2.4 - Методические рекомендации по использованию занимательных задач */}
+                <Card
+                  key="entertaining-tasks-recommendations"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
+                  onClick={() =>
+                    handleSectionClick("entertaining-tasks-recommendations")
+                  }
+                >
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-emerald-100 p-2 rounded-full">
+                        <Icon
+                          name="Gamepad2"
+                          size={20}
+                          className="text-emerald-600"
+                        />
+                      </div>
+                      2.4. Методические рекомендации по использованию
+                      занимательных задач
+                      <Icon
+                        name={
+                          expandedSection ===
+                          "entertaining-tasks-recommendations"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Дидактические принципы и практические рекомендации для
+                      эффективного использования занимательных задач в обучении
+                      математике
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+                {expandedSection === "entertaining-tasks-recommendations" && (
+                  <div className="mt-4 animate-fade-in">
+                    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+                      {/* Заголовок */}
+                      <div className="text-center space-y-4 border-b pb-6">
+                        <h3 className="text-3xl font-bold text-emerald-800 flex items-center justify-center gap-3">
+                          🎯 Методические рекомендации по использованию
+                          занимательных задач
+                        </h3>
+                        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                          Занимательные задачи представляют собой ценный
+                          <strong className="text-emerald-700">
+                            {" "}
+                            дидактический инструмент
+                          </strong>
+                          , способствующий повышению мотивации учащихся к
+                          изучению математики и развитию их интеллектуальных
+                          способностей. Учёт возрастных особенностей помогает
+                          сделать использование занимательных задач максимально
+                          эффективным.
+                        </p>
+                      </div>
+
+                      {/* Основные принципы */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          🏗️ Основные принципы использования занимательных задач
+                        </h4>
+
+                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+                          <h5 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                            <Icon name="Target" size={20} />
+                            Целесообразность использования
+                          </h5>
+                          <p className="text-gray-700 leading-relaxed mb-4">
+                            Использование занимательных задач{" "}
+                            <strong className="text-blue-700">
+                              не должно быть самоцелью
+                            </strong>
+                            . Целесообразность их включения в урок определяется
+                            конкретными дидактическими задачами:
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <ul className="space-y-2 text-sm">
+                              <li className="flex items-start gap-2">
+                                <Icon
+                                  name="RotateCcw"
+                                  size={16}
+                                  className="text-blue-600 mt-0.5"
+                                />
+                                <span>
+                                  Повторение и систематизация ранее изученного
+                                  материала
+                                </span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon
+                                  name="Eye"
+                                  size={16}
+                                  className="text-blue-600 mt-0.5"
+                                />
+                                <span>
+                                  Подготовка к восприятию новых знаний
+                                </span>
+                              </li>
+                            </ul>
+                            <ul className="space-y-2 text-sm">
+                              <li className="flex items-start gap-2">
+                                <Icon
+                                  name="Lock"
+                                  size={16}
+                                  className="text-blue-600 mt-0.5"
+                                />
+                                <span>Закрепление полученных навыков</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <Icon
+                                  name="Brain"
+                                  size={16}
+                                  className="text-blue-600 mt-0.5"
+                                />
+                                <span>
+                                  Развитие логического мышления и
+                                  пространственного воображения
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Таблица организационных форм */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          📊 Формы организации учебного процесса
+                        </h4>
+
+                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                          <div className="overflow-x-auto">
+                            <table className="w-full border-collapse text-sm">
+                              <thead>
+                                <tr className="bg-emerald-100">
+                                  <th className="border border-gray-300 p-4 font-bold text-left text-emerald-800">
+                                    Форма организации
+                                  </th>
+                                  <th className="border border-gray-300 p-4 font-bold text-left text-emerald-800">
+                                    Описание
+                                  </th>
+                                  <th className="border border-gray-300 p-4 font-bold text-left text-emerald-800">
+                                    Плюсы
+                                  </th>
+                                  <th className="border border-gray-300 p-4 font-bold text-left text-emerald-800">
+                                    Минусы
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr className="bg-blue-50">
+                                  <td className="border border-gray-300 p-4 font-bold text-blue-800">
+                                    Фронтальная
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Задача предлагается всему классу
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Вовлекает всех, создаёт общую базу знаний
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Может быть сложно для слабых учеников, не
+                                    всегда интересна для сильных
+                                  </td>
+                                </tr>
+                                <tr className="bg-green-50">
+                                  <td className="border border-gray-300 p-4 font-bold text-green-800">
+                                    Факультативная
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Задача предлагается всем, но решение – на
+                                    усмотрение ученика
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Подходит для дифференциации, стимулирует
+                                    интерес без давления
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Некоторые ученики могут остаться в стороне
+                                  </td>
+                                </tr>
+                                <tr className="bg-purple-50">
+                                  <td className="border border-gray-300 p-4 font-bold text-purple-800">
+                                    Кружковая
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Задача предлагается всем в классе, но
+                                    решение разбирается на внеурочных занятиях
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Позволяет глубоко погрузиться в сложные
+                                    темы, развивает творческие способности
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Охватывает небольшое число учеников
+                                  </td>
+                                </tr>
+                                <tr className="bg-orange-50">
+                                  <td className="border border-gray-300 p-4 font-bold text-orange-800">
+                                    Рубрика «Это интересно!»
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Краткое представление занимательного факта с
+                                    предложением самостоятельно разобраться
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Развивает самостоятельность,
+                                    любознательность, может «зацепить» даже
+                                    незаинтересованных
+                                  </td>
+                                  <td className="border border-gray-300 p-4">
+                                    Требует от ученика самодисциплины,
+                                    эффективность зависит от уровня подготовки
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Требования к отбору задач */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          📋 Требования к отбору занимательных задач
+                        </h4>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-200">
+                            <h5 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
+                              <Icon name="BookOpen" size={20} />
+                              Математическое содержание
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed">
+                              Задачи должны обладать{" "}
+                              <strong className="text-indigo-700">
+                                серьёзным математическим содержанием
+                              </strong>
+                              , способствующим формированию у учащихся
+                              необходимых знаний и умений.
+                            </p>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+                            <h5 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                              <Icon name="Clock" size={20} />
+                              Временные рамки
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed">
+                              Время, затрачиваемое на решение каждой задачи,
+                              должно быть{" "}
+                              <strong className="text-green-700">
+                                разумным и не превышать 15 минут
+                              </strong>
+                              , в зависимости от сложности и целей урока.
+                            </p>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg border border-orange-200">
+                            <h5 className="text-xl font-bold text-orange-800 mb-4 flex items-center gap-2">
+                              <Icon name="Users" size={20} />
+                              Возрастные особенности
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed">
+                              Необходимо учитывать{" "}
+                              <strong className="text-orange-700">
+                                возрастные особенности учащихся
+                              </strong>
+                              и подбирать задачи, соответствующие их уровню
+                              развития и познавательным возможностям.
+                            </p>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                            <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                              <Icon name="Lightbulb" size={20} />
+                              Познавательная активность
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed">
+                              Задача должна{" "}
+                              <strong className="text-purple-700">
+                                стимулировать познавательную активность
+                              </strong>
+                              , побуждать к поиску решений, используя знания,
+                              воображение, смекалку и находчивость.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Примеры вопросов */}
+                        <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-6 rounded-lg border border-gray-200">
+                          <h5 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                            <Icon name="MessageCircle" size={20} />
+                            🤔 Вопросы, побуждающие к размышлению:
+                          </h5>
+                          <div className="grid md:grid-cols-3 gap-4">
+                            <div className="bg-white p-3 rounded border border-blue-200">
+                              <p className="text-blue-800 font-medium">
+                                "Как это можно сделать?"
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded border border-green-200">
+                              <p className="text-green-800 font-medium">
+                                "Почему это так происходит?"
+                              </p>
+                            </div>
+                            <div className="bg-white p-3 rounded border border-orange-200">
+                              <p className="text-orange-800 font-medium">
+                                "Отчего зависит результат?"
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Пример адаптации задачи */}
+                        <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-lg border border-emerald-200">
+                          <h5 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
+                            <Icon name="Settings" size={20} />
+                            🔧 Пример адаптации задачи
+                          </h5>
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-emerald-200">
+                            <h6 className="font-bold text-emerald-700 mb-3">
+                              Базовая задача: «Нужно найти число, которое
+                              делится на 2, 3 и 5»
+                            </h6>
+                            <div className="grid md:grid-cols-2 gap-4">
+                              <div className="space-y-3">
+                                <h6 className="font-bold text-blue-700">
+                                  Для слабых учеников:
+                                </h6>
+                                <div className="bg-blue-50 p-3 rounded">
+                                  <p className="text-sm text-gray-700">
+                                    Предложить список чисел и попросить выбрать
+                                    подходящее
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="space-y-3">
+                                <h6 className="font-bold text-purple-700">
+                                  Для сильных учеников:
+                                </h6>
+                                <div className="bg-purple-50 p-3 rounded">
+                                  <p className="text-sm text-gray-700">
+                                    Найти наименьшее четырёхзначное число,
+                                    удовлетворяющее условиям
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Возрастные особенности детей 11-12 лет */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          👦👧 Возрастные особенности детей 11-12 лет
+                        </h4>
+
+                        <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-lg border border-red-200">
+                          <h5 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+                            <Icon name="AlertTriangle" size={20} />
+                            ⚠️ Физиологические и психологические изменения
+                          </h5>
+                          <div className="space-y-4">
+                            <div className="grid md:grid-cols-2 gap-4">
+                              <div className="bg-white p-4 rounded-lg border border-red-200">
+                                <h6 className="font-bold text-red-700 mb-2 flex items-center gap-2">
+                                  🧠 Интеллектуальные изменения
+                                </h6>
+                                <ul className="text-sm space-y-1">
+                                  <li>
+                                    • Снижение памяти и интеллектуальных
+                                    способностей
+                                  </li>
+                                  <li>• Гормональная перестройка организма</li>
+                                  <li>
+                                    • Повышенная возбудимость нервной системы
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className="bg-white p-4 rounded-lg border border-red-200">
+                                <h6 className="font-bold text-red-700 mb-2 flex items-center gap-2">
+                                  😤 Эмоциональные проявления
+                                </h6>
+                                <ul className="text-sm space-y-1">
+                                  <li>• Повышенная раздражительность</li>
+                                  <li>• Вспыльчивость и обидчивость</li>
+                                  <li>• Резкость в проявлении эмоций</li>
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-300">
+                              <h6 className="font-bold text-yellow-800 mb-2 flex items-center gap-2">
+                                <Icon name="Heart" size={16} />
+                                💝 Скрытые потребности
+                              </h6>
+                              <p className="text-sm text-gray-700">
+                                Ребёнок в этом возрасте испытывает{" "}
+                                <strong>
+                                  тщательно скрываемую от взрослых, но очень
+                                  сильную потребность в одобрении и поддержке
+                                </strong>
+                                . Психологи отмечают наиболее низкую самооценку
+                                детей, нередкое неприятие самих себя.
+                              </p>
+                            </div>
+
+                            <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
+                              <h6 className="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                                <Icon name="Scale" size={16} />
+                                ⚖️ Основное психологическое противоречие
+                              </h6>
+                              <p className="text-sm text-gray-700">
+                                Одновременное{" "}
+                                <strong>стремление быть как все</strong> (иметь
+                                то, что есть у других, носить то, что носят
+                                ровесники) и{" "}
+                                <strong>потребность выделиться</strong>, быть
+                                замеченным, признанным. Мнение других ребят
+                                является мотивом для работы над собой.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Принципы работы с детьми 11-12 лет */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          🎯 Принципы работы с детьми 11-12 лет при
+                          использовании занимательных задач
+                        </h4>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-4">
+                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-lg border border-green-200">
+                              <h5 className="text-lg font-bold text-green-800 mb-3 flex items-center gap-2">
+                                <Icon name="Trophy" size={20} />
+                                Создание ситуации успеха
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Каждому ученику должна быть предоставлена
+                                возможность почувствовать себя успешным. Даже
+                                при неправильном ответе важно поддерживать
+                                инициативу, что способствует повышению
+                                уверенности в своих силах.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-5 rounded-lg border border-orange-200">
+                              <h5 className="text-lg font-bold text-orange-800 mb-3 flex items-center gap-2">
+                                <Icon name="Zap" size={20} />
+                                Использование соревновательности
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Организация командных игр, математических
+                                эстафет. Важно следить, чтобы соревнование не
+                                приводило к чрезмерному напряжению и негативным
+                                эмоциям.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-lg border border-purple-200">
+                              <h5 className="text-lg font-bold text-purple-800 mb-3 flex items-center gap-2">
+                                <Icon name="Shuffle" size={20} />
+                                Обеспечение разнообразия и новизны
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Необходимо чередовать типы задач, методы их
+                                подачи и способы организации работы для
+                                поддержания интереса учащихся.
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="space-y-4">
+                            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-5 rounded-lg border border-blue-200">
+                              <h5 className="text-lg font-bold text-blue-800 mb-3 flex items-center gap-2">
+                                <Icon name="Brain" size={20} />
+                                Развитие абстрактного мышления
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Постепенный переход от конкретных примеров к
+                                абстрактным понятиям, учитывая особенности
+                                развития мышления в данном возрасте.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-5 rounded-lg border border-indigo-200">
+                              <h5 className="text-lg font-bold text-indigo-800 mb-3 flex items-center gap-2">
+                                <Icon name="Heart" size={20} />
+                                Формирование позитивной самооценки
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Поощрение активного участия, признание
+                                достижений каждого ученика, создание атмосферы
+                                взаимоуважения и поддержки.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-5 rounded-lg border border-teal-200">
+                              <h5 className="text-lg font-bold text-teal-800 mb-3 flex items-center gap-2">
+                                <Icon name="Map" size={20} />
+                                Демонстрация практической значимости
+                              </h5>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                Показ связи математических понятий с реальной
+                                жизнью, что помогает ученикам понять ценность
+                                изучаемого материала.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Цели решения занимательных задач */}
+                      <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-lg border border-gray-200">
+                        <h4 className="text-xl font-bold text-gray-800 mb-4 text-center flex items-center justify-center gap-3">
+                          🎯 Цели решения занимательных задач
+                        </h4>
+                        <div className="grid md:grid-cols-3 gap-4">
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h5 className="font-bold text-blue-700 mb-2">
+                              🧠 Мыслительные операции
+                            </h5>
+                            <ul className="text-xs space-y-1">
+                              <li>• Анализ и синтез</li>
+                              <li>• Сравнение и аналогия</li>
+                              <li>• Обобщение</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h5 className="font-bold text-green-700 mb-2">
+                              💡 Развитие мышления
+                            </h5>
+                            <ul className="text-xs space-y-1">
+                              <li>• Творческое мышление</li>
+                              <li>• Критическое мышление</li>
+                              <li>• Логическое мышление</li>
+                            </ul>
+                          </div>
+                          <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <h5 className="font-bold text-purple-700 mb-2">
+                              🎓 Мотивация
+                            </h5>
+                            <ul className="text-xs space-y-1">
+                              <li>• Интерес к предмету</li>
+                              <li>• Познавательная активность</li>
+                              <li>• Устойчивое внимание</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Правила использования */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          📜 Правила использования занимательных задач на уроках
+                        </h4>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-4">
+                            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                              <h5 className="font-bold text-red-800 mb-2 flex items-center gap-2">
+                                <Icon name="X" size={18} />❌ Чего НЕ делать:
+                              </h5>
+                              <ul className="text-sm space-y-1 text-gray-700">
+                                <li>• Не отвлекать от основной темы урока</li>
+                                <li>
+                                  • Не начинать фразами "Давайте отдохнем и
+                                  решим..."
+                                </li>
+                                <li>• Не превышать 15 минут на решение</li>
+                                <li>
+                                  • Не создавать впечатление несерьёзности
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="space-y-4">
+                            <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                              <h5 className="font-bold text-green-800 mb-2 flex items-center gap-2">
+                                <Icon name="Check" size={18} />✅ Что НУЖНО
+                                делать:
+                              </h5>
+                              <ul className="text-sm space-y-1 text-gray-700">
+                                <li>
+                                  • Соответствие уровню подготовки учащихся
+                                </li>
+                                <li>• Соответствие целям урока</li>
+                                <li>
+                                  • Продуманное применение как инструмента
+                                </li>
+                                <li>• Сохранение образовательной ценности</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Сценарии уроков */}
+                      <div className="space-y-6">
+                        <h4 className="text-2xl font-bold text-gray-800 text-center flex items-center justify-center gap-3">
+                          🎬 Сценарии уроков с использованием занимательных
+                          задач
+                        </h4>
+
+                        {/* Сценарий 1 */}
+                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+                          <h5 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                            <Icon name="Calculator" size={20} />
+                            Сценарий 1: Урок по теме «Делимость чисел»
+                          </h5>
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg border border-blue-200">
+                              <h6 className="font-bold text-blue-700 mb-2">
+                                🎯 Цели урока:
+                              </h6>
+                              <ul className="text-sm space-y-1">
+                                <li>
+                                  • Актуализация знаний о признаках делимости
+                                </li>
+                                <li>• Развитие логического мышления</li>
+                                <li>• Закрепление материала в игровой форме</li>
+                              </ul>
+                            </div>
+
+                            <div className="space-y-3">
+                              <div className="bg-blue-100 p-4 rounded-lg">
+                                <h6 className="font-bold text-blue-800 mb-2">
+                                  📝 Задача 1:
+                                </h6>
+                                <p className="text-sm text-gray-800 mb-2">
+                                  <strong>Условие:</strong> Подобрать цифру в
+                                  выражении «3*74» так, чтобы полученное число
+                                  делилось на 9.
+                                </p>
+                                <p className="text-xs text-blue-700">
+                                  <strong>Развивает:</strong> дедуктивное
+                                  мышление, аналитические навыки, критическое
+                                  мышление через групповое обсуждение.
+                                </p>
+                              </div>
+
+                              <div className="bg-blue-100 p-4 rounded-lg">
+                                <h6 className="font-bold text-blue-800 mb-2">
+                                  📝 Задача 2:
+                                </h6>
+                                <p className="text-sm text-gray-800 mb-2">
+                                  <strong>Условие:</strong> Найти наименьшее
+                                  трёхзначное число, которое делится на 2, 3 и 5
+                                  одновременно.
+                                </p>
+                                <p className="text-xs text-blue-700">
+                                  <strong>Развивает:</strong> навыки синтеза,
+                                  логический вывод. Проводится в формате
+                                  соревнования между группами.
+                                </p>
+                              </div>
+
+                              <div className="bg-blue-100 p-4 rounded-lg">
+                                <h6 className="font-bold text-blue-800 mb-2">
+                                  📝 Задача 3 (шуточная):
+                                </h6>
+                                <p className="text-sm text-gray-800 mb-2">
+                                  <strong>Условие:</strong> «Какое число делится
+                                  на все числа без остатка?»
+                                </p>
+                                <p className="text-xs text-blue-700">
+                                  <strong>Цель:</strong> разрядка, развитие
+                                  умения отличать существенные признаки от
+                                  несущественных.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-green-50 p-4 rounded-lg border border-green-300">
+                              <h6 className="font-bold text-green-800 mb-2">
+                                🎯 Учёт возрастных особенностей:
+                              </h6>
+                              <ul className="text-sm space-y-1">
+                                <li>
+                                  • Групповая работа удовлетворяет потребность в
+                                  общении
+                                </li>
+                                <li>
+                                  • Соревнование использует естественную
+                                  склонность к соперничеству
+                                </li>
+                                <li>
+                                  • Разнообразие типов задач поддерживает
+                                  интерес
+                                </li>
+                                <li>
+                                  • Поощрение мотивирует и укрепляет самооценку
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Сценарий 2 */}
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                          <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                            <Icon name="Thermometer" size={20} />
+                            Сценарий 2: Знакомство с отрицательными числами
+                          </h5>
+                          <div className="space-y-4">
+                            <div className="bg-white p-4 rounded-lg border border-purple-200">
+                              <h6 className="font-bold text-purple-700 mb-2">
+                                🎯 Цель урока:
+                              </h6>
+                              <p className="text-sm">
+                                Создать проблемную ситуацию и пробудить интерес
+                                к новому материалу
+                              </p>
+                            </div>
+
+                            <div className="bg-purple-100 p-4 rounded-lg">
+                              <h6 className="font-bold text-purple-800 mb-2">
+                                🎮 Занимательная задача:
+                              </h6>
+                              <p className="text-sm text-gray-800 mb-2">
+                                <strong>Игровая ситуация:</strong> В игре за
+                                правильный ответ начисляется 5 очков, за
+                                неправильный — списывается 3 очка. Ученик
+                                ответил правильно на 2 вопроса и неправильно на
+                                4. Сколько очков у него в итоге?
+                              </p>
+                              <p className="text-xs text-purple-700">
+                                <strong>Результат:</strong> 2×5 - 4×3 = 10 - 12
+                                = -2 очка
+                              </p>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-purple-700 mb-2">
+                                💭 Организация дискуссии:
+                              </h6>
+                              <ul className="text-sm space-y-2">
+                                <li>
+                                  <strong>Вопрос:</strong> «Как интерпретировать
+                                  результат -2?»
+                                </li>
+                                <li>
+                                  <strong>Задание:</strong> Привести примеры из
+                                  реальной жизни, где встречаются величины
+                                  меньше нуля
+                                </li>
+                                <li>
+                                  <strong>Примеры учеников:</strong> температура
+                                  ниже нуля, долг, глубина ниже уровня моря
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div className="bg-green-50 p-4 rounded-lg border border-green-300">
+                              <h6 className="font-bold text-green-800 mb-2">
+                                🎯 Результат сценария:
+                              </h6>
+                              <ul className="text-sm space-y-1">
+                                <li>• Создание когнитивного диссонанса</li>
+                                <li>
+                                  • Осознание недостаточности имеющихся знаний
+                                </li>
+                                <li>
+                                  • Формулирование потребности в изучении
+                                  отрицательных чисел
+                                </li>
+                                <li>
+                                  • Демонстрация практической значимости нового
+                                  понятия
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Заключение */}
+                      <div className="bg-gradient-to-r from-emerald-50 to-green-50 p-8 rounded-lg border border-emerald-200">
+                        <h4 className="text-2xl font-bold text-emerald-800 mb-6 text-center flex items-center justify-center gap-3">
+                          🌟 Заключение
+                        </h4>
+                        <div className="space-y-4">
+                          <p className="text-gray-800 leading-relaxed text-center">
+                            Используя разнообразные типы занимательных задач и
+                            применяя соответствующие методы работы, учитель
+                            может создать на уроках математики{" "}
+                            <strong className="text-emerald-700">
+                              атмосферу увлечённости
+                            </strong>
+                            , стимулировать познавательную активность учащихся и
+                            способствовать формированию их логического мышления.
+                          </p>
+
+                          <div className="bg-white p-6 rounded-lg border border-emerald-300 shadow-sm">
+                            <p className="text-center text-emerald-800 font-medium text-lg">
+                              <strong>Главная цель:</strong> не просто научить
+                              решать задачи, а развить у учащихся{" "}
+                              <em>интерес к математике</em> и научить их
+                              <strong>мыслить логически и творчески</strong>.
+                            </p>
+                          </div>
+
+                          <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg border border-blue-200">
+                            <h5 className="font-bold text-blue-800 mb-3 text-center">
+                              🔮 Перспективы дальнейших исследований:
+                            </h5>
+                            <div className="grid md:grid-cols-2 gap-4 text-sm">
+                              <ul className="space-y-2">
+                                <li className="flex items-start gap-2">
+                                  <Icon
+                                    name="Search"
+                                    size={16}
+                                    className="text-blue-600 mt-0.5"
+                                  />
+                                  <span>
+                                    Проведение масштабного эмпирического
+                                    исследования
+                                  </span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <Icon
+                                    name="Users"
+                                    size={16}
+                                    className="text-blue-600 mt-0.5"
+                                  />
+                                  <span>
+                                    Использование более широкой выборки учеников
+                                  </span>
+                                </li>
+                              </ul>
+                              <ul className="space-y-2">
+                                <li className="flex items-start gap-2">
+                                  <Icon
+                                    name="Brain"
+                                    size={16}
+                                    className="text-purple-600 mt-0.5"
+                                  />
+                                  <span>
+                                    Изучение влияния на отдельные виды
+                                    логического мышления
+                                  </span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <Icon
+                                    name="Settings"
+                                    size={16}
+                                    className="text-purple-600 mt-0.5"
+                                  />
+                                  <span>
+                                    Разработка дифференцированных задач с учётом
+                                    индивидуальных особенностей
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
