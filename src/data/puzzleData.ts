@@ -184,6 +184,7 @@ export const puzzleCategories: PuzzleCategory[] = [
         solution:
           "1) Человек и коза → 2) Человек ← 3) Человек и волк → 4) Человек и коза ← 5) Человек и капуста → 6) Человек ← 7) Человек и коза →",
       },
+    ],
   },
   {
     id: "knights-knaves",
@@ -236,8 +237,14 @@ export const puzzleCategories: PuzzleCategory[] = [
         solution: "Он нормальный человек. Рыцарь не может сказать 'я не рыцарь' (это была бы ложь). Лжец не может сказать 'я не рыцарь' (это была бы правда). Значит, это нормальный человек.",
       },
     ],
-          {
-            id: "weather-report",
+  },
+  {
+    id: "weather-puzzles",
+    title: "Погодные загадки", 
+    icon: "Cloud",
+    puzzles: [
+      {
+        id: "weather-report",
             title: "Прогноз погоды",
             description:
               "Житель острова говорит: 'Завтра будет дождь, и я лжец'. Сегодня солнечно. Кто он?",
