@@ -37,17 +37,7 @@ const EntertainingProblemsSection = () => {
       title: "Задачи на переливание",
       icon: "Droplets",
       color: "blue",
-      subtopics: [
-        {
-          id: "minimal",
-          title: "Переливания с минимальным количеством действий",
-        },
-        { id: "target", title: "Переливания с заданной целью" },
-        {
-          id: "divisibility",
-          title: "Переливания с использованием свойств делимости",
-        },
-      ],
+      // Убираем subtopics для этой категории
     },
     {
       id: "knights-liars",
@@ -422,6 +412,75 @@ const EntertainingProblemsSection = () => {
   if (selectedTopic) {
     const topic = topics.find((t) => t.id === selectedTopic)!;
 
+    // Специальная обработка для категории "pouring" - показываем задачи сразу
+    if (selectedTopic === "pouring") {
+      const pouringCategory = puzzleCategories.find(
+        (cat) => cat.id === "pouring",
+      );
+      if (pouringCategory) {
+        const tasks = {
+          description:
+            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
+          easy: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+
+        return (
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl font-bold text-gray-800">
+                {topic.title}
+              </h1>
+              <Button variant="outline" onClick={() => setSelectedTopic(null)}>
+                <Icon name="ArrowLeft" size={16} className="mr-2" />К темам
+              </Button>
+            </div>
+
+            <Card className="bg-blue-50 border-blue-200">
+              <CardContent className="pt-6">
+                <p className="text-blue-800">{tasks.description}</p>
+              </CardContent>
+            </Card>
+
+            {renderTaskLevel(
+              tasks.easy,
+              "easy",
+              "Легкий",
+              "Задачи, решаемые в 1-2 шага",
+            )}
+            {renderTaskLevel(
+              tasks.medium,
+              "medium",
+              "Средний",
+              "Задачи, требующие логической последовательности в рассуждениях",
+            )}
+            {renderTaskLevel(
+              tasks.hard,
+              "hard",
+              "Сложный",
+              "Задачи, требующие нестандартного решения и применения логики",
+            )}
+          </div>
+        );
+      }
+    }
+
     return (
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
@@ -432,7 +491,7 @@ const EntertainingProblemsSection = () => {
         </div>
 
         <div className="grid gap-4">
-          {topic.subtopics.map((subtopic) => (
+          {topic.subtopics?.map((subtopic) => (
             <Card
               key={subtopic.id}
               className="hover:shadow-lg transition-shadow cursor-pointer"
@@ -496,7 +555,9 @@ const EntertainingProblemsSection = () => {
                   </div>
                   <CardTitle className="text-xl">{topic.title}</CardTitle>
                   <CardDescription className="text-sm">
-                    {topic.subtopics.length} видов задач
+                    {topic.id === "pouring"
+                      ? "Прямой доступ к задачам"
+                      : `${topic.subtopics?.length || 0} видов задач`}
                   </CardDescription>
                 </CardHeader>
               </Card>
