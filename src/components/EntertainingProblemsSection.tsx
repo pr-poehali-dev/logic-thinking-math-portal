@@ -252,6 +252,40 @@ const EntertainingProblemsSection = () => {
       };
     }
 
+    // Обработка задач на переливание
+    if (topicId === "pouring" && subtopicId === "minimal") {
+      // Найдем категорию задач на переливание из puzzleData
+      const pouringCategory = puzzleCategories.find(
+        (cat) => cat.id === "pouring",
+      );
+      if (pouringCategory) {
+        return {
+          description:
+            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
+          easy: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .slice(0, 3)
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .slice(3)
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+      }
+    }
+
     // Для других комбинаций возвращаем базовый шаблон
     return {
       description:
