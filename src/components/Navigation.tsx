@@ -12,6 +12,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
     { id: "tests", label: "Тесты", icon: "Brain" },
     { id: "entertaining", label: "Занимательные", icon: "Sparkles" },
     { id: "lesson-plans", label: "Конспекты", icon: "FileText" },
+    { id: "guide", label: "Методичка", icon: "BookOpen" },
   ];
 
   return (
