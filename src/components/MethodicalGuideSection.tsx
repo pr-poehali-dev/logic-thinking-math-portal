@@ -2091,64 +2091,85 @@ const MethodicalGuideSection = () => {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
                               <Icon
-                                name="Target"
+                                name="CheckCircle"
                                 size={16}
                                 className="text-blue-600"
                               />
                               <span className="font-medium text-gray-800">
-                                1. Задачи на соответствие
+                                1. Истинностные задачи
                               </span>
                             </div>
                             <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
                               <Icon
-                                name="ArrowRight"
+                                name="ArrowLeft"
                                 size={16}
                                 className="text-purple-600"
                               />
                               <span className="font-medium text-gray-800">
-                                2. Задачи на последовательность
+                                2. Задачи, решаемые с конца
                               </span>
                             </div>
                             <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
                               <Icon
-                                name="Calculator"
+                                name="Coffee"
                                 size={16}
                                 className="text-orange-600"
                               />
                               <span className="font-medium text-gray-800">
-                                3. Математические головоломки
+                                3. Задачи на переливание
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Scale"
+                                size={16}
+                                className="text-red-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                4. Задачи на взвешивание
                               </span>
                             </div>
                           </div>
                           <div className="space-y-3">
                             <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
                               <Icon
-                                name="Layers"
-                                size={16}
-                                className="text-red-600"
-                              />
-                              <span className="font-medium text-gray-800">
-                                4. Задачи на множества
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
-                              <Icon
-                                name="GitBranch"
+                                name="Users"
                                 size={16}
                                 className="text-indigo-600"
                               />
                               <span className="font-medium text-gray-800">
-                                5. Логические схемы
+                                5. Задачи типа «Кто есть кто?»
                               </span>
                             </div>
                             <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
                               <Icon
-                                name="Zap"
+                                name="Layers"
+                                size={16}
+                                className="text-green-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                6. Задачи на пересечение или объединение
+                                множеств
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Shield"
                                 size={16}
                                 className="text-yellow-600"
                               />
                               <span className="font-medium text-gray-800">
-                                6. Задачи на дедукцию
+                                7. Задачи о рыцарях и лжецах
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                              <Icon
+                                name="Target"
+                                size={16}
+                                className="text-pink-600"
+                              />
+                              <span className="font-medium text-gray-800">
+                                8. Задачи на выработку стратегии
                               </span>
                             </div>
                           </div>
