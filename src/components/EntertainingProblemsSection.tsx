@@ -527,11 +527,6 @@ const EntertainingProblemsSection = () => {
                     <Icon name={topic.icon as any} size={32} />
                   </div>
                   <CardTitle className="text-xl">{topic.title}</CardTitle>
-                  <CardDescription className="text-sm">
-                    {topic.id === "pouring"
-                      ? "Прямой доступ к задачам"
-                      : `${topic.subtopics?.length || 0} видов задач`}
-                  </CardDescription>
                 </CardHeader>
               </Card>
             ))}
