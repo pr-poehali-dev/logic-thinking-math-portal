@@ -977,6 +977,27 @@ const MethodicalGuideSection = () => {
         "Важно не только предлагать ученикам решать задачи разных типов, но и объяснять логику решения, подчёркивать используемые приёмы и стимулировать самостоятельный поиск решений.",
       ],
     },
+    {
+      title: "2.3. Приемы решения логических задач",
+      content: [
+        "Для эффективного решения логических задач существует пять основных приемов, каждый из которых подходит для определенных типов задач.",
+        "",
+        "1. Способ рассуждений:",
+        "С помощью которого решаются самые простые логические задачи. В ходе решения используются рассуждения, последовательно учитывающие все условия задачи, которые постепенно приводят к выводу и правильному ответу.",
+        "",
+        "2. Способ таблиц:",
+        "Применяемый при решении текстовых логических задач. Решение заключается в построении таблиц, которые позволяют наглядно представить условие задачи, контролировать процесс рассуждений и помогают сделать правильные логические выводы.",
+        "",
+        "3. Способ графов:",
+        "Состоит в переборе возможных вариантов развития событий и окончательном выборе единственно верного решения.",
+        "",
+        "4. Способ блок-схем:",
+        "Метод, широко используемый в программировании и решении занимательных задач на переливание. Заключается в том, что сначала в виде блоков выделяются операции (команды), затем устанавливается последовательность выполнения этих команд.",
+        "",
+        "5. Способ бильярда:",
+        "Следует из теории траекторий (один из разделов теории вероятности). Для решения задачи необходимо нарисовать бильярдный стол и интерпретировать действия движениями бильярдного шара по разным траекториям с ведением записей возможных результатов в отдельной таблице.",
+      ],
+    },
   ];
 
   const handleLessonDownload = (lessonIndex: number, lessonTitle: string) => {
@@ -2667,6 +2688,781 @@ const MethodicalGuideSection = () => {
                             основы логического мышления, которое является
                             фундаментом математического образования и
                             критического мышления в целом.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Раздел 2.3 - Приемы решения логических задач */}
+                <Card
+                  key="logical-methods"
+                  className="cursor-pointer hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500"
+                  onClick={() => handleSectionClick("logical-methods")}
+                >
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <div className="bg-emerald-100 p-2 rounded-full">
+                        <Icon
+                          name="Cog"
+                          size={20}
+                          className="text-emerald-600"
+                        />
+                      </div>
+                      2.3. Приемы решения логических задач
+                      <Icon
+                        name={
+                          expandedSection === "logical-methods"
+                            ? "ChevronUp"
+                            : "ChevronDown"
+                        }
+                        size={16}
+                        className="ml-auto text-gray-400"
+                      />
+                    </CardTitle>
+                    <CardDescription>
+                      Пять основных приемов для эффективного решения логических
+                      задач
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+                {expandedSection === "logical-methods" && (
+                  <div className="mt-4 animate-fade-in">
+                    <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+                      {/* Заголовок */}
+                      <div className="text-center space-y-4 border-b pb-6">
+                        <h3 className="text-3xl font-bold text-emerald-800 flex items-center justify-center gap-3">
+                          🛠️ Приемы решения логических задач
+                        </h3>
+                        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                          Для эффективного решения логических задач существует{" "}
+                          <strong className="text-emerald-700">
+                            пять основных приемов
+                          </strong>
+                          , каждый из которых подходит для определенных типов
+                          задач и помогает структурировать процесс мышления.
+                        </p>
+                      </div>
+
+                      {/* 5 приемов решения */}
+                      <div className="space-y-8">
+                        {/* Прием 1: Способ рассуждений */}
+                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200 shadow-md">
+                          <h4 className="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
+                              1
+                            </span>
+                            Способ рассуждений
+                          </h4>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            С помощью которого решаются{" "}
+                            <strong className="text-blue-700">
+                              самые простые логические задачи
+                            </strong>
+                            . В ходе решения используются рассуждения,
+                            последовательно учитывающие все условия задачи,
+                            которые постепенно приводят к выводу и правильному
+                            ответу.
+                          </p>
+
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-200">
+                            <h5 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                              <Icon name="MessageCircle" size={20} />
+                              💡 Практический пример
+                            </h5>
+                            <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                              <p className="text-gray-800 font-medium mb-2">
+                                <strong>Задача:</strong> Три друга — Алёша, Боря
+                                и Витя — изучают разные иностранные языки:
+                                китайский, японский и арабский. На вопрос, какой
+                                язык изучает каждый из них, один ответил: «Алёша
+                                изучает китайский, Боря не изучает китайский, а
+                                Витя не изучает арабский». Оказалось, что в этом
+                                ответе только одно утверждение верно, а два —
+                                ложны. Какой язык изучает каждый?
+                              </p>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-blue-800 mb-3">
+                                🔍 Пошаговое рассуждение:
+                              </h6>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex gap-3">
+                                  <span className="font-bold text-blue-600 w-20">
+                                    Шаг 1:
+                                  </span>
+                                  <span>
+                                    Предположим, что верно «Алёша изучает
+                                    китайский». Тогда «Боря не изучает
+                                    китайский» — ложь, значит Боря изучает
+                                    китайский. Но два человека не могут изучать
+                                    один язык — противоречие.
+                                  </span>
+                                </div>
+                                <div className="flex gap-3">
+                                  <span className="font-bold text-blue-600 w-20">
+                                    Шаг 2:
+                                  </span>
+                                  <span>
+                                    Предположим, что верно «Боря не изучает
+                                    китайский». Тогда «Алёша изучает китайский»
+                                    — ложь, «Витя не изучает арабский» — ложь,
+                                    значит Витя изучает арабский. Боря не
+                                    изучает китайский, Витя — арабский, значит
+                                    Боря изучает японский, а Алёша — китайский.
+                                    Но тогда «Алёша изучает китайский» — правда,
+                                    а мы предположили, что это ложь.
+                                    Противоречие.
+                                  </span>
+                                </div>
+                                <div className="flex gap-3">
+                                  <span className="font-bold text-blue-600 w-20">
+                                    Шаг 3:
+                                  </span>
+                                  <span>
+                                    Предположим, что верно «Витя не изучает
+                                    арабский». Тогда остальные утверждения
+                                    ложные: Алёша не изучает китайский, Боря
+                                    изучает китайский. Витя не арабский, Боря —
+                                    китайский, значит Алёша — японский, Витя —
+                                    арабский. Но это противоречит нашему
+                                    предположению.
+                                  </span>
+                                </div>
+                                <div className="bg-blue-100 p-3 rounded">
+                                  <p className="font-bold text-blue-800">
+                                    ✅ Ответ: Алёша — арабский, Боря —
+                                    китайский, Витя — японский
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Прием 2: Способ таблиц */}
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200 shadow-md">
+                          <h4 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                              2
+                            </span>
+                            Способ таблиц
+                          </h4>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            Применяемый при решении{" "}
+                            <strong className="text-green-700">
+                              текстовых логических задач
+                            </strong>
+                            . Как следует из названия, решение логических задач
+                            заключается в построении таблиц, которые позволяют
+                            наглядно представить условие задачи, контролировать
+                            процесс рассуждений и помогают сделать правильные
+                            логические выводы.
+                          </p>
+
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-green-200">
+                            <h5 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                              <Icon name="Table" size={20} />
+                              📊 Практический пример
+                            </h5>
+                            <div className="bg-green-50 p-4 rounded-lg mb-4">
+                              <p className="text-gray-800 font-medium mb-2">
+                                <strong>Задача:</strong> Четыре подруги — Аня,
+                                Вера, Света и Наташа — играют на музыкальных
+                                инструментах: пианино, виолончели, гитаре и
+                                скрипке. Известно, что:
+                              </p>
+                              <ul className="text-sm space-y-1 ml-4">
+                                <li>1) Аня не играет на пианино и скрипке</li>
+                                <li>2) Вера не играет на скрипке и гитаре</li>
+                                <li>3) Света не играет на виолончели</li>
+                                <li>
+                                  4) Наташа не играет на пианино, гитаре и
+                                  виолончели
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-green-800 mb-3">
+                                📋 Таблица решения:
+                              </h6>
+                              <div className="overflow-x-auto">
+                                <table className="w-full border-collapse border border-gray-300 text-sm">
+                                  <thead>
+                                    <tr className="bg-green-100">
+                                      <th className="border border-gray-300 p-2 font-bold"></th>
+                                      <th className="border border-gray-300 p-2 font-bold">
+                                        Пианино
+                                      </th>
+                                      <th className="border border-gray-300 p-2 font-bold">
+                                        Виолончель
+                                      </th>
+                                      <th className="border border-gray-300 p-2 font-bold">
+                                        Гитара
+                                      </th>
+                                      <th className="border border-gray-300 p-2 font-bold">
+                                        Скрипка
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td className="border border-gray-300 p-2 font-bold bg-green-50">
+                                        Аня
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-green-600">
+                                        +
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="border border-gray-300 p-2 font-bold bg-green-50">
+                                        Вера
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-green-600">
+                                        +
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="border border-gray-300 p-2 font-bold bg-green-50">
+                                        Света
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-green-600">
+                                        +
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="border border-gray-300 p-2 font-bold bg-green-50">
+                                        Наташа
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-red-600">
+                                        —
+                                      </td>
+                                      <td className="border border-gray-300 p-2 text-center text-green-600">
+                                        +
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div className="mt-3 bg-green-100 p-3 rounded">
+                                <p className="font-bold text-green-800">
+                                  ✅ Ответ: Аня — виолончель, Вера — пианино,
+                                  Света — гитара, Наташа — скрипка
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Прием 3: Способ графов */}
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200 shadow-md">
+                          <h4 className="text-2xl font-bold text-purple-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">
+                              3
+                            </span>
+                            Способ графов
+                          </h4>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            Состоит в{" "}
+                            <strong className="text-purple-700">
+                              переборе возможных вариантов развития событий
+                            </strong>{" "}
+                            и окончательном выборе единственно верного решения.
+                            Граф представляет собой схему, состоящую из точек
+                            (вершин) и соединяющих их линий (рёбер).
+                          </p>
+
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-purple-200">
+                            <h5 className="font-bold text-purple-800 mb-3 flex items-center gap-2">
+                              <Icon name="Network" size={20} />
+                              🕸️ Практический пример
+                            </h5>
+                            <div className="bg-purple-50 p-4 rounded-lg mb-4">
+                              <p className="text-gray-800 font-medium mb-2">
+                                <strong>Задача:</strong> В магазине работают три
+                                продавца: Анна, Борис и Виктор. Каждый работает
+                                только в определённые дни недели. Анна не
+                                работает во вторник и среду. Борис не работает в
+                                понедельник и среду. Виктор не работает во
+                                вторник и четверг. В какие дни недели работает
+                                каждый продавец, если известно, что каждый день
+                                работает ровно один продавец?
+                              </p>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-purple-800 mb-3">
+                                🌐 Построение графа:
+                              </h6>
+                              <div className="space-y-4">
+                                <div className="grid grid-cols-7 gap-2 text-xs text-center">
+                                  <div className="font-bold">Пн</div>
+                                  <div className="font-bold">Вт</div>
+                                  <div className="font-bold">Ср</div>
+                                  <div className="font-bold">Чт</div>
+                                  <div className="font-bold">Пт</div>
+                                  <div className="font-bold">Сб</div>
+                                  <div className="font-bold">Вс</div>
+                                </div>
+
+                                <div className="space-y-2">
+                                  <div className="grid grid-cols-7 gap-2 text-xs text-center">
+                                    <div className="bg-green-200 p-1 rounded">
+                                      А
+                                    </div>
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-green-200 p-1 rounded">
+                                      А
+                                    </div>
+                                    <div className="bg-green-200 p-1 rounded">
+                                      А
+                                    </div>
+                                    <div className="bg-green-200 p-1 rounded">
+                                      А
+                                    </div>
+                                    <div className="bg-green-200 p-1 rounded">
+                                      А
+                                    </div>
+                                  </div>
+                                  <div className="text-xs text-gray-600">
+                                    Анна: может работать Пн, Чт, Пт, Сб, Вс
+                                  </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                  <div className="grid grid-cols-7 gap-2 text-xs text-center">
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-blue-200 p-1 rounded">
+                                      Б
+                                    </div>
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-blue-200 p-1 rounded">
+                                      Б
+                                    </div>
+                                    <div className="bg-blue-200 p-1 rounded">
+                                      Б
+                                    </div>
+                                    <div className="bg-blue-200 p-1 rounded">
+                                      Б
+                                    </div>
+                                    <div className="bg-blue-200 p-1 rounded">
+                                      Б
+                                    </div>
+                                  </div>
+                                  <div className="text-xs text-gray-600">
+                                    Борис: может работать Вт, Чт, Пт, Сб, Вс
+                                  </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                  <div className="grid grid-cols-7 gap-2 text-xs text-center">
+                                    <div className="bg-yellow-200 p-1 rounded">
+                                      В
+                                    </div>
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-yellow-200 p-1 rounded">
+                                      В
+                                    </div>
+                                    <div className="bg-red-200 p-1 rounded">
+                                      —
+                                    </div>
+                                    <div className="bg-yellow-200 p-1 rounded">
+                                      В
+                                    </div>
+                                    <div className="bg-yellow-200 p-1 rounded">
+                                      В
+                                    </div>
+                                    <div className="bg-yellow-200 p-1 rounded">
+                                      В
+                                    </div>
+                                  </div>
+                                  <div className="text-xs text-gray-600">
+                                    Виктор: может работать Пн, Ср, Пт, Сб, Вс
+                                  </div>
+                                </div>
+
+                                <div className="bg-purple-100 p-3 rounded">
+                                  <p className="font-bold text-purple-800 text-sm">
+                                    🔍 Анализ пересечений: только Виктор может
+                                    работать в среду, только Борис — во вторник.
+                                  </p>
+                                  <p className="font-bold text-purple-800 text-sm mt-2">
+                                    ✅ Ответ: Анна — Пн, Чт; Борис — Вт, Пт;
+                                    Виктор — Ср, Сб, Вс
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Прием 4: Способ блок-схем */}
+                        <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg border border-orange-200 shadow-md">
+                          <h4 className="text-2xl font-bold text-orange-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+                              4
+                            </span>
+                            Способ блок-схем
+                          </h4>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            Метод, широко используемый в{" "}
+                            <strong className="text-orange-700">
+                              программировании и решении занимательных задач на
+                              переливание
+                            </strong>
+                            . Он заключается в том, что сначала в виде блоков
+                            выделяются операции (команды), затем устанавливается
+                            последовательность выполнения этих команд.
+                          </p>
+
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-orange-200">
+                            <h5 className="font-bold text-orange-800 mb-3 flex items-center gap-2">
+                              <Icon name="Workflow" size={20} />
+                              📦 Практический пример
+                            </h5>
+                            <div className="bg-orange-50 p-4 rounded-lg mb-4">
+                              <p className="text-gray-800 font-medium mb-2">
+                                <strong>Задача на переливание:</strong> Имеется
+                                два сосуда емкостью 5 л и 3 л. Как с их помощью
+                                отмерить ровно 4 л воды?
+                              </p>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-orange-800 mb-3">
+                                📋 Блок-схема решения:
+                              </h6>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    1
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>Наполнить 5-литровый сосуд</strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (5, 0)
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    2
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>Перелить в 3-литровый сосуд</strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (2, 3)
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    3
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>
+                                      Вылить из 3-литрового сосуда
+                                    </strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (2, 0)
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    4
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>
+                                      Перелить 2 л в 3-литровый сосуд
+                                    </strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (0, 2)
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    5
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>Наполнить 5-литровый сосуд</strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (5, 2)
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-orange-500 text-white rounded flex items-center justify-center text-sm font-bold">
+                                    6
+                                  </div>
+                                  <div className="bg-orange-100 px-3 py-2 rounded flex-1">
+                                    <strong>
+                                      Долить в 3-литровый до полного
+                                    </strong>
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    Состояние: (4, 3)
+                                  </div>
+                                </div>
+
+                                <div className="bg-orange-100 p-3 rounded mt-4">
+                                  <p className="font-bold text-orange-800 text-center">
+                                    ✅ Результат: В 5-литровом сосуде остается
+                                    ровно 4 литра!
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Прием 5: Способ бильярда */}
+                        <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-lg border border-red-200 shadow-md">
+                          <h4 className="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold">
+                              5
+                            </span>
+                            Способ бильярда
+                          </h4>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            Следует из{" "}
+                            <strong className="text-red-700">
+                              теории траекторий (один из разделов теории
+                              вероятности)
+                            </strong>
+                            . Для решения задачи необходимо нарисовать
+                            бильярдный стол и интерпретировать действия
+                            движениями бильярдного шара по разным траекториям.
+                            При этом необходимо вести записи возможных
+                            результатов в отдельной таблице.
+                          </p>
+
+                          <div className="bg-white p-5 rounded-lg shadow-sm border border-red-200">
+                            <h5 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                              <Icon name="Circle" size={20} />
+                              🎱 Практический пример
+                            </h5>
+                            <div className="bg-red-50 p-4 rounded-lg mb-4">
+                              <p className="text-gray-800 font-medium mb-2">
+                                <strong>Задача о траекториях:</strong> На
+                                прямоугольном бильярдном столе размером 5×3 шар
+                                движется из угла под углом 45° к стороне.
+                                Сколько отражений от стенок сделает шар, прежде
+                                чем попадет в лунку (угол стола)?
+                              </p>
+                            </div>
+
+                            <div className="bg-white p-4 rounded-lg border border-gray-200">
+                              <h6 className="font-bold text-red-800 mb-3">
+                                🎯 Метод "разворачивания стола":
+                              </h6>
+                              <div className="space-y-4">
+                                <p className="text-sm text-gray-700">
+                                  Представим, что вместо отражений мы
+                                  "разворачиваем" стол, создавая копии исходного
+                                  стола. Шар движется по прямой линии через эти
+                                  копии.
+                                </p>
+
+                                <div className="bg-gray-50 p-4 rounded-lg">
+                                  <h6 className="font-bold text-red-700 mb-2">
+                                    📊 Таблица расчетов:
+                                  </h6>
+                                  <div className="space-y-2 text-xs">
+                                    <div className="grid grid-cols-4 gap-2 font-bold bg-red-100 p-2 rounded">
+                                      <div>Координата X</div>
+                                      <div>Координата Y</div>
+                                      <div>Отражений по X</div>
+                                      <div>Отражений по Y</div>
+                                    </div>
+                                    <div className="grid grid-cols-4 gap-2 p-2 border-b">
+                                      <div>0 → 15</div>
+                                      <div>0 → 9</div>
+                                      <div>15 ÷ 5 = 3</div>
+                                      <div>9 ÷ 3 = 3</div>
+                                    </div>
+                                  </div>
+                                  <div className="mt-3 p-3 bg-red-100 rounded">
+                                    <p className="text-sm font-bold text-red-800">
+                                      НОК(5,3) = 15, шар пройдет 15 единиц по X
+                                      и 9 по Y
+                                    </p>
+                                    <p className="text-sm font-bold text-red-800">
+                                      Всего отражений: (3-1) + (3-1) = 4
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="bg-red-100 p-3 rounded">
+                                  <p className="font-bold text-red-800 text-center">
+                                    ✅ Ответ: Шар сделает 4 отражения от стенок
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Сравнительная таблица методов */}
+                      <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-lg border border-gray-300 shadow-lg">
+                        <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-3">
+                          📊 Сравнение методов решения логических задач
+                        </h4>
+
+                        <div className="overflow-x-auto">
+                          <table className="w-full border-collapse border border-gray-300 text-sm">
+                            <thead>
+                              <tr className="bg-gray-100">
+                                <th className="border border-gray-300 p-3 font-bold text-left">
+                                  Метод
+                                </th>
+                                <th className="border border-gray-300 p-3 font-bold text-left">
+                                  Лучше всего подходит для
+                                </th>
+                                <th className="border border-gray-300 p-3 font-bold text-left">
+                                  Преимущества
+                                </th>
+                                <th className="border border-gray-300 p-3 font-bold text-left">
+                                  Ограничения
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td className="border border-gray-300 p-3 font-bold bg-blue-50">
+                                  Способ рассуждений
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Простых задач с небольшим количеством условий
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Интуитивен, развивает логику
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Может запутать в сложных задачах
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="border border-gray-300 p-3 font-bold bg-green-50">
+                                  Способ таблиц
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Задач типа "кто есть кто", соответствий
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Наглядность, систематичность
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Требует времени на построение
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="border border-gray-300 p-3 font-bold bg-purple-50">
+                                  Способ графов
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Задач с множественными связями и выборами
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Показывает все варианты
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Может стать слишком сложным
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="border border-gray-300 p-3 font-bold bg-orange-50">
+                                  Способ блок-схем
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Задач на переливание, алгоритмических задач
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Четкая последовательность
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Подходит не для всех типов задач
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="border border-gray-300 p-3 font-bold bg-red-50">
+                                  Способ бильярда
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Геометрических задач с траекториями
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Визуализация сложных путей
+                                </td>
+                                <td className="border border-gray-300 p-3">
+                                  Специфичен, требует знания геометрии
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="mt-6 p-4 bg-indigo-100 rounded-lg border border-indigo-300">
+                          <p className="text-center text-indigo-800 font-medium">
+                            🌟 <strong>Для учителя:</strong> Важно познакомить
+                            учеников со всеми пятью методами и научить их
+                            выбирать наиболее подходящий способ для каждой
+                            конкретной задачи. Это развивает стратегическое
+                            мышление и гибкость в решении проблем.
                           </p>
                         </div>
                       </div>
