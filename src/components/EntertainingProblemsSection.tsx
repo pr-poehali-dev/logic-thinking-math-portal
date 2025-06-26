@@ -31,249 +31,68 @@ const EntertainingProblemsSection = () => {
     resetPuzzle,
   } = usePuzzleState();
 
-  const topics = [
-    {
-      id: "pouring",
-      title: "Задачи на переливание",
-      icon: "Droplets",
-      color: "blue",
-    },
-    {
-      id: "knights-liars",
-      title: "Задачи про рыцарей и лжецов",
-      icon: "Shield",
-      color: "red",
-    },
-    {
-      id: "wise-men",
-      title: "Задачи о мудрецах",
-      icon: "Brain",
-      color: "purple",
-    },
-    {
-      id: "weighing",
-      title: "Задачи про взвешивание",
-      icon: "Scale",
-      color: "green",
-    },
-    {
-      id: "non-standard",
-      title: "Нестандартная логика",
-      icon: "Lightbulb",
-      color: "yellow",
-    },
-    {
-      id: "paradoxes",
-      title: "Логические парадоксы",
-      icon: "Infinity",
-      color: "indigo",
-    },
-    {
-      id: "crossings",
-      title: "Переправы и путешествия",
-      icon: "MapPin",
-      color: "teal",
-    },
-    {
-      id: "who-is-who",
-      title: "Кто есть кто",
-      icon: "Users",
-      color: "pink",
-    },
-    {
-      id: "number-systems",
-      title: "Системы счисления",
-      icon: "Binary",
-      color: "orange",
-    },
-    {
-      id: "sequences",
-      title: "Последовательности",
-      icon: "TrendingUp",
-      color: "cyan",
-    },
-  ];
+  // Функция для определения цвета по категории
+  const getColorByCategory = (categoryId: string) => {
+    const colorMap: { [key: string]: string } = {
+      pouring: "blue",
+      logic: "purple",
+      math: "green",
+      weighing: "green",
+      "knights-liars": "red",
+      "wise-men": "purple",
+      "non-standard": "yellow",
+      paradoxes: "indigo",
+      crossings: "teal",
+      "who-is-who": "pink",
+      "number-systems": "orange",
+      sequences: "cyan",
+    };
+    return colorMap[categoryId] || "gray";
+  };
+
+  // Используем данные из puzzleCategories вместо hardcoded topics
+  const topics = puzzleCategories.map((category) => ({
+    id: category.id,
+    title: category.title,
+    icon: category.icon,
+    color: getColorByCategory(category.id),
+  }));
 
   const getTasksByTopic = (topicId: string) => {
-    // Обработка задач на переливание из puzzleData
-    if (topicId === "pouring") {
-      const pouringCategory = puzzleCategories.find(
-        (cat) => cat.id === "pouring",
-      );
-      if (pouringCategory) {
-        return {
-          description:
-            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
-          easy: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Легкая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          medium: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          hard: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Высокая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-        };
-      }
-    }
-
-    // Задачи про взвешивание
-    if (topicId === "weighing") {
+    // Находим категорию в puzzleCategories
+    const category = puzzleCategories.find((cat) => cat.id === topicId);
+    if (!category) {
       return {
         description:
-          "Задачи на поиск фальшивой монеты с помощью весов. Цель - найти отличающуюся по весу монету за минимальное количество взвешиваний.",
-        easy: [
-          {
-            text: "Среди 3 монет одна фальшивая (легче настоящих). За одно взвешивание найдите фальшивую монету.",
-            solution:
-              "Положите по одной монете на каждую чашу весов. Если весы в равновесии - фальшивая та, что осталась. Если одна чаша легче - на ней фальшивая монета.",
-          },
-          {
-            text: "Есть 9 монет, одна из них фальшивая (тяжелее). Найдите её за 2 взвешивания.",
-            solution:
-              "Разделите монеты на 3 группы по 3. Взвесьте любые две группы. Если равны - фальшивая в третьей группе. Если не равны - в более тяжелой. Затем из найденной группы взвесьте любые 2 монеты.",
-          },
-          {
-            text: "Среди 4 монет одна фальшивая (неизвестно легче или тяжелее). Найдите её за 2 взвешивания.",
-            solution:
-              "Первое взвешивание: 2 монеты против 2. Если равны - все настоящие (противоречие). Если не равны, возьмите одну монету с тяжелой стороны и одну с легкой, взвесьте против двух оставшихся.",
-          },
-          {
-            text: "Есть 6 монет, одна фальшивая (легче). За сколько взвешиваний гарантированно найдете её?",
-            solution:
-              "За 2 взвешивания. Разделите на 3 группы по 2 монеты. Взвесьте две группы - найдете группу с фальшивой (более легкую). Затем взвесьте монеты из этой группы.",
-          },
-          {
-            text: "Среди 5 монет одна фальшивая (тяжелее). Как найти её за 2 взвешивания?",
-            solution:
-              "Взвесьте 2 монеты против 2 других. Если равны - фальшивая пятая. Если не равны - фальшивая на тяжелой стороне, взвесьте эти две монеты между собой.",
-          },
-        ],
-        medium: [
-          {
-            text: "Среди 12 монет одна фальшивая (неизвестно легче или тяжелее). Найдите её за 3 взвешивания и определите, легче она или тяжелее.",
-            solution:
-              "Разделите на группы по 4. Взвесьте первые две группы. По результату определите группу с фальшивой монетой и её тип (легче/тяжелее), затем найдите конкретную монету за 2 оставшихся взвешивания.",
-          },
-          {
-            text: "Есть 8 монет, 2 из них фальшивые (обе легче). Найдите обе за 3 взвешивания.",
-            solution:
-              "Сложная задача требует системного подхода: разделить монеты, найти группу с фальшивыми монетами, затем выделить каждую из них по отдельности.",
-          },
-          {
-            text: "Среди 15 монет одна фальшивая (тяжелее). За какое минимальное количество взвешиваний можно её найти?",
-            solution:
-              "За 3 взвешивания. Разделите на группы по 5, найдите группу с фальшивой, затем в этой группе найдите конкретную монету за 2 взвешивания.",
-          },
-          {
-            text: "Есть 10 монет, одна фальшивая. Известно, что она либо значительно легче (в 2 раза), либо значительно тяжелее. Найдите её за 2 взвешивания.",
-            solution:
-              "Взвесьте 4 монеты против 4. По результату определите, в какой группе фальшивая и какого она типа. Затем найдите конкретную монету.",
-          },
-          {
-            text: "Среди 7 монет одна фальшивая (легче). Весы показывают только 'больше', 'меньше' или 'равно'. Найдите фальшивую за 2 взвешивания.",
-            solution:
-              "Взвесьте 3 против 3. Если равны - фальшивая седьмая. Если не равны - фальшивая на легкой стороне, разделите эти 3 монеты.",
-          },
-        ],
-        hard: [
-          {
-            text: "Среди 13 монет одна фальшивая (неизвестно легче или тяжелее). У вас есть одна заведомо настоящая монета. Найдите фальшивую за 3 взвешивания.",
-            solution:
-              "Используйте настоящую монету как эталон. Разделите 13 монет на группы, сравнивайте с эталоном для определения типа фальшивой монеты.",
-          },
-          {
-            text: "Есть 9 монет, среди них 3 фальшивые (все легче настоящих). Найдите все 3 фальшивые монеты за минимальное количество взвешиваний.",
-            solution:
-              "Сложная комбинаторная задача. Необходимо не менее 4 взвешиваний. Систематически разделяйте монеты и анализируйте результаты.",
-          },
-          {
-            text: "У вас 14 монет, одна фальшивая (неизвестно легче или тяжелее). Весы могут сломаться после 3 взвешиваний. Гарантированно найдите фальшивую монету.",
-            solution:
-              "Оптимальная стратегия: разделите на группы 5-5-4, анализируйте результаты первого взвешивания и планируйте следующие ходы с учетом всех возможных исходов.",
-          },
-          {
-            text: "Среди 16 монет 2 фальшивые (одна легче, другая тяжелее настоящей). Найдите обе за 4 взвешивания.",
-            solution:
-              "Очень сложная задача. Требует анализа всех возможных комбинаций и построения дерева решений для каждого результата взвешивания.",
-          },
-          {
-            text: "Есть 11 монет, одна фальшивая. Весы показывают вес в граммах. Все настоящие монеты весят одинаково, но вес фальшивой неизвестен. За сколько взвешиваний найдете её?",
-            solution:
-              "При точных весах достаточно 1 взвешивания: взвесьте все монеты, разделите на количество монет - получите средний вес. Затем взвешивайте по одной.",
-          },
-        ],
+          "Описание данного типа задач будет добавлено в следующих обновлениях.",
+        easy: [],
+        medium: [],
+        hard: [],
       };
     }
 
-    // Обработка задач на переливание
-    if (topicId === "pouring" && subtopicId === "minimal") {
-      // Найдем категорию задач на переливание из puzzleData
-      const pouringCategory = puzzleCategories.find(
-        (cat) => cat.id === "pouring",
-      );
-      if (pouringCategory) {
-        return {
-          description:
-            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
-          easy: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .slice(0, 3)
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          medium: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .slice(3)
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          hard: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Высокая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-        };
-      }
-    }
-
-    // Для остальных категорий возвращаем базовый шаблон
     return {
       description:
-        "Описание данного типа задач будет добавлено в следующих обновлениях.",
-      easy: [
-        { text: "Задача 1 (легкий уровень)", solution: "Решение задачи 1" },
-        { text: "Задача 2 (легкий уровень)", solution: "Решение задачи 2" },
-        { text: "Задача 3 (легкий уровень)", solution: "Решение задачи 3" },
-        { text: "Задача 4 (легкий уровень)", solution: "Решение задачи 4" },
-        { text: "Задача 5 (легкий уровень)", solution: "Решение задачи 5" },
-      ],
-      medium: [
-        { text: "Задача 1 (средний уровень)", solution: "Решение задачи 1" },
-        { text: "Задача 2 (средний уровень)", solution: "Решение задачи 2" },
-        { text: "Задача 3 (средний уровень)", solution: "Решение задачи 3" },
-        { text: "Задача 4 (средний уровень)", solution: "Решение задачи 4" },
-        { text: "Задача 5 (средний уровень)", solution: "Решение задачи 5" },
-      ],
-      hard: [
-        { text: "Задача 1 (сложный уровень)", solution: "Решение задачи 1" },
-        { text: "Задача 2 (сложный уровень)", solution: "Решение задачи 2" },
-        { text: "Задача 3 (сложный уровень)", solution: "Решение задачи 3" },
-        { text: "Задача 4 (сложный уровень)", solution: "Решение задачи 4" },
-        { text: "Задача 5 (сложный уровень)", solution: "Решение задачи 5" },
-      ],
+        category.description ||
+        `Задачи категории "${category.title}" для развития логического мышления.`,
+      easy: category.puzzles
+        .filter((p) => p.difficulty === "Легкая")
+        .map((puzzle) => ({
+          text: puzzle.description,
+          solution: puzzle.solution,
+        })),
+      medium: category.puzzles
+        .filter((p) => p.difficulty === "Средняя")
+        .map((puzzle) => ({
+          text: puzzle.description,
+          solution: puzzle.solution,
+        })),
+      hard: category.puzzles
+        .filter((p) => p.difficulty === "Высокая")
+        .map((puzzle) => ({
+          text: puzzle.description,
+          solution: puzzle.solution,
+        })),
     };
   };
 
@@ -381,78 +200,10 @@ const EntertainingProblemsSection = () => {
     );
   }
 
-  // Если выбрана тема
+  // Если выбрана тема - показываем задачи сразу
   if (selectedTopic) {
     const topic = topics.find((t) => t.id === selectedTopic)!;
-
-    // Специальная обработка для категории "pouring" - показываем задачи сразу
-    if (selectedTopic === "pouring") {
-      const pouringCategory = puzzleCategories.find(
-        (cat) => cat.id === "pouring",
-      );
-      if (pouringCategory) {
-        const tasks = {
-          description:
-            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
-          easy: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Легкая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          medium: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          hard: pouringCategory.puzzles
-            .filter((p) => p.difficulty === "Высокая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-        };
-
-        return (
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-800">
-                {topic.title}
-              </h1>
-              <Button variant="outline" onClick={() => setSelectedTopic(null)}>
-                <Icon name="ArrowLeft" size={16} className="mr-2" />К темам
-              </Button>
-            </div>
-
-            <Card className="bg-blue-50 border-blue-200">
-              <CardContent className="pt-6">
-                <p className="text-blue-800">{tasks.description}</p>
-              </CardContent>
-            </Card>
-
-            {renderTaskLevel(
-              tasks.easy,
-              "easy",
-              "Легкий",
-              "Задачи, решаемые в 1-2 шага",
-            )}
-            {renderTaskLevel(
-              tasks.medium,
-              "medium",
-              "Средний",
-              "Задачи, требующие логической последовательности в рассуждениях",
-            )}
-            {renderTaskLevel(
-              tasks.hard,
-              "hard",
-              "Сложный",
-              "Задачи, требующие нестандартного решения и применения логики",
-            )}
-          </div>
-        );
-      }
-    }
+    const tasks = getTasksByTopic(selectedTopic);
 
     return (
       <div className="max-w-4xl mx-auto space-y-6">
@@ -463,26 +214,45 @@ const EntertainingProblemsSection = () => {
           </Button>
         </div>
 
-        <div className="grid gap-4">
-          {topic.subtopics?.map((subtopic) => (
-            <Card
-              key={subtopic.id}
-              className="hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => setSelectedSubtopic(subtopic.id)}
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span>{subtopic.title}</span>
-                  <Icon
-                    name="ChevronRight"
-                    size={20}
-                    className="text-gray-400"
-                  />
-                </CardTitle>
-              </CardHeader>
+        <Card className="bg-blue-50 border-blue-200">
+          <CardContent className="pt-6">
+            <p className="text-blue-800">{tasks.description}</p>
+          </CardContent>
+        </Card>
+
+        {tasks.easy.length > 0 &&
+          renderTaskLevel(
+            tasks.easy,
+            "easy",
+            "Легкий",
+            "Задачи, решаемые в 1-2 шага",
+          )}
+        {tasks.medium.length > 0 &&
+          renderTaskLevel(
+            tasks.medium,
+            "medium",
+            "Средний",
+            "Задачи, требующие логической последовательности в рассуждениях",
+          )}
+        {tasks.hard.length > 0 &&
+          renderTaskLevel(
+            tasks.hard,
+            "hard",
+            "Сложный",
+            "Задачи, требующие нестандартного решения и применения логики",
+          )}
+
+        {tasks.easy.length === 0 &&
+          tasks.medium.length === 0 &&
+          tasks.hard.length === 0 && (
+            <Card className="bg-yellow-50 border-yellow-200">
+              <CardContent className="pt-6 text-center">
+                <p className="text-yellow-800">
+                  Задачи для этой категории скоро будут добавлены!
+                </p>
+              </CardContent>
             </Card>
-          ))}
-        </div>
+          )}
       </div>
     );
   }
