@@ -24,7 +24,7 @@ const LessonPlansSection = () => {
     },
 
     {
-      title: "Урок 8: Положительные и отрицательные числа",
+      title: "Урок 2: Положительные и отрицательные числа",
       duration: "45 минут",
       topic: "Рациональные числа",
       objectives: [
@@ -36,7 +36,7 @@ const LessonPlansSection = () => {
       downloadUrl: "https://disk.yandex.ru/i/5GpQQC60wtUDXw",
     },
     {
-      title: "Урок 9: Модуль числа",
+      title: "Урок 3: Модуль числа",
       duration: "45 минут",
       topic: "Рациональные числа",
       objectives: [
@@ -48,7 +48,7 @@ const LessonPlansSection = () => {
       downloadUrl: "https://disk.yandex.ru/i/4Az80wd7lq5IKQ",
     },
     {
-      title: "Урок 10: Координаты точки на плоскости, абсцисса и ордината",
+      title: "Урок 4: Координаты точки на плоскости, абсцисса и ордината",
       duration: "45 минут",
       topic: "Координатная плоскость",
       objectives: [
@@ -60,7 +60,7 @@ const LessonPlansSection = () => {
       downloadUrl: "https://disk.yandex.ru/i/JTKU83-_0EWv2Q",
     },
     {
-      title: "Урок 11: Масштаб, пропорция",
+      title: "Урок 5: Масштаб, пропорция",
       duration: "45 минут",
       topic: "Отношения и пропорции",
       objectives: [
@@ -74,7 +74,7 @@ const LessonPlansSection = () => {
 
     {
       title:
-        "Урок 15: Прямоугольный параллелепипед, куб, призма, пирамида, конус, цилиндр, шар и сфера",
+        "Урок 6: Прямоугольный параллелепипед, куб, призма, пирамида, конус, цилиндр, шар и сфера",
       duration: "45 минут",
       topic: "Геометрия",
       objectives: [
@@ -86,7 +86,7 @@ const LessonPlansSection = () => {
       downloadUrl: "https://disk.yandex.ru/i/3w5TAydDWt3yBw",
     },
     {
-      title: "Урок 16: Сравнение и упорядочивание дробей",
+      title: "Урок 7: Сравнение и упорядочивание дробей",
       duration: "45 минут",
       topic: "Обыкновенные дроби",
       objectives: [
@@ -98,7 +98,7 @@ const LessonPlansSection = () => {
       downloadUrl: "https://disk.yandex.ru/i/bFzQi8itTt9nGg",
     },
     {
-      title: "Урок 17: Сравнение положительных и отрицательных чисел",
+      title: "Урок 8: Сравнение положительных и отрицательных чисел",
       duration: "45 минут",
       topic: "Рациональные числа",
       objectives: [
@@ -111,7 +111,7 @@ const LessonPlansSection = () => {
     },
     {
       title:
-        "Урок 18: Арифметические действия с положительными и отрицательными числами",
+        "Урок 9: Арифметические действия с положительными и отрицательными числами",
       duration: "45 минут",
       topic: "Рациональные числа",
       objectives: [
@@ -124,7 +124,7 @@ const LessonPlansSection = () => {
     },
     {
       title:
-        "Урок 19: Вычисление процента от величины и величины по её проценту",
+        "Урок 10: Вычисление процента от величины и величины по её проценту",
       duration: "45 минут",
       topic: "Проценты",
       objectives: [
