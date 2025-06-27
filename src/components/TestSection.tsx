@@ -13,6 +13,7 @@ import ClassAnalysis from "@/components/ClassAnalysis";
 
 const TestSection = () => {
   const [selectedTest, setSelectedTest] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
 
@@ -44,6 +45,46 @@ const TestSection = () => {
       time: "12 минут",
       icon: "Lightbulb",
       color: "purple",
+    },
+  ];
+
+  // Занимательные задачи
+  const funTasks = [
+    {
+      id: "riddles",
+      title: "Загадки и головоломки",
+      description: "Интересные логические загадки для развития мышления",
+      icon: "Puzzle",
+      color: "orange",
+      tasks: [
+        "У меня есть города, но нет домов. Есть леса, но нет деревьев. Есть реки, но нет воды. Что я?",
+        "Что может путешествовать по всему миру, оставаясь в углу?",
+        "Чем больше из меня берешь, тем больше я становлюсь. Что я?",
+      ],
+    },
+    {
+      id: "math-fun",
+      title: "Математические игры",
+      description: "Увлекательные математические задачки",
+      icon: "Calculator",
+      color: "pink",
+      tasks: [
+        "Найди следующее число: 1, 1, 2, 3, 5, 8, ?",
+        "Сколько треугольников в звезде?",
+        "Как разделить торт на 8 равных частей тремя разрезами?",
+      ],
+    },
+    {
+      id: "creative",
+      title: "Творческие задания",
+      description: "Задачи на креативность и нестандартное мышление",
+      icon: "Palette",
+      color: "teal",
+      tasks: [
+        "Придумай 10 способов использования скрепки",
+        "Нарисуй дом, не отрывая руки от бумаги",
+        "Создай историю из трех случайных слов",
+      ],
     },
   ];
 
@@ -249,10 +290,14 @@ const TestSection = () => {
       </div>
 
       <Tabs defaultValue="tests" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="tests" className="flex items-center gap-2">
             <Icon name="Brain" size={18} />
             Тесты для учеников
+          </TabsTrigger>
+          <TabsTrigger value="fun-tasks" className="flex items-center gap-2">
+            <Icon name="Gamepad2" size={18} />
+            Занимательные задачи
           </TabsTrigger>
           <TabsTrigger value="analysis" className="flex items-center gap-2">
             <Icon name="BarChart3" size={18} />
@@ -294,6 +339,73 @@ const TestSection = () => {
             </div>
           ) : (
             renderTest()
+          )}
+        </TabsContent>
+
+        <TabsContent value="fun-tasks" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {funTasks.map((task) => (
+              <Card
+                key={task.id}
+                className="cursor-pointer transition-all hover:shadow-lg hover:scale-105"
+                onClick={() => setActiveCategory(task.id)}
+              >
+                <CardHeader className="text-center">
+                  <div
+                    className={`mx-auto w-16 h-16 rounded-full bg-${task.color}-100 flex items-center justify-center mb-4`}
+                  >
+                    <Icon
+                      name={task.icon as any}
+                      size={32}
+                      className={`text-${task.color}-600`}
+                    />
+                  </div>
+                  <CardTitle className="text-xl">{task.title}</CardTitle>
+                  <CardDescription>{task.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <div className="text-sm text-gray-600 mb-4">
+                    📝 {task.tasks.length} заданий
+                  </div>
+                  <Button className="w-full">Открыть задачи</Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {activeCategory && (
+            <Card className="mt-6">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle>
+                    {funTasks.find((t) => t.id === activeCategory)?.title}
+                  </CardTitle>
+                  <Button
+                    variant="outline"
+                    onClick={() => setActiveCategory(null)}
+                  >
+                    <Icon name="X" size={16} />
+                    Закрыть
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {funTasks
+                    .find((t) => t.id === activeCategory)
+                    ?.tasks.map((task, index) => (
+                      <div key={index} className="p-4 bg-gray-50 rounded-lg">
+                        <div className="flex items-start gap-3">
+                          <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                            {index + 1}
+                          </span>
+                          <p className="text-gray-800">{task}</p>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </CardContent>
+            </Card>
           )}
         </TabsContent>
 
