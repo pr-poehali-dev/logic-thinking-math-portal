@@ -126,37 +126,6 @@ const EntertainingProblemsSection = () => {
       }
     }
 
-    // Обработка задач про рыцарей и лжецов из puzzleData
-    if (topicId === "knights-liars") {
-      const knightsLiarsCategory = puzzleCategories.find(
-        (cat) => cat.id === "knights-liars",
-      );
-      if (knightsLiarsCategory) {
-        return {
-          description:
-            "Логические задачи о рыцарях (всегда говорят правду) и лжецах (всегда лгут). Определите, кто есть кто по их высказываниям.",
-          easy: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Легкая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          medium: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          hard: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Высокая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-        };
-      }
-    }
-
     // Задачи про взвешивание
     if (topicId === "weighing") {
       return {
@@ -246,8 +215,39 @@ const EntertainingProblemsSection = () => {
       };
     }
 
-    // Удаляем дублирующийся код для задач на переливание
-    // if (topicId === "pouring" && subtopicId === "minimal") блок удален
+    // Обработка задач на переливание
+    if (topicId === "pouring" && subtopicId === "minimal") {
+      // Найдем категорию задач на переливание из puzzleData
+      const pouringCategory = puzzleCategories.find(
+        (cat) => cat.id === "pouring",
+      );
+      if (pouringCategory) {
+        return {
+          description:
+            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
+          easy: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .slice(0, 3)
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .slice(3)
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+      }
+    }
 
     // Для остальных категорий возвращаем базовый шаблон
     return {
@@ -336,8 +336,50 @@ const EntertainingProblemsSection = () => {
     </Card>
   );
 
-  // Удаляем блок с selectedSubtopic, так как subtopics не определены
-  // if (selectedTopic && selectedSubtopic) блок удален полностью
+  // Если выбрана подтема
+  if (selectedTopic && selectedSubtopic) {
+    const topic = topics.find((t) => t.id === selectedTopic)!;
+    const subtopic = topic.subtopics.find((s) => s.id === selectedSubtopic)!;
+    const tasks = getTasksBySubtopic(selectedTopic, selectedSubtopic);
+
+    return (
+      <div className="max-w-4xl mx-auto space-y-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-gray-800">
+            {topic.title}: {subtopic.title}
+          </h1>
+          <Button variant="outline" onClick={() => setSelectedSubtopic(null)}>
+            <Icon name="ArrowLeft" size={16} className="mr-2" />К видам задач
+          </Button>
+        </div>
+
+        <Card className="bg-blue-50 border-blue-200">
+          <CardContent className="pt-6">
+            <p className="text-blue-800">{tasks.description}</p>
+          </CardContent>
+        </Card>
+
+        {renderTaskLevel(
+          tasks.easy,
+          "easy",
+          "Легкий",
+          "Задачи, решаемые в 1-2 шага",
+        )}
+        {renderTaskLevel(
+          tasks.medium,
+          "medium",
+          "Средний",
+          "Задачи, требующие логической последовательности в рассуждениях",
+        )}
+        {renderTaskLevel(
+          tasks.hard,
+          "hard",
+          "Сложный",
+          "Задачи, требующие нестандартного решения и применения логики",
+        )}
+      </div>
+    );
+  }
 
   // Если выбрана тема
   if (selectedTopic) {
@@ -345,7 +387,32 @@ const EntertainingProblemsSection = () => {
 
     // Специальная обработка для категории "pouring" - показываем задачи сразу
     if (selectedTopic === "pouring") {
-      const tasks = getTasksByTopic("pouring");
+      const pouringCategory = puzzleCategories.find(
+        (cat) => cat.id === "pouring",
+      );
+      if (pouringCategory) {
+        const tasks = {
+          description:
+            "Задачи на переливание жидкостей с минимальным количеством действий. Цель - отмерить нужное количество жидкости, используя сосуды разного объёма.",
+          easy: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: pouringCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
 
         return (
           <div className="max-w-4xl mx-auto space-y-6">
@@ -381,75 +448,6 @@ const EntertainingProblemsSection = () => {
               "hard",
               "Сложный",
               "Задачи, требующие нестандартного решения и применения логики",
-            )}
-          </div>
-        );
-      }
-    }
-
-    // Специальная обработка для категории "knights-liars" - показываем задачи сразу
-    if (selectedTopic === "knights-liars") {
-      const knightsLiarsCategory = puzzleCategories.find(
-        (cat) => cat.id === "knights-liars",
-      );
-      if (knightsLiarsCategory) {
-        const tasks = {
-          description:
-            "Логические задачи о рыцарях, которые всегда говорят правду, и лжецах, которые всегда лгут. Необходимо определить, кто есть кто, основываясь на их высказываниях.",
-          easy: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Легкая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          medium: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Средняя")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-          hard: knightsLiarsCategory.puzzles
-            .filter((p) => p.difficulty === "Высокая")
-            .map((puzzle) => ({
-              text: puzzle.description,
-              solution: puzzle.solution,
-            })),
-        };
-
-        return (
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-800">
-                {topic.title}
-              </h1>
-              <Button variant="outline" onClick={() => setSelectedTopic(null)}>
-                <Icon name="ArrowLeft" size={16} className="mr-2" />К темам
-              </Button>
-            </div>
-
-            <Card className="bg-blue-50 border-blue-200">
-              <CardContent className="pt-6">
-                <p className="text-blue-800">{tasks.description}</p>
-              </CardContent>
-            </Card>
-
-            {renderTaskLevel(
-              tasks.easy,
-              "easy",
-              "Легкий",
-              "Задачи, решаемые прямой логикой",
-            )}
-            {renderTaskLevel(
-              tasks.medium,
-              "medium",
-              "Средний",
-              "Задачи с несколькими персонажами и условиями",
-            )}
-            {renderTaskLevel(
-              tasks.hard,
-              "hard",
-              "Сложный",
-              "Многоуровневые логические построения",
             )}
           </div>
         );
