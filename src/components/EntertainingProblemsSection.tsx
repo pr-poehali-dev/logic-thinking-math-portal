@@ -115,173 +115,92 @@ const EntertainingProblemsSection = () => {
       }
     }
 
-    // Получаем логические задачи из puzzleData для остальных категорий
-    const logicCategory = puzzleCategories.find((cat) => cat.id === "logic");
-    if (logicCategory) {
-      // Фильтруем задачи по типам из логической категории
-      const getLogicTasks = (startIndex: number, count: number) => {
-        return logicCategory.puzzles
-          .slice(startIndex, startIndex + count)
-          .map((puzzle) => ({
-            text: puzzle.description,
-            solution: puzzle.solution,
-          }));
-      };
+    // Поскольку категория 'logic' была удалена, используем fallback данные
+    // для всех остальных категорий кроме 'pouring'
+    const getFallbackTasks = (count: number, level: string) => {
+      return Array(count)
+        .fill(null)
+        .map((_, i) => ({
+          text: `Задача ${i + 1} (${level} уровень) - будет добавлена в следующих обновлениях`,
+          solution: `Решение задачи ${i + 1} будет добавлено в следующих обновлениях`,
+        }));
+    };
 
-      // Определяем задачи для каждой категории на основе данных из puzzleData
-      switch (topicId) {
-        case "truth-tasks":
-          return {
-            description:
-              "Задачи на определение истинности утверждений и работу с логическими операциями.",
-            easy: getLogicTasks(0, 5), // Первые 5 истинностных задач
-            medium: getLogicTasks(5, 5),
-            hard: getLogicTasks(10, 5),
-          };
-        case "backwards-tasks":
-          return {
-            description:
-              "Задачи, которые эффективно решаются методом 'от конца к началу'.",
-            easy: getLogicTasks(15, 5), // Задачи, решаемые с конца
-            medium: getLogicTasks(20, 5),
-            hard: getLogicTasks(25, 5),
-          };
-        case "weighing":
-          return {
-            description:
-              "Задачи на поиск фальшивой монеты с помощью весов за минимальное количество взвешиваний.",
-            easy: getLogicTasks(30, 5), // Задачи на взвешивание
-            medium: getLogicTasks(35, 5),
-            hard: getLogicTasks(40, 5),
-          };
-        case "who-is-who":
-          return {
-            description:
-              "Задачи на определение соответствий между людьми и их характеристиками.",
-            easy: getLogicTasks(45, 5), // Задачи типа «Кто есть кто?»
-            medium: getLogicTasks(50, 5),
-            hard: getLogicTasks(55, 5),
-          };
-        case "sets-tasks":
-          return {
-            description:
-              "Задачи на работу с множествами, их пересечениями и объединениями.",
-            easy: getLogicTasks(60, 5), // Задачи на множества
-            medium: getLogicTasks(65, 5),
-            hard: getLogicTasks(70, 5),
-          };
-        case "knights-liars":
-          return {
-            description:
-              "Классические задачи об острове рыцарей и лжецов, где рыцари всегда говорят правду, а лжецы всегда лгут.",
-            easy: getLogicTasks(75, 5), // Задачи о рыцарях и лжецах
-            medium: getLogicTasks(80, 5),
-            hard: getLogicTasks(85, 5),
-          };
-        case "strategy-tasks":
-          return {
-            description:
-              "Задачи на разработку оптимальных стратегий в играх и жизненных ситуациях.",
-            easy: getLogicTasks(90, 5), // Задачи на стратегию
-            medium: getLogicTasks(95, 5),
-            hard: getLogicTasks(100, 5),
-          };
-        default:
-          return {
-            description:
-              "Описание данного типа задач будет добавлено в следующих обновлениях.",
-            easy: [
-              {
-                text: "Задача 1 (легкий уровень)",
-                solution: "Решение задачи 1",
-              },
-              {
-                text: "Задача 2 (легкий уровень)",
-                solution: "Решение задачи 2",
-              },
-              {
-                text: "Задача 3 (легкий уровень)",
-                solution: "Решение задачи 3",
-              },
-              {
-                text: "Задача 4 (легкий уровень)",
-                solution: "Решение задачи 4",
-              },
-              {
-                text: "Задача 5 (легкий уровень)",
-                solution: "Решение задачи 5",
-              },
-            ],
-            medium: [
-              {
-                text: "Задача 1 (средний уровень)",
-                solution: "Решение задачи 1",
-              },
-              {
-                text: "Задача 2 (средний уровень)",
-                solution: "Решение задачи 2",
-              },
-              {
-                text: "Задача 3 (средний уровень)",
-                solution: "Решение задачи 3",
-              },
-              {
-                text: "Задача 4 (средний уровень)",
-                solution: "Решение задачи 4",
-              },
-              {
-                text: "Задача 5 (средний уровень)",
-                solution: "Решение задачи 5",
-              },
-            ],
-            hard: [
-              {
-                text: "Задача 1 (сложный уровень)",
-                solution: "Решение задачи 1",
-              },
-              {
-                text: "Задача 2 (сложный уровень)",
-                solution: "Решение задачи 2",
-              },
-              {
-                text: "Задача 3 (сложный уровень)",
-                solution: "Решение задачи 3",
-              },
-              {
-                text: "Задача 4 (сложный уровень)",
-                solution: "Решение задачи 4",
-              },
-              {
-                text: "Задача 5 (сложный уровень)",
-                solution: "Решение задачи 5",
-              },
-            ],
-          };
-      }
+    // Определяем задачи для каждой категории с использованием fallback данных
+    switch (topicId) {
+      case "truth-tasks":
+        return {
+          description:
+            "Задачи на определение истинности утверждений и работу с логическими операциями.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "backwards-tasks":
+        return {
+          description:
+            "Задачи, которые эффективно решаются методом 'от конца к началу'.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "weighing":
+        return {
+          description:
+            "Задачи на поиск фальшивой монеты с помощью весов за минимальное количество взвешиваний.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "who-is-who":
+        return {
+          description:
+            "Задачи на определение соответствий между людьми и их характеристиками.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "sets-tasks":
+        return {
+          description:
+            "Задачи на работу с множествами, их пересечениями и объединениями.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "knights-liars":
+        return {
+          description:
+            "Классические задачи об острове рыцарей и лжецов, где рыцари всегда говорят правду, а лжецы всегда лгут.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      case "strategy-tasks":
+        return {
+          description:
+            "Задачи на разработку оптимальных стратегий в играх и жизненных ситуациях.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
+      default:
+        return {
+          description:
+            "Описание данного типа задач будет добавлено в следующих обновлениях.",
+          easy: getFallbackTasks(5, "легкий"),
+          medium: getFallbackTasks(5, "средний"),
+          hard: getFallbackTasks(5, "сложный"),
+        };
     }
 
     // Fallback для случаев, когда данные не найдены
     return {
       description:
         "Описание данного типа задач будет добавлено в следующих обновлениях.",
-      easy: Array(5)
-        .fill(null)
-        .map((_, i) => ({
-          text: `Задача ${i + 1} (легкий уровень)`,
-          solution: `Решение задачи ${i + 1}`,
-        })),
-      medium: Array(5)
-        .fill(null)
-        .map((_, i) => ({
-          text: `Задача ${i + 1} (средний уровень)`,
-          solution: `Решение задачи ${i + 1}`,
-        })),
-      hard: Array(5)
-        .fill(null)
-        .map((_, i) => ({
-          text: `Задача ${i + 1} (сложный уровень)`,
-          solution: `Решение задачи ${i + 1}`,
-        })),
+      easy: getFallbackTasks(5, "легкий"),
+      medium: getFallbackTasks(5, "средний"),
+      hard: getFallbackTasks(5, "сложный"),
     };
   };
 
@@ -507,7 +426,7 @@ const EntertainingProblemsSection = () => {
               </div>
 
               <Tabs defaultValue={puzzleCategories[0].id} className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
+                <TabsList className="grid w-full grid-cols-2">
                   {puzzleCategories.map((category) => (
                     <TabsTrigger
                       key={category.id}
