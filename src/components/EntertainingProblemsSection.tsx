@@ -126,6 +126,37 @@ const EntertainingProblemsSection = () => {
       }
     }
 
+    // Обработка задач про рыцарей и лжецов из puzzleData
+    if (topicId === "knights-liars") {
+      const knightsLiarsCategory = puzzleCategories.find(
+        (cat) => cat.id === "knights-liars",
+      );
+      if (knightsLiarsCategory) {
+        return {
+          description:
+            "Логические задачи о рыцарях (всегда говорят правду) и лжецах (всегда лгут). Определите, кто есть кто по их высказываниям.",
+          easy: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+      }
+    }
+
     // Задачи про взвешивание
     if (topicId === "weighing") {
       return {
@@ -448,6 +479,75 @@ const EntertainingProblemsSection = () => {
               "hard",
               "Сложный",
               "Задачи, требующие нестандартного решения и применения логики",
+            )}
+          </div>
+        );
+      }
+    }
+
+    // Специальная обработка для категории "knights-liars" - показываем задачи сразу
+    if (selectedTopic === "knights-liars") {
+      const knightsLiarsCategory = puzzleCategories.find(
+        (cat) => cat.id === "knights-liars",
+      );
+      if (knightsLiarsCategory) {
+        const tasks = {
+          description:
+            "Логические задачи о рыцарях, которые всегда говорят правду, и лжецах, которые всегда лгут. Необходимо определить, кто есть кто, основываясь на их высказываниях.",
+          easy: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Легкая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          medium: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Средняя")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+          hard: knightsLiarsCategory.puzzles
+            .filter((p) => p.difficulty === "Высокая")
+            .map((puzzle) => ({
+              text: puzzle.description,
+              solution: puzzle.solution,
+            })),
+        };
+
+        return (
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl font-bold text-gray-800">
+                {topic.title}
+              </h1>
+              <Button variant="outline" onClick={() => setSelectedTopic(null)}>
+                <Icon name="ArrowLeft" size={16} className="mr-2" />К темам
+              </Button>
+            </div>
+
+            <Card className="bg-blue-50 border-blue-200">
+              <CardContent className="pt-6">
+                <p className="text-blue-800">{tasks.description}</p>
+              </CardContent>
+            </Card>
+
+            {renderTaskLevel(
+              tasks.easy,
+              "easy",
+              "Легкий",
+              "Задачи, решаемые прямой логикой",
+            )}
+            {renderTaskLevel(
+              tasks.medium,
+              "medium",
+              "Средний",
+              "Задачи с несколькими персонажами и условиями",
+            )}
+            {renderTaskLevel(
+              tasks.hard,
+              "hard",
+              "Сложный",
+              "Многоуровневые логические построения",
             )}
           </div>
         );
