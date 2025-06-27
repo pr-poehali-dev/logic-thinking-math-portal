@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import HomeSection from "@/components/HomeSection";
 import TestSection from "@/components/TestSection";
 import MethodicalGuideSection from "@/components/MethodicalGuideSection";
-
+import EntertainingProblemsSection from "@/components/EntertainingProblemsSection";
 import LessonPlansSection from "@/components/LessonPlansSection";
 
 import { useState } from "react";
@@ -14,6 +14,8 @@ const Index = () => {
     switch (activeSection) {
       case "tests":
         return <TestSection />;
+      case "entertaining":
+        return <EntertainingProblemsSection />;
 
       case "lesson-plans":
         return <LessonPlansSection />;
