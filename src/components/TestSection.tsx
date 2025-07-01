@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 import ClassAnalysis from "@/components/ClassAnalysis";
+import GradeSixTasks from "@/components/GradeSixTasks";
 
 // Компонент для отображения отдельной задачи
 const TaskCard = ({
@@ -870,15 +871,15 @@ const TestSection = () => {
         </p>
       </div>
 
-      <Tabs defaultValue="tests" className="w-full">
+      <Tabs defaultValue="logic-tasks" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="tests" className="flex items-center gap-2">
+          <TabsTrigger value="logic-tasks" className="flex items-center gap-2">
             <Icon name="Brain" size={18} />
-            Тесты для учеников
+            Логические задачи
           </TabsTrigger>
-          <TabsTrigger value="math-tasks" className="flex items-center gap-2">
-            <Icon name="Calculator" size={18} />
-            Математические задачи
+          <TabsTrigger value="grade-six" className="flex items-center gap-2">
+            <Icon name="BookOpen" size={18} />
+            Задачи для 6-го класса
           </TabsTrigger>
           <TabsTrigger value="analysis" className="flex items-center gap-2">
             <Icon name="BarChart3" size={18} />
@@ -886,7 +887,7 @@ const TestSection = () => {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="tests" className="space-y-6">
+        <TabsContent value="logic-tasks" className="space-y-6">
           {!selectedTest ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {tests.map((test) => (
@@ -923,7 +924,11 @@ const TestSection = () => {
           )}
         </TabsContent>
 
-        <TabsContent value="math-tasks" className="space-y-6">
+        <TabsContent value="grade-six" className="space-y-6">
+          <GradeSixTasks />
+        </TabsContent>
+
+        <TabsContent value="old-math-tasks" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mathTasks.map((task) => (
               <Card
