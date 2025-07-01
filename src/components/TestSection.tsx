@@ -10,7 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 import ClassAnalysis from "@/components/ClassAnalysis";
-import GradeSixTasks from "@/components/GradeSixTasks";
 
 // Компонент для отображения отдельной задачи
 const TaskCard = ({
@@ -875,11 +874,14 @@ const TestSection = () => {
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="logic-tasks" className="flex items-center gap-2">
             <Icon name="Brain" size={18} />
-            Логические задачи
+            Тесты для учеников
           </TabsTrigger>
-          <TabsTrigger value="grade-six" className="flex items-center gap-2">
-            <Icon name="BookOpen" size={18} />
-            Задачи для 6-го класса
+          <TabsTrigger
+            value="old-math-tasks"
+            className="flex items-center gap-2"
+          >
+            <Icon name="Calculator" size={18} />
+            Математические задачи
           </TabsTrigger>
           <TabsTrigger value="analysis" className="flex items-center gap-2">
             <Icon name="BarChart3" size={18} />

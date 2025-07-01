@@ -13,6 +13,7 @@ import PuzzleDetail from "./puzzle/PuzzleDetail";
 import { usePuzzleState } from "@/hooks/usePuzzleState";
 import { puzzleCategories } from "@/data/puzzleData";
 import { useState } from "react";
+import GradeSixTasks from "@/components/GradeSixTasks";
 
 const EntertainingProblemsSection = () => {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
@@ -445,7 +446,7 @@ const EntertainingProblemsSection = () => {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto">
+        <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto">
           <TabsTrigger value="logic" className="flex items-center gap-2">
             <Icon name="Brain" size={16} />
             Логические задачи
@@ -453,6 +454,10 @@ const EntertainingProblemsSection = () => {
           <TabsTrigger value="puzzles" className="flex items-center gap-2">
             <Icon name="Puzzle" size={16} />
             Головоломки
+          </TabsTrigger>
+          <TabsTrigger value="grade-six" className="flex items-center gap-2">
+            <Icon name="BookOpen" size={16} />
+            Задачи для 6-го класса
           </TabsTrigger>
         </TabsList>
 
@@ -535,6 +540,10 @@ const EntertainingProblemsSection = () => {
               </Tabs>
             </div>
           )}
+        </TabsContent>
+
+        <TabsContent value="grade-six" className="mt-8">
+          <GradeSixTasks />
         </TabsContent>
       </Tabs>
 
