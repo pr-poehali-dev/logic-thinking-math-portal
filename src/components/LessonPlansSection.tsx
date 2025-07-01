@@ -8,8 +8,25 @@ import {
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
+interface AdditionalResource {
+  title: string;
+  description: string;
+  url: string;
+  icon: string;
+}
+
+interface LessonPlan {
+  title: string;
+  duration: string;
+  topic: string;
+  objectives: string[];
+  materials: string;
+  downloadUrl: string;
+  additionalResources?: AdditionalResource[];
+}
+
 const LessonPlansSection = () => {
-  const lessonPlans = [
+  const lessonPlans: LessonPlan[] = [
     {
       title: "Урок 1: Основное свойство дроби",
       duration: "45 минут",
@@ -58,6 +75,15 @@ const LessonPlansSection = () => {
       ],
       materials: "Координатная сетка, линейка, цветные карандаши",
       downloadUrl: "https://disk.yandex.ru/i/JTKU83-_0EWv2Q",
+      additionalResources: [
+        {
+          title: "Рисуем по координатам",
+          description:
+            "Интерактивные задания для закрепления темы координат через творчество",
+          url: "https://alekseevaee.ru/metodobespechenie/programmy/risuem-po-koordinatam#Risunki-10-00",
+          icon: "Palette",
+        },
+      ],
     },
     {
       title: "Урок 5: Масштаб, пропорция",
@@ -306,6 +332,59 @@ const LessonPlansSection = () => {
                 </h4>
                 <p className="text-gray-700 ml-4">{lesson.materials}</p>
               </div>
+              {lesson.additionalResources && (
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                    <Icon
+                      name="ExternalLink"
+                      size={16}
+                      className="text-green-600"
+                    />
+                    Дополнительные ресурсы:
+                  </h4>
+                  <div className="ml-4 space-y-2">
+                    {lesson.additionalResources.map((resource, resIndex) => (
+                      <div
+                        key={resIndex}
+                        className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200"
+                      >
+                        <Icon
+                          name={resource.icon as any}
+                          size={20}
+                          className="text-green-600"
+                        />
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-green-800">
+                            {resource.title}
+                          </h5>
+                          <p className="text-sm text-gray-600">
+                            {resource.description}
+                          </p>
+                        </div>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-green-300 text-green-700 hover:bg-green-100"
+                          onClick={() =>
+                            window.open(
+                              resource.url,
+                              "_blank",
+                              "noopener,noreferrer",
+                            )
+                          }
+                        >
+                          <Icon
+                            name="ExternalLink"
+                            size={14}
+                            className="mr-1"
+                          />
+                          Открыть
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         ))}
