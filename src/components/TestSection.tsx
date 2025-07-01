@@ -648,6 +648,127 @@ const TestSection = () => {
     }
   };
 
+  // Компонент для отображения отдельной задачи
+  const TaskCard = ({
+    task,
+    index,
+    selectedDifficulty,
+  }: {
+    task: any;
+    index: number;
+    selectedDifficulty: string | null;
+  }) => {
+    const [showHints, setShowHints] = useState(false);
+    const [showSolution, setShowSolution] = useState(false);
+    const [currentHint, setCurrentHint] = useState(0);
+
+    const difficultyColor = getDifficultyColor(task.level);
+    const difficultyLabel = getDifficultyLabel(task.level);
+
+    return (
+      <Card
+        className="border-l-4"
+        style={{ borderLeftColor: `var(--color-${difficultyColor}-500)` }}
+      >
+        <CardHeader>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className={`px-2 py-1 bg-${difficultyColor}-100 text-${difficultyColor}-800 text-xs rounded font-medium`}
+                >
+                  {difficultyColor === "green"
+                    ? "🟢"
+                    : difficultyColor === "yellow"
+                      ? "🟡"
+                      : "🔴"}{" "}
+                  {difficultyLabel}
+                </span>
+                <span className="text-sm text-gray-500">
+                  Задача #{index + 1}
+                </span>
+              </div>
+              <CardTitle className="text-base">{task.condition}</CardTitle>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Кнопки управления */}
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setShowHints(!showHints);
+                if (!showHints) setCurrentHint(0);
+              }}
+              className="text-blue-600 border-blue-200 hover:bg-blue-50"
+            >
+              <Icon name="Lightbulb" size={16} className="mr-1" />
+              {showHints ? "Скрыть подсказки" : "Показать подсказки"}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowSolution(!showSolution)}
+              className="text-green-600 border-green-200 hover:bg-green-50"
+            >
+              <Icon name="CheckCircle" size={16} className="mr-1" />
+              {showSolution ? "Скрыть решение" : "Показать решение"}
+            </Button>
+          </div>
+
+          {/* Подсказки */}
+          {showHints && task.hints && task.hints.length > 0 && (
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-medium text-blue-800">💡 Подсказки:</h4>
+                {task.hints.length > 1 && (
+                  <div className="flex gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() =>
+                        setCurrentHint(Math.max(0, currentHint - 1))
+                      }
+                      disabled={currentHint === 0}
+                    >
+                      <Icon name="ChevronLeft" size={16} />
+                    </Button>
+                    <span className="text-sm text-blue-600 px-2 py-1">
+                      {currentHint + 1} из {task.hints.length}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() =>
+                        setCurrentHint(
+                          Math.min(task.hints.length - 1, currentHint + 1),
+                        )
+                      }
+                      disabled={currentHint === task.hints.length - 1}
+                    >
+                      <Icon name="ChevronRight" size={16} />
+                    </Button>
+                  </div>
+                )}
+              </div>
+              <p className="text-blue-700">{task.hints[currentHint]}</p>
+            </div>
+          )}
+
+          {/* Решение */}
+          {showSolution && (
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+              <h4 className="font-medium text-green-800 mb-2">✅ Решение:</h4>
+              <p className="text-green-700">{task.solution}</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  };
+
   const renderTest = () => {
     const questions = getQuestions(selectedTest!);
     const question = questions[currentQuestion];
