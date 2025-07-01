@@ -11,6 +11,133 @@ import Icon from "@/components/ui/icon";
 import { useState } from "react";
 import ClassAnalysis from "@/components/ClassAnalysis";
 
+// Компонент для отображения отдельной задачи
+const TaskCard = ({
+  task,
+  index,
+  selectedDifficulty,
+}: {
+  task: any;
+  index: number;
+  selectedDifficulty: string | null;
+}) => {
+  const [showHints, setShowHints] = useState(false);
+  const [showSolution, setShowSolution] = useState(false);
+
+  const getDifficultyColor = (level: string) => {
+    switch (level) {
+      case "easy":
+        return "green";
+      case "medium":
+        return "yellow";
+      case "hard":
+        return "red";
+      default:
+        return "gray";
+    }
+  };
+
+  const getDifficultyLabel = (level: string) => {
+    switch (level) {
+      case "easy":
+        return "Лёгкий";
+      case "medium":
+        return "Средний";
+      case "hard":
+        return "Сложный";
+      default:
+        return "";
+    }
+  };
+
+  const getDifficultyIcon = (level: string) => {
+    switch (level) {
+      case "easy":
+        return "🟢";
+      case "medium":
+        return "🟡";
+      case "hard":
+        return "🔴";
+      default:
+        return "⚪";
+    }
+  };
+
+  return (
+    <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
+            {index + 1}
+          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-lg">{getDifficultyIcon(task.level)}</span>
+            <span
+              className={`px-2 py-1 text-xs font-medium rounded-full bg-${getDifficultyColor(task.level)}-100 text-${getDifficultyColor(task.level)}-800`}
+            >
+              {getDifficultyLabel(task.level)}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <p className="text-gray-800 leading-relaxed">{task.condition}</p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowHints(!showHints)}
+          className="text-blue-600 hover:text-blue-700"
+        >
+          <Icon name="Lightbulb" size={14} className="mr-1" />
+          {showHints ? "Скрыть подсказки" : "Показать подсказки"}
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowSolution(!showSolution)}
+          className="text-green-600 hover:text-green-700"
+        >
+          <Icon name="CheckCircle" size={14} className="mr-1" />
+          {showSolution ? "Скрыть решение" : "Показать решение"}
+        </Button>
+      </div>
+
+      {showHints && (
+        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+            <Icon name="Lightbulb" size={16} />
+            Подсказки:
+          </h4>
+          <ul className="space-y-2">
+            {task.hints.map((hint: string, hintIndex: number) => (
+              <li key={hintIndex} className="text-blue-700 text-sm">
+                • {hint}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {showSolution && (
+        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <h4 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+            <Icon name="CheckCircle" size={16} />
+            Решение:
+          </h4>
+          <p className="text-green-700 text-sm">
+            {task.solution ||
+              "Решение будет добавлено позже. Попробуйте решить самостоятельно, используя подсказки!"}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const TestSection = () => {
   const [selectedTest, setSelectedTest] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -729,19 +856,105 @@ const TestSection = () => {
                 </div>
               </CardHeader>
               <CardContent>
+                {/* Фильтр по уровню сложности для задач с уровнями */}
+                {(activeCategory === "knights-liars" ||
+                  activeCategory === "strategy") && (
+                  <div className="mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Button
+                        variant={
+                          selectedDifficulty === null ? "default" : "outline"
+                        }
+                        size="sm"
+                        onClick={() => setSelectedDifficulty(null)}
+                      >
+                        Все уровни
+                      </Button>
+                      <Button
+                        variant={
+                          selectedDifficulty === "easy" ? "default" : "outline"
+                        }
+                        size="sm"
+                        onClick={() => setSelectedDifficulty("easy")}
+                        className="text-green-600"
+                      >
+                        🟢 Лёгкий
+                      </Button>
+                      <Button
+                        variant={
+                          selectedDifficulty === "medium"
+                            ? "default"
+                            : "outline"
+                        }
+                        size="sm"
+                        onClick={() => setSelectedDifficulty("medium")}
+                        className="text-yellow-600"
+                      >
+                        🟡 Средний
+                      </Button>
+                      <Button
+                        variant={
+                          selectedDifficulty === "hard" ? "default" : "outline"
+                        }
+                        size="sm"
+                        onClick={() => setSelectedDifficulty("hard")}
+                        className="text-red-600"
+                      >
+                        🔴 Сложный
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
                 <div className="space-y-4">
-                  {funTasks
-                    .find((t) => t.id === activeCategory)
-                    ?.tasks.map((task, index) => (
-                      <div key={index} className="p-4 bg-gray-50 rounded-lg">
-                        <div className="flex items-start gap-3">
-                          <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
-                            {index + 1}
-                          </span>
-                          <p className="text-gray-800">{task}</p>
-                        </div>
-                      </div>
-                    ))}
+                  {(() => {
+                    const currentTask = funTasks.find(
+                      (t) => t.id === activeCategory,
+                    );
+                    if (!currentTask) return null;
+
+                    const filteredTasks = currentTask.tasks.filter(
+                      (task: any) => {
+                        if (
+                          activeCategory === "knights-liars" ||
+                          activeCategory === "strategy"
+                        ) {
+                          return (
+                            selectedDifficulty === null ||
+                            task.level === selectedDifficulty
+                          );
+                        }
+                        return true;
+                      },
+                    );
+
+                    return filteredTasks.map((task: any, index: number) => {
+                      if (typeof task === "string") {
+                        return (
+                          <div
+                            key={index}
+                            className="p-4 bg-gray-50 rounded-lg"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                                {index + 1}
+                              </span>
+                              <p className="text-gray-800">{task}</p>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <TaskCard
+                          key={index}
+                          task={task}
+                          index={index}
+                          selectedDifficulty={selectedDifficulty}
+                        />
+                      );
+                    });
+                  })()}
                 </div>
               </CardContent>
             </Card>
