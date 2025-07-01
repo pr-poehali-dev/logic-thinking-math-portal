@@ -926,10 +926,6 @@ const TestSection = () => {
           )}
         </TabsContent>
 
-        <TabsContent value="grade-six" className="space-y-6">
-          <GradeSixTasks />
-        </TabsContent>
-
         <TabsContent value="old-math-tasks" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mathTasks.map((task) => (
