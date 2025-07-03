@@ -909,7 +909,7 @@ const EntertainingProblemsSection = () => {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto">
+        <TabsList className="grid w-full grid-cols-4 max-w-3xl mx-auto">
           <TabsTrigger value="logic" className="flex items-center gap-2">
             <Icon name="Brain" size={16} />
             Логические задачи
@@ -921,6 +921,10 @@ const EntertainingProblemsSection = () => {
           <TabsTrigger value="grade-six" className="flex items-center gap-2">
             <Icon name="BookOpen" size={16} />
             Задачи для 6-го класса
+          </TabsTrigger>
+          <TabsTrigger value="topics" className="flex items-center gap-2">
+            <Icon name="Library" size={16} />
+            Задачи по темам
           </TabsTrigger>
         </TabsList>
 
@@ -1007,6 +1011,94 @@ const EntertainingProblemsSection = () => {
 
         <TabsContent value="grade-six" className="mt-8">
           <GradeSixTasks />
+        </TabsContent>
+
+        <TabsContent value="topics" className="mt-8">
+          {selectedGradeTopic ? (
+            <div className="max-w-4xl mx-auto space-y-6">
+              <div className="flex items-center justify-between">
+                <h1 className="text-3xl font-bold text-gray-800">
+                  {gradeTopics.find((t) => t.id === selectedGradeTopic)?.title}
+                </h1>
+                <Button
+                  variant="outline"
+                  onClick={() => setSelectedGradeTopic(null)}
+                >
+                  <Icon name="ArrowLeft" size={16} className="mr-2" />К темам
+                </Button>
+              </div>
+
+              <Card className="bg-blue-50 border-blue-200">
+                <CardContent className="pt-6">
+                  <p className="text-blue-800">
+                    {
+                      gradeTopics.find((t) => t.id === selectedGradeTopic)
+                        ?.description
+                    }
+                  </p>
+                </CardContent>
+              </Card>
+
+              {(() => {
+                const topicData = getGradeTopicTasks(selectedGradeTopic);
+                return (
+                  <>
+                    {renderTaskLevel(
+                      topicData.easy,
+                      "easy",
+                      "Легкий",
+                      "Базовые задачи для понимания темы",
+                    )}
+                    {renderTaskLevel(
+                      topicData.medium,
+                      "medium",
+                      "Средний",
+                      "Задачи, требующие применения изученных методов",
+                    )}
+                    {renderTaskLevel(
+                      topicData.hard,
+                      "hard",
+                      "Сложный",
+                      "Творческие задачи повышенной сложности",
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <div className="text-center space-y-2">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Задачи по темам 6 класса
+                </h2>
+                <p className="text-gray-600">
+                  Занимательные задачи по основным темам курса математики 6
+                  класса
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {gradeTopics.map((topic) => (
+                  <Card
+                    key={topic.id}
+                    className="hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                    onClick={() => setSelectedGradeTopic(topic.id)}
+                  >
+                    <CardHeader className="text-center">
+                      <div
+                        className={`w-16 h-16 bg-${topic.color}-100 text-${topic.color}-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+                      >
+                        <Icon name={topic.icon as any} size={32} />
+                      </div>
+                      <CardTitle className="text-lg leading-tight">
+                        {topic.title}
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
         </TabsContent>
       </Tabs>
 
