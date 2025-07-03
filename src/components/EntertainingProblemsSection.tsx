@@ -165,6 +165,41 @@ const EntertainingProblemsSection = () => {
       color: "teal",
       description: "Анализ данных, построение и чтение диаграмм и графиков",
     },
+    {
+      id: "equations",
+      title: "Уравнения",
+      icon: "Equal",
+      color: "rose",
+      description: "Решение простейших уравнений с одним неизвестным",
+    },
+    {
+      id: "inequalities",
+      title: "Неравенства",
+      icon: "TrendingUp",
+      color: "amber",
+      description: "Решение и изображение неравенств на числовой прямой",
+    },
+    {
+      id: "sequences",
+      title: "Последовательности",
+      icon: "List",
+      color: "lime",
+      description: "Арифметические и геометрические последовательности",
+    },
+    {
+      id: "functions",
+      title: "Функции",
+      icon: "Activity",
+      color: "sky",
+      description: "Понятие функции, график функции, простейшие функции",
+    },
+    {
+      id: "combinatorics",
+      title: "Комбинаторика",
+      icon: "Shuffle",
+      color: "violet",
+      description: "Перестановки, размещения, сочетания - основы комбинаторики",
+    },
   ];
 
   const getTasksByTopic = (topicId: string) => {
